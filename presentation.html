@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Novel deep learning approaches for image analysis</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/custom.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-transition="fade-out" class="center" style="color: #254456;">
+					<div style="width: 100%;">
+						<div style="float:left; width: 35%; margin-top: 10%;">
+							<img src="res/za/logo_opis.png" alt="Logos OPIS">
+						</div>
+						<div style="float:right; width: 64%;">
+							<div data-id="title"><h1>Novel Deep Learning Approaches For Image Analysis</h1></div>
+							<div data-id="name"><h2>Mathieu Vu</h2></div>
+							<div data-id="misc"><p><em>Ph.D. defense - 28th November 2024</em></p></div>
+							<table class="table_jury" style="margin: 0;">
+								<tr>
+									<td><em>Supervisors:</em></td>
+								</tr>
+								<tr>
+									<td><b>Émilie Chouzenousx</b></td>
+									<td>Research Director (Inria, France)</td>
+								</tr>
+								<tr>
+									<td><b>Philippe Pinault</b></td>
+									<td>Engineer (Essilor R&D, France)</td>
+								</tr>
+
+								<tr>
+									<td style="color: #fff;">-</td>
+								</tr>
+
+								<tr>
+									<td><em>Jury members:</em></td>
+								</tr>
+								<tr>
+									<td><b>Amel Benazza</b></td>
+									<td>Professor (SUP’COM Tunis, Tunisia)</td>
+								</tr>
+								<tr>
+									<td><b>Adrian Basarab</b></td>
+									<td>Professor (Université de Lyon, France)</td>
+								</tr>
+								<tr>
+									<td><b>Benjamin Guedj</b></td>
+									<td>Research Director (Inria, UCL, United Kingdom)</td>
+								</tr>
+								<tr>
+									<td><b>Céline Hudelot</b></td>
+									<td>Professor (CentraleSupélec, France)</td>
+								</tr>
+								<tr>
+									<td><b>Ismail Ben Ayed</b></td>
+									<td>Professor (École de Technologie Supérieure, Canada)</td>
+								</tr>
+							</table>
+						</div>
+					 </div>
+				</section>
+
+				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
+					<h1>Summary</h1><hr data-id="header_hr"/>
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;">
+							<h1 class="fragment fade-down" data-fragment-index="1" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
+							<ol>
+								<li class="fragment fade-down" data-fragment-index="2">Introduction
+									<ol style="list-style-type: upper-alpha;">
+										<li>Wisdom of the crowd</li>
+										<li>Ensemble learning</li>
+										<li>Generalised mean</li>
+									</ol>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="3">Proposed model
+									<ol style="list-style-type: upper-alpha;">
+										<li>$f$-average</li>
+										<li>Aggregated $f$-averages</li>
+										<li>Stacked aggregated $f$-averages</li>
+										<li>Application: MNIST patches classification</li>
+									</ol>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="4">Application to Few-Shot Class Incremental Learning
+									<ol style="list-style-type: upper-alpha;"">
+										<li>Problem setting</li>
+										<li>Proposed approach</li>
+										<li>Comparative results</li>
+									</ol>
+								</li>
+							  </ol> 
+						</div>
+						<div style="float:right; width: 50%;">
+							<h1 class="fragment fade-down" data-fragment-index="5" style="font-size: 1.6em;">Part II - Deep learning for photorefraction</h1>
+							<ol>
+								<li class="fragment fade-down" data-fragment-index="6">Introduction
+									<ol style="list-style-type: upper-alpha;">
+										<li>Context</li>
+										<li>Objectives</li>
+										<li>Eye refractive error</li>
+										<li>Photorefraction principle</li>
+									</ol>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="7">Proposed pipeline
+									<ol style="list-style-type: upper-alpha;">
+										<li>Essilor capture device</li>
+										<li>Objectives</li>
+										<li>Datasets, CNN architecture & training</li>
+										<li>End-to-end pipeline</li>
+									</ol>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="8">Implementation & performance
+									<ol style="list-style-type: upper-alpha;">
+										<li>Regression models benchmark</li>
+										<li>Real versus synthetic data</li>
+										<li>Performance comparison with other device</li>
+										<li>Implementation performance</li>
+										<li>Ensembling regression models</li>
+									</ol>
+								</li>
+							</ol> 
+						</div>
+					</div>
+					<hr class="footer_hr" data-id="footer_hr"/>
+					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+					<div class="footer_name" data-id="name">Mathieu Vu |</div>
+					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				</section>
+
+				<section data-auto-animate data-transition="none-in fade-out" data-auto-animate-unmatched="false" class="section_slide">
+					<h1>Part I - Ensemble learning</h1><hr data-id="header_hr"/>
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;">
+							<h2 style="color: white;">-</h2>
+							<ol>
+								<li>Introduction
+									<ol style="list-style-type: upper-alpha;">
+										<li>Wisdom of the crowd</li>
+										<li>Ensemble learning</li>
+										<li>Generalised mean</li>
+									</ol>
+								</li>
+								<span style="color: #25445688">
+								<li>Proposed model
+									<ol style="list-style-type: upper-alpha;">
+										<li>$f$-average</li>
+										<li>Aggregated $f$-averages</li>
+										<li>Stacked aggregated $f$-averages</li>
+										<li>Application: MNIST patches classification</li>
+									</ol>
+								</li>
+								<li>Application to Few-Shot Class Incremental Learning
+									<ol style="list-style-type: upper-alpha;"">
+										<li>Motivation & problem setting</li>
+										<li>Proposed approach</li>
+										<li>Comparative results</li>
+									</ol>
+								</li>
+							  </ol> 
+							</span>
+						</div>
+					</div>
+					<hr class="footer_hr" data-id="footer_hr"/>
+					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+					<div class="footer_name" data-id="name">Mathieu Vu |</div>
+					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				</section>
+
+				<section data-transition="fade-in slide-out" class="section_slide">
+					<h1>Introduction: wisdom of the crowd</h1><hr data-id="header_hr"/>
+
+					<div> 
+						<img src="res/hoxton_market_shoreditch_1910.jpg" style="display: block; margin: auto; width:45%"/>
+						<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; font-size: large">
+							British market, 1910
+						</div>
+					</div>
+					<div style="margin-top: 1cm;">
+						Francis Galton's study of a weight-guessing contest [1]: <br />
+						<ul>
+							<li>800 participants</li>
+							<li>guesses mean: 1,208 pounds</li>
+							<li>ox weight: 1,197 pounds</li>
+						</ul>
+					</div>
+					<hr class="footer_hr" data-id="footer_hr"/>
+					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+					<div class="footer_name" data-id="name">Mathieu Vu |</div>
+					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				</section>
+				
+				<section class="section_slide">
+					<h1>Introduction: ensemble learning</h1><hr data-id="header_hr"/>
+
+					<div> 
+						<img src="res/ensemble_learning.jpg" style="display: block; margin: auto; width:55%"/>
+						<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 1%;">
+							where $(\forall k \in \{1,\ldots, K\}), x_k \in \mathbb{R}^N$ and $\widetilde{x} \in \mathbb{R}^N$ <br />
+						</div>
+					</div>
+					<div style="margin-top: 5%;">
+						<b>Goal 🎯</b>: leverage multiple models to enhance performance on a specific task
+					</div>
+					<hr class="footer_hr" data-id="footer_hr"/>
+					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+					<div class="footer_name" data-id="name">Mathieu Vu |</div>
+					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				</section>
+
+			<section data-transition="slide-in fade-out" class="section_slide" >
+				<h1>Introduction: generalised average</h1><hr data-id="header_hr"/>
+				<div>
+					Consider $K$ estimates $(x_k)_{1 \le k \le K}$ and let $\widetilde{x}$ in $[0, +\infty[$ be the predicted output after ensembling. <br />
+					<b>Standard average rules:</b> <br />
+					<table style="margin: 0;" class="table_means">
+						<tr>
+							<td style="text-align: right;">Arithmetic:</td>
+							<td>$\widetilde{x} = \sum_{k=1}^K \omega_{k}x_{k}$</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;">Geometric:</td>
+							<td>$\widetilde{x} = \prod_{k=1}^K x_{k}^{\omega_{k}}$</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;">Harmonic:</td>
+							<td>$\widetilde{x} = (\sum_{k=1}^K \frac{\omega_{k}}{x_{k}})^{-1}$</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;">Power-$q$:</td>
+							<td>$\widetilde{x} = \left( \sum_{k=1}^K \omega_{k} x_{k}^q \right)^{1/q}$</td>
+						</tr>
+					</table>
+					where $(\omega_k)_{1 \le k \le K}$ are some weights such that $\sum_{k=1}^K \omega_k = 1$.
+				</div>
+
+				<div class="theorem">
+					<div class="theorem_title">Kolmogorov's generalised average [2]</div>
+					$\widetilde{x} = f^{-1}\Big(\sum_{k=1}^K \omega_{k} f(x_{k})\Big)$
+				</div>
+				with $(\forall k \in \{1,\ldots, K\}), x_k \in [0, +\infty[^N$,  $\widetilde{x} \in [0, +\infty[^N$, and $f:[0, +\infty[^N \mapsto \mathbb{R}^{N}$ bijective, with inverse $f^{-1}$.<br /><br />
+
+				➡️ How to learn the optimal averaging rule/weights?
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section data-transition="fade" class="section_slide">
+				<h1>Part I - Ensemble learning</h1><hr data-id="header_hr"/>
+				<div style="width: 100%;">
+					<div style="float:left; width: 50%;">
+						<h2 style="color: white;">-</h2>
+						<ol>
+							<span style="color: #25445688 ">
+							<li>Introduction
+								<ol style="list-style-type: upper-alpha;">
+									<li>Wisdom of the crowd</li>
+									<li>Ensemble learning</li>
+									<li>Generalised mean</li>
+								</ol>
+							</li>
+							</span>
+							<li>Proposed model
+								<ol style="list-style-type: upper-alpha;">
+									<li>$f$-average</li>
+									<li>Aggregated $f$-averages</li>
+									<li>Stacked aggregated $f$-averages</li>
+									<li>Application: MNIST patches classification</li>
+								</ol>
+							</li>
+							<span style="color: #25445688 ">
+							<li>Application to Few-Shot Class Incremental Learning
+								<ol style="list-style-type: upper-alpha;"">
+									<li>Motivation & problem setting</li>
+									<li>Proposed approach</li>
+									<li>Comparative results</li>
+								</ol>
+							</li>
+						  </ol> 
+						</span>
+					</div>
+				</div>
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section data-transition="fade-in slide-out" class="section_slide" >
+				<h1>Proposed model: $f$-average</h1><hr data-id="header_hr"/>
+				<div class="theorem">
+					<div class="theorem_title">Kolmogorov's generalised average [2]</div>
+					$\widetilde{x} = f^{-1}\Big(\sum_{k=1}^K \omega_{k} f(x_{k})\Big)$
+				</div>
+				with $(\forall k \in \{1,\ldots, K\}), x_k \in [0, +\infty[^N$,  $\widetilde{x} \in [0, +\infty[^N$, and $f:[0, +\infty[^N \mapsto \mathbb{R}^{N}$ bijective, with inverse $f^{-1}$.
+
+				<div style="margin-top: 5%;" class="theorem">
+					<div class="theorem_title">Further generalisation: $f$-average</div>
+					$\widetilde{x} = f^{-1}\Big(W \boldsymbol{f}(\boldsymbol{x})\Big)$
+				</div><br />
+				$\boldsymbol{x}$: $\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$ <br /><br />
+				$\boldsymbol{f}$: function generalising $f$ operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section class="section_slide" >
+				<h1>Proposed model: NN modelling of an $f$-average</h1><hr data-id="header_hr"/>
+				<div> 
+					<img src="res/f-average.png" style="display: block; margin: auto; width:55%"/>
+					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 1cm;">
+						<b>Figure</b>: Structure of a neural network modelling an $f$-average
+					</div>
+				</div>
+
+				<div style="margin-top: 2%;">An optimal ensembling rule based on the average encoded in $(f,f^{-1})$ can be obtained through supervised learning of matrix $W$.</div>
+				<table style="margin-top: 5%;" class="mean_table">
+					<thead>
+						<tr>
+							<th>Mean</th>
+							<th class="inner_cell">$f(x)$</th>
+							<th class="inner_cell" style="padding: 0 75px 0 75px;">$f$ domain</th>
+							<th class="inner_cell">$f^{-1}(x)$</th>
+							<th class="inner_cell">$f^{-1}$ domain</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Arithmetic</td>
+							<td class="inner_cell">$Id$</td>
+							<td class="inner_cell">$[0,+\infty[^N$</td>
+							<td class="inner_cell">$Id$</td>
+							<td class="inner_cell">$[0,+\infty[^N$</td>
+						</tr>
+						<tr>
+							<td>Geometric</td>
+							<td class="inner_cell">$\big(\ln(\xi_{n}+\epsilon) \big)_{1\le n \le N}$</td>
+							<td class="inner_cell">$[0,+\infty[^N$</td>
+							<td class="inner_cell">$\big(\exp(\xi_{n})-\epsilon\big)_{1\le n\le N}$</td>
+							<td class="inner_cell">$[\ln(\epsilon),+\infty[^N$</td>
+						</tr>
+						<tr>
+							<td>Harmonic</td>
+							<td class="inner_cell">$\big(h_{\epsilon}(\xi_{n})\big)_{1\le n \le N}$</td>
+							<td class="inner_cell">$[0,+\infty[^N$</td>
+							<td class="inner_cell">$\big(h_{\epsilon}(\xi_{n})\big)_{1\le n \le N}$</td>
+							<td class="inner_cell">$]-\infty,\epsilon^{-1} - \epsilon]^N$</td>
+						</tr>
+						<tr>
+							<td>Quadratic</td>
+							<td class="inner_cell">$x^2$</td>
+							<td class="inner_cell">$[0,+\infty[^N$</td>
+							<td class="inner_cell">$\sqrt{x}$</td>
+							<td class="inner_cell">$[0,+\infty[^N$</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 1cm; font-size: x-large">
+					<b>Table</b>: Examples for $f$ and $f^{-1}$, and definition domains. For geometric and harmonic means, classical mean formulas are retrieved when $\epsilon \to 0$.
+				</div>
+				
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section class="section_slide" >
+				<h1>Proposed model: aggregated $f$-averages</h1><hr data-id="header_hr"/>
+				<div> 
+					<img src="res/aggregated-f-average.png" style="display: block; margin: auto; width:30%"/>
+					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 0.75%;">
+						<b>Figure</b>: Structure of a neural network aggregating $J$ $f$-averages
+					</div>
+				</div>
+
+				<table class="notations_table">
+					<tr>
+						<td style="text-align: right;">$\forall j \in \{1,\cdots,J\}$,</td>
+						<td style="text-align: right;">$\boldsymbol{x_j}$:</td>
+						<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
+					</tr>
+						<td></td>
+						<td style="text-align: right;">$\boldsymbol{f_j}$:</td>
+						<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
+					<tr>
+						<td></td>
+						<td style="text-align: right;">$W_j$:</td>
+						<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td style="text-align: right;">$f^{-1}_j$:</td>
+						<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0, +\infty[^{N}$</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td style="text-align: right;">$A$:</td>
+						<td>$\in \mathbb{R}^{N \times NJ}$</td>
+					</tr>
+				</table>
+
+				<div>
+					➡️ This allows to learn the optimal balance between $J$ different average rules, through the learning of $(W_j)_{1\leq j \leq J}$ and $A$.
+				</div>
+				
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section data-transition="slide-in fade-out" class="section_slide" >
+				<h1>Proposed model: stacked aggregated $f$-averages</h1><hr data-id="header_hr"/>
+				<div> 
+					<img src="res/stacked-aggregated-f-average.png" style="display: block; margin: auto; width:85%"/>
+					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 0.75%;">
+						<b>Figure</b>: Composition of $M$ levels of aggregated $f$-averages. The operation depicted
+						with the sign $\|$ represents a concatenation.
+					</div>
+				</div>
+
+				<table data-transition="slide-in fade-out" class="notations_table">
+					<tr>
+						<td style="text-align: right;">$\forall j \in \{1,\cdots,J\}$ and</td>
+						<td style="text-align: right;">$\boldsymbol{x_{m,j}}$:</td>
+						<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
+					</tr>
+					<td style="text-align: right;">$\forall m \in \{1,\cdots,M\}$,</td>
+					<td style="text-align: right;">$\boldsymbol{f_{m,j}}$:</td>
+						<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
+					<tr>
+						<td></td>
+						<td style="text-align: right;">$W_{m,j}$:</td>
+						<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td style="text-align: right;">$f^{-1}_{m,j}$:</td>
+						<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0, +\infty[^{N}$</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td style="text-align: right;">$A$:</td>
+						<td>$\in \mathbb{R}^{N \times NJ}$</td>
+					</tr>
+				</table>
+				
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section data-transition="fade" class="section_slide">
+				<h1>Part I - Ensemble learning</h1><hr data-id="header_hr"/>
+				<div style="width: 100%;">
+					<div style="float:left; width: 50%;">
+						<h2 style="color: white;">-</h2>
+						<ol>
+							<span style="color: #25445688 ">
+							<li>Introduction
+								<ol style="list-style-type: upper-alpha;">
+									<li>Wisdom of the crowd</li>
+									<li>Ensemble learning</li>
+									<li>Generalised mean</li>
+								</ol>
+							</li>
+							<li>Proposed model
+								<ol style="list-style-type: upper-alpha;">
+									<li>$f$-average</li>
+									<li>Aggregated $f$-averages</li>
+									<li>Stacked aggregated $f$-averages</li>
+									<li>Application: MNIST patches classification</li>
+								</ol>
+							</li>
+						</span>
+						<li>Application to Few-Shot Class Incremental Learning
+								<ol style="list-style-type: upper-alpha;"">
+									<li>Motivation & problem setting</li>
+									<li>Proposed approach</li>
+									<li>Comparative results</li>
+								</ol>
+							</li>
+						  </ol> 
+					</div>
+				</div>
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section data-transition="fade-in slide-out" class="section_slide" >
+				<h1>FSCIL: motivation</h1><hr data-id="header_hr"/>
+				<div> 
+					<img src="res/smartalbum.png" style="display: block; margin: auto; width: 45%"/>
+					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 0.75%;">
+						FSCIL use case: AI-powered smart album.
+					</div>
+				</div>
+
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section class="section_slide">
+				<h1>FSCIL: problem setting</h1><hr data-id="header_hr"/>
+
+				<table class="mean_table" style="margin: auto;">
+					<tr>
+						<td class="tdleft"><b>Dataset</b></td>
+						<td class="tdcenter">$K$</td>
+						<td class="tdcenter">$n_\text{class\_base}$</td>
+						<td class="tdcenter">$n_\text{class}$</td>
+						<td class="tdcenter">$n_\text{way}$</td>
+						<td class="tdcenter">$n_\text{shots}$</td>
+					</tr>
+					<tr>
+						<td class="tdleft">mini-ImageNet</td>
+						<td class="tdcenter">9</td>
+						<td class="tdcenter">60</td>
+						<td class="tdcenter">100</td>
+						<td class="tdcenter">5</td>
+						<td class="tdcenter">5</td>
+					</tr>
+					<tr>
+						<td class="tdleft">FGVC-Aircraft</td>
+						<td class="tdcenter">10</td>
+						<td class="tdcenter">50</td>
+						<td class="tdcenter">100</td>
+						<td class="tdcenter">5</td>
+						<td class="tdcenter">5</td>
+					</tr>
+					<tr>
+						<td class="tdleft">tiered-ImageNet</td>
+						<td class="tdcenter">10</td>
+						<td class="tdcenter">100</td>
+						<td class="tdcenter">200</td>
+						<td class="tdcenter">10</td>
+						<td class="tdcenter">5</td>
+					</tr>
+					<tr>
+						<td class="tdleft">CUB-200</td>
+						<td class="tdcenter">10</td>
+						<td class="tdcenter">100</td>
+						<td class="tdcenter">200</td>
+						<td class="tdcenter">10</td>
+						<td class="tdcenter">5</td>
+					</tr>
+				</table><br /><br />
+
+				<table class="notations_table" style="margin: auto;">
+					<tr>
+						<td class="tdcenter"><b>Session</b></td>
+						<td class="tdcenter"><b>Training classes</b></td>
+						<td class="tdcenter"><b>Test classes</b></td>
+					</tr>
+					<tr>
+						<td class="tdcenter">0</td>
+						<td class="tdcenter">{0, … , 59}</td>
+						<td class="tdcenter">{0, … , 59}</td>
+					</tr>
+					<tr>
+						<td class="tdcenter">1</td>
+						<td class="tdcenter">{60, … , 64}</td>
+						<td class="tdcenter">{0, … , 64}</td>
+					</tr>
+					<tr>
+						<td class="tdcenter">$\vdots$</td>
+						<td class="tdcenter">$\vdots$</td>
+						<td class="tdcenter">$\vdots$</td>
+					</tr>
+					<tr>
+						<td class="tdcenter">9</td>
+						<td class="tdcenter">{95, … , 99}</td>
+						<td class="tdcenter">{0, … , 99}</td>
+					</tr>
+				</table>
+
+				<div style="margin-top: 5%;"><b>Goal 🎯</b>: learn new classes, using only a few training samples and without forgetting previous classes.</div>
+
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			</section>
+
+			<section class="section_slide" >
+				<h1>FSCIL: proposed approach</h1><hr data-id="header_hr"/>
+				<div> 
+					<img src="res/fscil_afa_pipeline.png" style="display: block; margin: auto; width: 45%"/>
+					<div style="width: 70%; margin: 0.75% auto auto auto;">
+						Scheme of our proposed approach: each session is considered as a few-shot task in order to build a set of models that are then ensembled using our AFA method.
+					</div>
+				</div>
+
+				<hr class="footer_hr" data-id="footer_hr"/>
+				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
+				<div class="footer_name" data-id="name">Mathieu Vu |</div>
+				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+			
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+		Reveal.initialize({
+			width: '90%',
+			height: '90%',
+			controls: false,
+			hash: true,
+			center: false,
+			mouseWheel: true,
+			slideNumber: 'true',
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+		});
+		</script>
+	</body>
+</html>
