@@ -371,11 +371,20 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   text-align: left;
 }
 
-hr {
-  color: var(--r-main-color);
-  background-color: var(--r-main-color);
-  border-width: 0;
-  height: 1px;
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0 0.5em;
+  border: 0;
+}
+
+table.left_aligned{
+  margin: 0;  
+}
+
+table.left_aligned th,
+table.left_aligned td {
+  padding-left: 0;
 }
 
 .section_slide {
@@ -383,55 +392,55 @@ hr {
 }
 
 .footer {
-  display: block;
   position: absolute;
   bottom: 0;
   font-size: large;
-}
-
-.footer_name {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 22.5em;
-  font-size: large;
-}
-
-.footer_misc {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 28em;
-  font-size: large;
-}
-
-.footer_hr {
-  display: block;
   width: 100%;
-  position: absolute;
-  bottom: .5em;
+}
+
+hr {
+  color: var(--r-main-color);
+  background-color: var(--r-main-color);
   border-width: 0;
   height: 1px;
 }
 
-table.table_jury td {
-  padding: 0;
-  padding-right: 1em;
-  border: 0;
+div.header_hr {
+  position: absolute;
+  top: 3em;
+  width: 100%;
+}
+
+span.semi-fade {
+  opacity: 50%;
+}
+
+div.centred_img img {
+  display: block;
+  margin: auto;
+}
+
+div.centred_img div {
+  margin: .5% auto;
+  width: fit-content;
+  font-size: x-large;
 }
 
 table.table_means td {
-  padding-bottom: 10px;
-  padding-left: 40px;
-  border: 0;
+  padding-bottom: .5em;
+  padding-left: 1.5em;
+}
+
+table.table_means td:nth-child(1) {
+  text-align: right;
 }
 
 .theorem {
   background-color: rgb(223, 223, 223);
   width: 60%;
   text-align: center;
-  padding-bottom: 20px;
-  margin: 35px 0px 30px 20%;
+  padding-bottom: 1em;
+  margin: 1em auto;
   border-radius: 15px;
 }
 
@@ -439,45 +448,40 @@ table.table_means td {
   text-align: left;
   background-color: var(--r-main-color);
   color: white;
-  margin-bottom: 20px;
-  padding: 10px 0px 10px 20px;
-  border-radius: 15px 15px 0 0px;
+  margin-bottom: 1em;
+  padding: .5em 1em;
+  border-radius: 15px 15px 0 0;
 }
 
-table.mean_table td {
-  border: 0px;
+table.centred_table thead tr{
+  border-bottom: 1px solid var(--r-main-color);
 }
 
-table.mean_table tbody tr:nth-child(odd) {
+table.centred_table th,
+table.centred_table td{
+  text-align: center;
+  min-width: 7em;
+}
+
+table.centred_table tbody tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
-table th.inner_cell {
-  border-left: 1px solid black;
+table.centred_table th:not(:last-child),
+table.centred_table td:not(:last-child) {
+  border-right: 1px solid var(--r-main-color);
   text-align: center;
 }
 
-table td.inner_cell {
-  text-align: center;
-  border-left: 1px solid black;
-}
-
-table.notations_table td {
-  border: 0px;
+div.centred_table_title {
+  margin: .5% auto;
+  width: fit-content;
+  font-size: x-large;
 }
 
 table.notations_table {
-  margin: 2% 0 0 0;
+  margin: 0 0 0 0;
 }
-
-table td.tdcenter {
-  text-align: center;
-}
-
-table td.tdleft {
-  text-align: left;
-}
-
-.tdright td {
+table.notations_table td:not(:last-child) {
   text-align: right;
 }

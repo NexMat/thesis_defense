@@ -25,12 +25,12 @@
 							<div data-id="title"><h1>Novel Deep Learning Approaches For Image Analysis</h1></div>
 							<div data-id="name"><h2>Mathieu Vu</h2></div>
 							<div data-id="misc"><p><em>Ph.D. defense - 28th November 2024</em></p></div>
-							<table class="table_jury" style="margin: 0;">
+							<table class="left_aligned">
 								<tr>
 									<td><em>Supervisors:</em></td>
 								</tr>
 								<tr>
-									<td><b>Émilie Chouzenousx</b></td>
+									<td><b>Émilie Chouzenoux</b></td>
 									<td>Research Director (Inria, France)</td>
 								</tr>
 								<tr>
@@ -71,9 +71,9 @@
 				</section>
 
 				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
-					<h1>Summary</h1><hr data-id="header_hr"/>
+					<h1>Summary</h1><div class="header_hr" data-id="header_hr"><hr /></div>
 					<div style="width: 100%;">
-						<div style="float:left; width: 50%;">
+						<div style="float:left; width: 50%;" data-id="left_col">
 							<h1 class="fragment fade-down" data-fragment-index="1" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
 							<ol>
 								<li class="fragment fade-down" data-fragment-index="2">Introduction
@@ -131,17 +131,17 @@
 							</ol> 
 						</div>
 					</div>
-					<hr class="footer_hr" data-id="footer_hr"/>
-					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-					<div class="footer_name" data-id="name">Mathieu Vu |</div>
-					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
 				</section>
 
-				<section data-auto-animate data-transition="none-in fade-out" data-auto-animate-unmatched="false" class="section_slide">
-					<h1>Part I - Ensemble learning</h1><hr data-id="header_hr"/>
+				<section data-auto-animate data-transition="none-in slide-out" data-auto-animate-unmatched="false" class="section_slide">
+					<h1>Part I - Ensemble learning</h1><div class="header_hr" data-id="header_hr"><hr /></div>
 					<div style="width: 100%;">
-						<div style="float:left; width: 50%;">
-							<h2 style="color: white;">-</h2>
+						<div style="float:left; width: 50%;" data-id="left_col">
+							<h2 style="color: rgba(255, 255, 255, 0);">.</h2>
 							<ol>
 								<li>Introduction
 									<ol style="list-style-type: upper-alpha;">
@@ -150,7 +150,7 @@
 										<li>Generalised mean</li>
 									</ol>
 								</li>
-								<span style="color: #25445688">
+								<span class="semi-fade">
 								<li>Proposed model
 									<ol style="list-style-type: upper-alpha;">
 										<li>$f$-average</li>
@@ -166,26 +166,23 @@
 										<li>Comparative results</li>
 									</ol>
 								</li>
-							  </ol> 
-							</span>
+								</span>
+							</ol> 
 						</div>
 					</div>
-					<hr class="footer_hr" data-id="footer_hr"/>
-					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-					<div class="footer_name" data-id="name">Mathieu Vu |</div>
-					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+					<div class="footer">
+						<hr class="footer_hr" data-id="footer_hr"/>
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
 				</section>
 
-				<section data-transition="fade-in slide-out" class="section_slide">
-					<h1>Introduction: wisdom of the crowd</h1><hr data-id="header_hr"/>
-
-					<div> 
-						<img src="res/hoxton_market_shoreditch_1910.jpg" style="display: block; margin: auto; width:45%"/>
-						<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; font-size: large">
-							British market, 1910
-						</div>
+				<section class="section_slide">
+					<h1>Introduction: wisdom of the crowd</h1><hr />
+					<div class="centred_img"> 
+						<img src="res/hoxton_market_shoreditch_1910.jpg" style="width:45%"/>
+						<div>British market, 1910</div>
 					</div>
-					<div style="margin-top: 1cm;">
+					<div style="margin-top: 2%;">
 						Francis Galton's study of a weight-guessing contest [1]: <br />
 						<ul>
 							<li>800 participants</li>
@@ -193,50 +190,50 @@
 							<li>ox weight: 1,197 pounds</li>
 						</ul>
 					</div>
-					<hr class="footer_hr" data-id="footer_hr"/>
-					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-					<div class="footer_name" data-id="name">Mathieu Vu |</div>
-					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
-				</section>
-				
-				<section class="section_slide">
-					<h1>Introduction: ensemble learning</h1><hr data-id="header_hr"/>
-
-					<div> 
-						<img src="res/ensemble_learning.jpg" style="display: block; margin: auto; width:55%"/>
-						<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 1%;">
-							where $(\forall k \in \{1,\ldots, K\}), x_k \in \mathbb{R}^N$ and $\widetilde{x} \in \mathbb{R}^N$ <br />
-						</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
-					<div style="margin-top: 5%;">
+				</section>
+
+				<section class="section_slide">
+					<h1>Introduction: ensemble learning</h1><hr />
+
+					<div class="centred_img"> 
+						<img src="res/ensemble_learning.jpg" style="width:55%"/>
+						<div>where $(\forall k \in \{1,\ldots, K\}), x_k \in \mathbb{R}^N$ and $\widetilde{x} \in \mathbb{R}^N$</div>
+					</div>
+					<div style="margin-top: 7%;">
 						<b>Goal 🎯</b>: leverage multiple models to enhance performance on a specific task
 					</div>
-					<hr class="footer_hr" data-id="footer_hr"/>
-					<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-					<div class="footer_name" data-id="name">Mathieu Vu |</div>
-					<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
 				</section>
 
 			<section data-transition="slide-in fade-out" class="section_slide" >
-				<h1>Introduction: generalised average</h1><hr data-id="header_hr"/>
+				<h1>Introduction: generalised average</h1><hr />
 				<div>
 					Consider $K$ estimates $(x_k)_{1 \le k \le K}$ and let $\widetilde{x}$ in $[0, +\infty[$ be the predicted output after ensembling. <br />
+				</div>
+				<div style="margin-top: 1%;">
 					<b>Standard average rules:</b> <br />
 					<table style="margin: 0;" class="table_means">
 						<tr>
-							<td style="text-align: right;">Arithmetic:</td>
+							<td>Arithmetic:</td>
 							<td>$\widetilde{x} = \sum_{k=1}^K \omega_{k}x_{k}$</td>
 						</tr>
 						<tr>
-							<td style="text-align: right;">Geometric:</td>
+							<td>Geometric:</td>
 							<td>$\widetilde{x} = \prod_{k=1}^K x_{k}^{\omega_{k}}$</td>
 						</tr>
 						<tr>
-							<td style="text-align: right;">Harmonic:</td>
+							<td>Harmonic:</td>
 							<td>$\widetilde{x} = (\sum_{k=1}^K \frac{\omega_{k}}{x_{k}})^{-1}$</td>
 						</tr>
 						<tr>
-							<td style="text-align: right;">Power-$q$:</td>
+							<td>Power-$q$:</td>
 							<td>$\widetilde{x} = \left( \sum_{k=1}^K \omega_{k} x_{k}^q \right)^{1/q}$</td>
 						</tr>
 					</table>
@@ -249,20 +246,20 @@
 				</div>
 				with $(\forall k \in \{1,\ldots, K\}), x_k \in [0, +\infty[^N$,  $\widetilde{x} \in [0, +\infty[^N$, and $f:[0, +\infty[^N \mapsto \mathbb{R}^{N}$ bijective, with inverse $f^{-1}$.<br /><br />
 
-				➡️ How to learn the optimal averaging rule/weights?
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				🤔 How to learn the optimal averaging rule/weights?
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
 			</section>
 
-			<section data-transition="fade" class="section_slide">
-				<h1>Part I - Ensemble learning</h1><hr data-id="header_hr"/>
+			<section data-transition="fade-in slide-out" class="section_slide">
+				<h1>Part I - Ensemble learning</h1><hr />
 				<div style="width: 100%;">
 					<div style="float:left; width: 50%;">
 						<h2 style="color: white;">-</h2>
 						<ol>
-							<span style="color: #25445688 ">
+							<span class="semi-fade">
 							<li>Introduction
 								<ol style="list-style-type: upper-alpha;">
 									<li>Wisdom of the crowd</li>
@@ -279,7 +276,7 @@
 									<li>Application: MNIST patches classification</li>
 								</ol>
 							</li>
-							<span style="color: #25445688 ">
+							<span class="semi-fade">
 							<li>Application to Few-Shot Class Incremental Learning
 								<ol style="list-style-type: upper-alpha;"">
 									<li>Motivation & problem setting</li>
@@ -291,14 +288,14 @@
 						</span>
 					</div>
 				</div>
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
 			</section>
 
-			<section data-transition="fade-in slide-out" class="section_slide" >
-				<h1>Proposed model: $f$-average</h1><hr data-id="header_hr"/>
+			<section class="section_slide" >
+				<h1>Proposed model: $f$-average</h1><hr />
 				<div class="theorem">
 					<div class="theorem_title">Kolmogorov's generalised average [2]</div>
 					$\widetilde{x} = f^{-1}\Big(\sum_{k=1}^K \omega_{k} f(x_{k})\Big)$
@@ -311,167 +308,160 @@
 				</div><br />
 				$\boldsymbol{x}$: $\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$ <br /><br />
 				$\boldsymbol{f}$: function generalising $f$ operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
 			</section>
 
 			<section class="section_slide" >
-				<h1>Proposed model: NN modelling of an $f$-average</h1><hr data-id="header_hr"/>
-				<div> 
-					<img src="res/f-average.png" style="display: block; margin: auto; width:55%"/>
-					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 1cm;">
-						<b>Figure</b>: Structure of a neural network modelling an $f$-average
-					</div>
+				<h1>Proposed model: NN modelling of an $f$-average</h1><hr />
+				<div class="centred_img"> 
+					<img src="res/f-average.png" style="width:55%" />
+					<div><b>Figure</b>: Structure of a neural network modelling an $f$-average</div>
 				</div>
 
 				<div style="margin-top: 2%;">An optimal ensembling rule based on the average encoded in $(f,f^{-1})$ can be obtained through supervised learning of matrix $W$.</div>
-				<table style="margin-top: 5%;" class="mean_table">
+
+				<table class="centred_table" style="margin-top: 5%;">
 					<thead>
 						<tr>
 							<th>Mean</th>
-							<th class="inner_cell">$f(x)$</th>
-							<th class="inner_cell" style="padding: 0 75px 0 75px;">$f$ domain</th>
-							<th class="inner_cell">$f^{-1}(x)$</th>
-							<th class="inner_cell">$f^{-1}$ domain</th>
+							<th>$f(x)$</th>
+							<th>$f$ domain</th>
+							<th>$f^{-1}(x)$</th>
+							<th>$f^{-1}$ domain</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>Arithmetic</td>
-							<td class="inner_cell">$Id$</td>
-							<td class="inner_cell">$[0,+\infty[^N$</td>
-							<td class="inner_cell">$Id$</td>
-							<td class="inner_cell">$[0,+\infty[^N$</td>
+							<td>$Id$</td>
+							<td>$[0,+\infty[^N$</td>
+							<td>$Id$</td>
+							<td>$[0,+\infty[^N$</td>
 						</tr>
 						<tr>
 							<td>Geometric</td>
-							<td class="inner_cell">$\big(\ln(\xi_{n}+\epsilon) \big)_{1\le n \le N}$</td>
-							<td class="inner_cell">$[0,+\infty[^N$</td>
-							<td class="inner_cell">$\big(\exp(\xi_{n})-\epsilon\big)_{1\le n\le N}$</td>
-							<td class="inner_cell">$[\ln(\epsilon),+\infty[^N$</td>
+							<td>$\big(\ln(\xi_{n}+\epsilon) \big)_{1\le n \le N}$</td>
+							<td>$[0,+\infty[^N$</td>
+							<td>$\big(\exp(\xi_{n})-\epsilon\big)_{1\le n\le N}$</td>
+							<td>$[\ln(\epsilon),+\infty[^N$</td>
 						</tr>
 						<tr>
 							<td>Harmonic</td>
-							<td class="inner_cell">$\big(h_{\epsilon}(\xi_{n})\big)_{1\le n \le N}$</td>
-							<td class="inner_cell">$[0,+\infty[^N$</td>
-							<td class="inner_cell">$\big(h_{\epsilon}(\xi_{n})\big)_{1\le n \le N}$</td>
-							<td class="inner_cell">$]-\infty,\epsilon^{-1} - \epsilon]^N$</td>
+							<td>$\big(h_{\epsilon}(\xi_{n})\big)_{1\le n \le N}$</td>
+							<td>$[0,+\infty[^N$</td>
+							<td>$\big(h_{\epsilon}(\xi_{n})\big)_{1\le n \le N}$</td>
+							<td>$]-\infty,\epsilon^{-1} - \epsilon]^N$</td>
 						</tr>
 						<tr>
 							<td>Quadratic</td>
-							<td class="inner_cell">$x^2$</td>
-							<td class="inner_cell">$[0,+\infty[^N$</td>
-							<td class="inner_cell">$\sqrt{x}$</td>
-							<td class="inner_cell">$[0,+\infty[^N$</td>
+							<td>$x^2$</td>
+							<td>$[0,+\infty[^N$</td>
+							<td>$\sqrt{x}$</td>
+							<td>$[0,+\infty[^N$</td>
 						</tr>
 					</tbody>
 				</table>
-				<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 1cm; font-size: x-large">
-					<b>Table</b>: Examples for $f$ and $f^{-1}$, and definition domains. For geometric and harmonic means, classical mean formulas are retrieved when $\epsilon \to 0$.
-				</div>
+				<div class="centred_table_title"><b>Table</b>: Examples for $f$ and $f^{-1}$, and definition domains. For geometric and harmonic means, classical mean formulas are retrieved when $\epsilon \to 0$.</div>
 				
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
 			</section>
 
 			<section class="section_slide" >
-				<h1>Proposed model: aggregated $f$-averages</h1><hr data-id="header_hr"/>
-				<div> 
-					<img src="res/aggregated-f-average.png" style="display: block; margin: auto; width:30%"/>
-					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 0.75%;">
-						<b>Figure</b>: Structure of a neural network aggregating $J$ $f$-averages
-					</div>
+				<h1>Proposed model: aggregated $f$-averages</h1><hr />
+				<div class="centred_img"> 
+					<img src="res/aggregated-f-average.png" style="width:30%" />
+					<div><b>Figure</b>: Structure of a neural network aggregating $J$ $f$-averages</div>
 				</div>
 
-				<table class="notations_table">
+				<table class="notations_table" style="margin-top: 3%;">
 					<tr>
-						<td style="text-align: right;">$\forall j \in \{1,\cdots,J\}$,</td>
-						<td style="text-align: right;">$\boldsymbol{x_j}$:</td>
+						<td>$\forall j \in \{1,\cdots,J\}$,</td>
+						<td>$\boldsymbol{x_j}$:</td>
 						<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 					</tr>
 						<td></td>
-						<td style="text-align: right;">$\boldsymbol{f_j}$:</td>
+						<td>$\boldsymbol{f_j}$:</td>
 						<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
 					<tr>
 						<td></td>
-						<td style="text-align: right;">$W_j$:</td>
+						<td>$W_j$:</td>
 						<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
 					</tr>
 					<tr>
 						<td></td>
-						<td style="text-align: right;">$f^{-1}_j$:</td>
+						<td>$f^{-1}_j$:</td>
 						<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0, +\infty[^{N}$</td>
 					</tr>
 					<tr>
 						<td></td>
-						<td style="text-align: right;">$A$:</td>
+						<td>$A$:</td>
 						<td>$\in \mathbb{R}^{N \times NJ}$</td>
 					</tr>
 				</table>
 
-				<div>
+				<div style="margin-top: 2%;">
 					➡️ This allows to learn the optimal balance between $J$ different average rules, through the learning of $(W_j)_{1\leq j \leq J}$ and $A$.
 				</div>
 				
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
 			</section>
 
 			<section data-transition="slide-in fade-out" class="section_slide" >
-				<h1>Proposed model: stacked aggregated $f$-averages</h1><hr data-id="header_hr"/>
-				<div> 
-					<img src="res/stacked-aggregated-f-average.png" style="display: block; margin: auto; width:85%"/>
-					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 0.75%;">
-						<b>Figure</b>: Composition of $M$ levels of aggregated $f$-averages. The operation depicted
-						with the sign $\|$ represents a concatenation.
-					</div>
+				<h1>Proposed model: stacked aggregated $f$-averages</h1><hr />
+				<div class="centred_img"> 
+					<img src="res/stacked-aggregated-f-average.png" style="width:85%"/>
+					<div><b>Figure</b>: Composition of $M$ levels of aggregated $f$-averages. The operation depicted with the sign $\|$ represents a concatenation.</div>
 				</div>
 
-				<table data-transition="slide-in fade-out" class="notations_table">
+				<table class="notations_table" style="margin-top: 4%;">
 					<tr>
-						<td style="text-align: right;">$\forall j \in \{1,\cdots,J\}$ and</td>
-						<td style="text-align: right;">$\boldsymbol{x_{m,j}}$:</td>
+						<td>$\forall j \in \{1,\cdots,J\}$ and</td>
+						<td>$\boldsymbol{x_{m,j}}$:</td>
 						<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 					</tr>
-					<td style="text-align: right;">$\forall m \in \{1,\cdots,M\}$,</td>
-					<td style="text-align: right;">$\boldsymbol{f_{m,j}}$:</td>
+					<td>$\forall m \in \{1,\cdots,M\}$,</td>
+					<td>$\boldsymbol{f_{m,j}}$:</td>
 						<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
 					<tr>
 						<td></td>
-						<td style="text-align: right;">$W_{m,j}$:</td>
+						<td>$W_{m,j}$:</td>
 						<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
 					</tr>
 					<tr>
 						<td></td>
-						<td style="text-align: right;">$f^{-1}_{m,j}$:</td>
+						<td>$f^{-1}_{m,j}$:</td>
 						<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0, +\infty[^{N}$</td>
 					</tr>
 					<tr>
 						<td></td>
-						<td style="text-align: right;">$A$:</td>
+						<td>$A$:</td>
 						<td>$\in \mathbb{R}^{N \times NJ}$</td>
 					</tr>
 				</table>
 				
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
 			</section>
 
-			<section data-transition="fade" class="section_slide">
-				<h1>Part I - Ensemble learning</h1><hr data-id="header_hr"/>
+			<section data-transition="fade-in slide-out" class="section_slide">
+				<h1>Part I - Ensemble learning</h1><hr />
 				<div style="width: 100%;">
 					<div style="float:left; width: 50%;">
 						<h2 style="color: white;">-</h2>
 						<ol>
-							<span style="color: #25445688 ">
+							<span class="semi-fade">
 							<li>Introduction
 								<ol style="list-style-type: upper-alpha;">
 									<li>Wisdom of the crowd</li>
@@ -498,123 +488,174 @@
 						  </ol> 
 					</div>
 				</div>
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
-			</section>
-
-			<section data-transition="fade-in slide-out" class="section_slide" >
-				<h1>FSCIL: motivation</h1><hr data-id="header_hr"/>
-				<div> 
-					<img src="res/smartalbum.png" style="display: block; margin: auto; width: 45%"/>
-					<div style="max-width: fit-content; margin-left: auto; margin-right: auto; margin: auto; margin-top: 0.75%;">
-						FSCIL use case: AI-powered smart album.
-					</div>
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 				</div>
-
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
-			</section>
-
-			<section class="section_slide">
-				<h1>FSCIL: problem setting</h1><hr data-id="header_hr"/>
-
-				<table class="mean_table" style="margin: auto;">
-					<tr>
-						<td class="tdleft"><b>Dataset</b></td>
-						<td class="tdcenter">$K$</td>
-						<td class="tdcenter">$n_\text{class\_base}$</td>
-						<td class="tdcenter">$n_\text{class}$</td>
-						<td class="tdcenter">$n_\text{way}$</td>
-						<td class="tdcenter">$n_\text{shots}$</td>
-					</tr>
-					<tr>
-						<td class="tdleft">mini-ImageNet</td>
-						<td class="tdcenter">9</td>
-						<td class="tdcenter">60</td>
-						<td class="tdcenter">100</td>
-						<td class="tdcenter">5</td>
-						<td class="tdcenter">5</td>
-					</tr>
-					<tr>
-						<td class="tdleft">FGVC-Aircraft</td>
-						<td class="tdcenter">10</td>
-						<td class="tdcenter">50</td>
-						<td class="tdcenter">100</td>
-						<td class="tdcenter">5</td>
-						<td class="tdcenter">5</td>
-					</tr>
-					<tr>
-						<td class="tdleft">tiered-ImageNet</td>
-						<td class="tdcenter">10</td>
-						<td class="tdcenter">100</td>
-						<td class="tdcenter">200</td>
-						<td class="tdcenter">10</td>
-						<td class="tdcenter">5</td>
-					</tr>
-					<tr>
-						<td class="tdleft">CUB-200</td>
-						<td class="tdcenter">10</td>
-						<td class="tdcenter">100</td>
-						<td class="tdcenter">200</td>
-						<td class="tdcenter">10</td>
-						<td class="tdcenter">5</td>
-					</tr>
-				</table><br /><br />
-
-				<table class="notations_table" style="margin: auto;">
-					<tr>
-						<td class="tdcenter"><b>Session</b></td>
-						<td class="tdcenter"><b>Training classes</b></td>
-						<td class="tdcenter"><b>Test classes</b></td>
-					</tr>
-					<tr>
-						<td class="tdcenter">0</td>
-						<td class="tdcenter">{0, … , 59}</td>
-						<td class="tdcenter">{0, … , 59}</td>
-					</tr>
-					<tr>
-						<td class="tdcenter">1</td>
-						<td class="tdcenter">{60, … , 64}</td>
-						<td class="tdcenter">{0, … , 64}</td>
-					</tr>
-					<tr>
-						<td class="tdcenter">$\vdots$</td>
-						<td class="tdcenter">$\vdots$</td>
-						<td class="tdcenter">$\vdots$</td>
-					</tr>
-					<tr>
-						<td class="tdcenter">9</td>
-						<td class="tdcenter">{95, … , 99}</td>
-						<td class="tdcenter">{0, … , 99}</td>
-					</tr>
-				</table>
-
-				<div style="margin-top: 5%;"><b>Goal 🎯</b>: learn new classes, using only a few training samples and without forgetting previous classes.</div>
-
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
 			</section>
 
 			<section class="section_slide" >
-				<h1>FSCIL: proposed approach</h1><hr data-id="header_hr"/>
-				<div> 
-					<img src="res/fscil_afa_pipeline.png" style="display: block; margin: auto; width: 45%"/>
-					<div style="width: 70%; margin: 0.75% auto auto auto;">
-						Scheme of our proposed approach: each session is considered as a few-shot task in order to build a set of models that are then ensembled using our AFA method.
-					</div>
+				<h1>FSCIL: motivation</h1><hr />
+				<div class="centred_img"> 
+					<img src="res/smartalbum.png" style="width: 45%"/>
+					<div>FSCIL use case: AI-powered smart album.</div>
 				</div>
 
-				<hr class="footer_hr" data-id="footer_hr"/>
-				<div class="footer" data-id="title">Novel Deep Learning Approaches For Image Analysis |</div>
-				<div class="footer_name" data-id="name">Mathieu Vu |</div>
-				<div class="footer_misc" data-id="misc">Ph.D. defense - 28th November 2024</div>
-			
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
+			</section>
+
+			<section class="section_slide">
+				<h1>FSCIL: problem setting</h1><hr />
+				<table class="centred_table">
+					<thead>
+						<tr>
+							<th>Dataset</th>
+							<th>$K$</th>
+							<th>$n_\text{class\_base}$</th>
+							<th>$n_\text{class}$</th>
+							<th>$n_\text{way}$</th>
+							<th>$n_\text{shots}$</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>mini-ImageNet</td>
+							<td>9</td>
+							<td>60</td>
+							<td>100</td>
+							<td>5</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>FGVC-Aircraft</td>
+							<td>10</td>
+							<td>50</td>
+							<td>100</td>
+							<td>5</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>tiered-ImageNet</td>
+							<td>10</td>
+							<td>100</td>
+							<td>200</td>
+							<td>10</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>CUB-200</td>
+							<td>10</td>
+							<td>100</td>
+							<td>200</td>
+							<td>10</td>
+							<td>5</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="centred_table_title"><b>Table</b>: FSCIL setting values for each dataset</div>
+				
+				<table class="centred_table" style="margin-top: 7%;">
+					<thead>
+						<tr>
+							<td><b>Session</b></td>
+							<td><b>Training classes</b></td>
+							<td><b>Test classes</b></td>
+						</tr>
+					</thead>
+					<tbody>
+				
+						<tr>
+							<td>0</td>
+							<td>{0, … , 59}</td>
+							<td>{0, … , 59}</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>{60, … , 64}</td>
+							<td>{0, … , 64}</td>
+						</tr>
+						<tr>
+							<td>$\vdots$</td>
+							<td>$\vdots$</td>
+							<td>$\vdots$</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>{95, … , 99}</td>
+							<td>{0, … , 99}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="centred_table_title"><b>Table</b>: Example of a setting configuration (mini-ImageNet)</div>
+
+				<div style="margin-top: 7%;"><b>Goal 🎯</b>: learn new classes, using only a few training samples and without forgetting previous classes.</div>
+
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
+			</section>
+
+			<section class="section_slide" >
+				<h1>FSCIL: proposed approach - pipeline</h1><hr />
+				<div class="centred_img"> 
+					<img src="res/fscil_afa_pipeline.png" style="width: 45%"/>
+					<div style="width: 70%;"><b>Figure</b>: scheme of our proposed approach. Each session is considered as a few-shot task in order to build a set of models that are then ensembled using our AFA method.</div>
+				</div>
+				<div class="footer">
+					<hr />
+					<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+				</div>
+			</section>
+
+			<section class="section_slide" >
+				<h1>FSCIL: proposed approach - weak learners training</h1><hr />
+				<h2>SimpleShot [3]: nearest-neighbor classifier </h2>
+				<div class="theorem">
+					<div class="theorem_title">Mean centroid of each training class</div>
+					$(\forall k \in \{1, \dots, K\}) (\forall c \in C_k^\text{train}) \quad \bar{z_c} = \frac{1}{n_{\text{shots}}}\sum_{n = 1}^{n_{\text{shots}}} z_{n,c}$
+				</div>
+
+				where $z$ is the $\ell_2$-normalised feature vector of a sample image $i$
+				\[
+				z = \frac{f_\theta(i)}{\|f_\theta(i)\|_2}
+				\]
+
+				<div class="theorem" style="margin-top: 5%; padding-bottom: 0.1em">
+					<div class="theorem_title">Estimated class $\widehat{c}(i)$ of a test image $i$</div>
+					\[
+						\widehat{c}(i) = \argmin_{c \in C_k^\text{test}} \|z - \bar{z_c}\|^2
+					\]
+				</div>
+			</section>
+				
+			<section class="section_slide">
+				<h1>FSCIL: proposed approach - padding</h1><hr />
+				<div style="width: 100%; margin-top: 3%;">
+					<div style="float:left; width: 60%; border-right: 1px solid black;">
+						<div class="centred_img">
+							<img src="res/fscil_afa_pipeline.png" style="width: 85%" />
+						</div>
+					</div>
+					<div style="float:right; width: 39%; margin-top: 13%; text-align: left;">
+						\[\begin{align*}
+							x'_i & = \begin{cases}
+								\frac{1}{2} (\frac{N_k}{N_K} + 1) x_i, & \qquad \; \text{if} \max\limits_{1 \le i \le N_k}x_i \geq t\\
+								\frac{1}{2} (\frac{N_k}{N_K}) x_i, &  \qquad \; \text{otherwise}
+							\end{cases} \\ ~ \\
+							p'_i & = \begin{cases}
+								(1 - \frac{1}{2} (\frac{N_k}{N_K} + 1)) p_i, & \text{if} \max\limits_{1 \le i \le N_k} x_i \ge t\\
+								(1 - \frac{1}{2} (\frac{N_k}{N_K})) p_i, & \text{otherwise}
+							\end{cases}
+					 	\end{align*}\]
+					</div>
+				</div>
+			</section>
+
+
 			</div>
 		</div>
 		<script src="dist/reveal.js"></script>
