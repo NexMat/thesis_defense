@@ -411,6 +411,10 @@ div.header_hr {
   width: 100%;
 }
 
+ol {
+  list-style-type: upper-alpha;
+}
+
 span.semi-fade {
   opacity: 50%;
 }
