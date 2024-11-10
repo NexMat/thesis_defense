@@ -118,7 +118,6 @@
 										<li>Essilor capture device</li>
 										<li>Objectives</li>
 										<li>Datasets, CNN architecture & training</li>
-										<li>End-to-end pipeline</li>
 									</ol>
 								</li>
 								<li class="fragment fade-down" data-fragment-index="8">
@@ -129,6 +128,14 @@
 										<li>Performance comparison with other device</li>
 										<li>Implementation performance</li>
 										<li>Ensembling regression models</li>
+									</ol>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="9">
+									Robustness analysis
+									<ol>
+										<li>Introduction on Lipschitz constant</li>
+										<li>Improve robustness with a denoiser</li>
+										<li>Controlled Lipschitz constant training</li>
 									</ol>
 								</li>
 							</ol>
@@ -405,22 +412,20 @@
 							<td>$\boldsymbol{x_j}$:</td>
 							<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 						</tr>
-						<td></td>
-						<td>$\boldsymbol{f_j}$:</td>
-						<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
+						<tr>
+							<td></td>
+							<td>$\boldsymbol{f_j}$:</td>
+							<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
+						</tr>
 						<tr>
 							<td></td>
 							<td>$W_j$:</td>
-							<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} =
-								1\kern-0.25em\text{l}_{N}$
-							</td>
+							<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>$f^{-1}_j$:</td>
-							<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0,
-								+\infty[^{N}$
-							</td>
+							<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0, +\infty[^{N}$</td>
 						</tr>
 						<tr>
 							<td></td>
@@ -452,9 +457,11 @@
 							<td>$\boldsymbol{x_{m,j}}$:</td>
 							<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 						</tr>
-						<td>$\forall m \in \{1,\cdots,M\}$,</td>
-						<td>$\boldsymbol{f_{m,j}}$:</td>
-						<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
+						<tr>
+							<td>$\forall m \in \{1,\cdots,M\}$,</td>
+							<td>$\boldsymbol{f_{m,j}}$:</td>
+							<td>activation function operating componentwise from $[0, +\infty[^{KN}$ to $\mathbb{R}^{KN}$</td>
+						</tr>
 						<tr>
 							<td></td>
 							<td>$W_{m,j}$:</td>
@@ -747,7 +754,7 @@
 					</div>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
-					<h1>Part I: Ensemble learning - conclusion</h1>
+					<h1>Part I: Conclusion</h1>
 					<hr />
 					<ul>
 						<li style="margin-top: 13%;">General framework for describing averaging rules in ensemble learning</li>
@@ -779,7 +786,6 @@
 					<hr />
 					<div style="width: 100%;">
 						<div style="float:left; width: 50%;">
-							<h2 style="opacity: 0;">-</h2>
 							<ol>
 								<li>
 									Introduction
@@ -808,6 +814,14 @@
 											<li>Performance comparison with other device</li>
 											<li>Implementation performance</li>
 											<li>Ensembling regression models</li>
+										</ol>
+									</li>
+									<li>
+										Robustness analysis
+										<ol>
+											<li>Introduction on Lipschitz constant</li>
+											<li>Improve robustness with a denoiser</li>
+											<li>Controlled Lipschitz constant training</li>
 										</ol>
 									</li>
 								</span>
@@ -882,14 +896,24 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 				</section>
-				<section class="section_slide">
+				<section data-transition="slide-in fade-out" class="section_slide">
 					<h1>Introduction: eye refractive error</h1>
 					<hr />
 					<div class="centred_img">
 						<img src="res/zb/eye_anatomy.png" style="width: 40%" />
 					</div>
-					<div style="margin-top: 4%;">
-					</div>
+					<table style="margin-top: 2%;">
+						<tr>
+							<td style="text-align: center;">Sphere</td>
+							<td style="text-align: center;">Cylinder</td>
+							<td style="text-align: center;">Axis</td>
+						</tr>
+						<tr>
+							<td style="text-align: center;">$[-13, 10]$ (dioptre)</td>
+							<td style="text-align: center;">$[-6, 0]$ (dioptre)</td>
+							<td style="text-align: center;">$[0, 180]$ (degree)</td>
+						</tr>
+					</table>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -900,7 +924,6 @@
 					<hr />
 					<div style="width: 100%;">
 						<div style="float:left; width: 50%;">
-							<h2 style="opacity: 0;">-</h2>
 							<ol>
 								<span class="semi-fade">
 									<li>
@@ -933,11 +956,1108 @@
 											<li>Ensembling regression models</li>
 										</ol>
 									</li>
+									<li>
+										Robustness analysis
+										<ol>
+											<li>Introduction on Lipschitz constant</li>
+											<li>Improve robustness with a denoiser</li>
+											<li>Controlled Lipschitz constant training</li>
+										</ol>
+									</li>
 								</span>
 							</ol>
 						</div>
 					</div>
 					<div class=" footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Proposed pipeline: photorefraction principle</h1>
+					<hr />
+					<div class="centred_img">
+						<img src="res/zb/photorefraction_scheme.png" style="width: 50%" />
+					</div>
+					<table class="notations_table" style="margin: 4% auto;">
+						<tr>
+							<td></td>
+							<td>$O$:</td>
+							<td>center of the camera aperture</td>
+							<td style="padding-left: 7em;">$e$:</td>
+							<td>eccentricity</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>$r_c$:</td>
+							<td>radius of the camera aperture</td>
+							<td>$AB$:</td>
+							<td>spot on the retina</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>$C$:</td>
+							<td>camera aperture extremity</td>
+							<td>$r$:</td>
+							<td>pupil radius</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>$L$:</td>
+							<td>light point source</td>
+							<td>$d$:</td>
+							<td>camera to eye distance</td>
+						</tr>
+					</table>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Proposed pipeline: photorefraction principle</h1>
+					<hr />
+					<div style="width: 100%; margin-top: 3%;">
+						<div style="float:left; width: 35%;">
+							<div class="centred_img">
+								<img src="res/res_deep_photorefraction/eye_scheme.png" style="width: 85%; margin: 25% auto;"/>
+							</div>
+						</div>
+						<div style="float:right; width: 64%; margin-top: 13%; text-align: left;">
+							The light pattern whose size $s$, shape and orientation depend on:
+							<ul>
+								<li style="padding-top: 1em;">the subject's ametropia (eg.myopia),</li>
+								<li style="padding-top: 1em;">the light source position wrt. the camera aperture,</li>
+								<li style="padding-top: 1em;">the measurement distance $d$.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024
+						</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Proposed pipeline: Essilor photorefraction device</h1>
+					<hr />
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/pipeline_archi_1.png" style="width: 35%;"/>
+					</div>
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/captured_eye.png" style="width: 90%; margin-top: 3%;"/>
+					</div>
+					<div style="width: fit-content; margin: 3% auto;">Capture process < 400 ms</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Proposed pipeline: datasets</h1>
+					<hr />
+					<table id="table_datasets">
+						<tr>
+							<td><h3>Datasets</h3></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><h4>Synthetic:</h4></td>
+							<td><h4>Real:</h4></td>
+						</tr>
+						<tr>
+							<td>+ Free / unlimited</td>
+							<td>− Expensive / limited</td>
+						</tr>
+						<tr>
+							<td>+ 1M samples</td>
+							<td>− 3000 samples</td>
+						</tr>
+						<tr>
+							<td>− Artificial</td>
+							<td>+ Genuine</td>
+						</tr>
+						<tr>
+							<td>+ Selected distribution</td>
+							<td>− Uncontrolled distribution</td>
+						</tr>
+					</table>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-auto-animate class="section_slide">
+					<h1>Proposed pipeline: neural network architecture</h1>
+					<hr data-id="hr_header"/>
+					<table id="target_table" style="margin-top: 2%;">
+						<tr>
+							<td>Sphere</td>
+							<td>Cylinder</td>
+							<td>Axis</td>
+							<td>➡️</td>
+							<td>$M$</td>
+							<td>$J_0$</td>
+							<td>$J_{45}$</td>
+						</tr>
+						<tr>
+							<td>$[-13, 10]$ (dioptre)</td>
+							<td>$[-6, 0]$ (dioptre)</td>
+							<td>$[0, 180]$ (degree)</td>
+							<td></td>
+							<td>$[-14, 10]$ (dioptre)</td>
+							<td>$[-3, 3]$ (dioptre)</td>
+							<td style="text-align: center;">$[-2, 3]$ (dioptre)</td>
+						</tr>
+					</table>
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/pipeline_archi_2.png" style="width: 75%; margin-top: 5%;"/>
+					</div>
+					<div class="footer" data-id="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-auto-animate class="section_slide">
+					<h1>Proposed pipeline: neural network architecture</h1>
+					<hr data-id="hr_header"/>
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/pipeline_archi_2.png" style="width: 65%; margin-top: 2%;"/>
+					</div>
+					<ul class="fragment fade-down" id="cnn_models_list" style="margin-top: 2%;">
+						<li>regression: from images to a parameter value</li>
+						<li>a different set of weights for each target parameter</li>
+						<li>lightweight: running on a embedded software</li>
+						<li>fast inference for user experience</li>
+						<li>without compromising performance</li>
+					</ul>
+					<div class="footer" data-id="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="slide-in fade-out" class="section_slide">
+					<h1>Proposed pipeline: complete pipeline</h1>
+					<hr />
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/pipeline_archi.png" style="width: 80%; margin-top: 2%;"/>
+					</div>
+					<div style="width: 100%; margin-top: 3%;">
+						<div style="float:left; width: 50%;">
+							A smartphone coordinates the pipeline <br />
+							<ul id="cnn_models_list">
+								<li>is the user interface through an app</li>
+								<li>triggers and operates the capture device</li>
+								<li>runs the image processing algorithm</li>
+								<li>runs the neural network inference</li>
+								<li>determines and displays Sphere, Cylinder and Axis</li>
+							</ul>
+						</div>
+						<div style="float:right; width: 50%;">
+							<!-- <div class="centred_img">
+								<img src="res/res_deep_photorefraction/device.png" style="width: 50%;"/>
+							</div> -->
+						</div>
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="fade-in slide-out" class="section_slide">
+					<h1>Part II - Deep learning for photorefraction</h1>
+					<hr />
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;">
+							<ol>
+								<span class="semi-fade">
+									<li>
+										Introduction
+										<ol>
+											<li>Context</li>
+											<li>Objectives</li>
+											<li>Eye refractive error</li>
+										</ol>
+									</li>
+									<li>
+										Proposed pipeline
+										<ol>
+											<li>Photorefraction principle</li>
+											<li>Essilor capture device</li>
+											<li>Objectives</li>
+											<li>Datasets, CNN architecture & training</li>
+											<li>End-to-end pipeline</li>
+										</ol>
+									</li>
+								</span>
+								<li>
+									Implementation & performance
+									<ol>
+										<li>Regression models benchmark</li>
+										<li>Real versus synthetic data</li>
+										<li>Performance comparison with other device</li>
+										<li>Implementation performance</li>
+										<li>Ensembling regression models</li>
+									</ol>
+								</li>
+								<span class="semi-fade">
+									<li>
+										Robustness analysis
+										<ol>
+											<li>Introduction on Lipschitz constant</li>
+											<li>Improve robustness with a denoiser</li>
+											<li>Controlled Lipschitz constant training</li>
+										</ol>
+									</li>
+								</span>
+							</ol>
+						</div>
+					</div>
+					<div class=" footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Performance: regression models benchmark</h1>
+					<hr />
+					<table class="centred_table" id="regression_table" style="margin-top: 10%;">
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+								<th>$M$</th>
+								<th></th>
+								<th></th>
+								<th>$J_0$</th>
+								<th></th>
+								<th></th>
+								<th>$J_{45}$</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Error</td>
+								<td>BSM</td>
+								<td>FC</td>
+								<td>CNN</td>
+								<td>BSM</td>
+								<td>FC</td>
+								<td>CNN</td>
+								<td>BSM</td>
+								<td>FC</td>
+								<td>CNN</td>
+							</tr>
+							<tr>
+								<td>min</td>
+								<td>-4.66</td>
+								<td>-2.31</td>
+								<td><b>-2.16</b></td>
+								<td>-2.82</td>
+								<td>-1.22</td>
+								<td><b>-0.97</b></td>
+								<td>-2.56</td>
+								<td><b>-0.83</b></td>
+								<td>-1.17</td>
+							</tr>
+							<tr>
+								<td>mean</td>
+								<td>0.05</td>
+								<td><b>0.02</b></td>
+								<td>-0.03</td>
+								<td>-0.04</td>
+								<td><b>0.01</b></td>
+								<td>0.02</td>
+								<td>0.01</td>
+								<td>0.01</td>
+								<td>-0.01</td>
+							</tr>
+							<tr>
+								<td>std</td>
+								<td>0.75</td>
+								<td>0.60</td>
+								<td><b>0.56</b></td>
+								<td>0.43</td>
+								<td>0.28</td>
+								<td><b>0.26</b></td>
+								<td>0.32</td>
+								<td>0.23</td>
+								<td><b>0.22</b></td>
+							</tr>
+							<tr>
+								<td>max</td>
+								<td>5.73</td>
+								<td>2.86</td>
+								<td><b>2.50</b></td>
+								<td>2.62</td>
+								<td>1.01</td>
+								<td><b>0.88</b></td>
+								<td>2.36</td>
+								<td>1.13</td>
+								<td><b>0.80</b></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title">
+						<b>Table</b>: Regression models comparison on the dataset of real images
+					</div>
+					<ul id="cnn_models_list" style="margin-top: 5%;">
+						<li>Since a biased model can easily be corrected by offsetting predictions, our main evaluation criterion is the error <b>standard deviation</b>.</li>
+						<li>To better assess these results, recall that glasses are prescribed with a precision of 0.25 D.</li>
+					</ul>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Performance: synthetic vs. real data</h1>
+					<hr />
+					<table id="synth_real_data_table" style="margin-top: 10%;">
+						<thead>
+							<tr>
+								<th>Train</th>
+								<th>Test</th>
+								<th>$M$</th>
+								<th>$J_0$</th>
+								<th>$J_{45}$</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="2" style="vertical-align : middle;">Synthetic</td>
+								<td>Synthetic</td>
+								<td>0.10</td>
+								<td>0.07</td>
+								<td>0.07</td>
+							</tr>
+							<tr>
+								<td>Real</td>
+								<td>0.70</td>
+								<td>0.33</td>
+								<td>0.32</td>
+							</tr>
+							<tr>
+								<td>Real</td>
+								<td>Real</td>
+								<td><b>0.56</b></td>
+								<td><b>0.26</b></td>
+								<td><b>0.22</b></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title">
+						<b>Table</b>: CNN prediction error standard deviation wrt. ground truth (in D.) on synthetic and real data.
+					</div>
+					<ul id="cnn_models_list" style="margin-top: 5%;">
+						<li>Synthetic images are not sufficient by themselves</li>
+						<li>Training on real images yields best results</li>
+						<li>Synthetic images are still useful to test on a wider range of parameters</li>
+						<li>Mixed data training yields even better results</li>
+					</ul>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Performance: comparison with competing device</h1>
+					<hr />
+					<table id="device_comp_table" style="margin-top: 10%;">
+						<thead>
+							<tr>
+								<th></th>
+								<th colspan="2">2WIN [1]</th>
+								<th colspan="2">2WIN [2]</th>
+								<th colspan="2">Ours</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td>mean</td>
+								<td>std</td>
+								<td>mean</td>
+								<td>std</td>
+								<td>mean</td>
+								<td>std</td>
+							</tr>
+							<tr>
+								<td>$M$</td>
+								<td>0.41</td>
+								<td>1.37</td>
+								<td>1.25</td>
+								<td>1.15</td>
+								<td><b>-0.03</b></td>
+								<td><b>0.56</b></td>
+							</tr>
+							<tr>
+								<td>$J_0$</td>
+								<td>-0.08</td>
+								<td>0.35</td>
+								<td>0.19</td>
+								<td>0.45</td>
+								<td><b>0.02</b></td>
+								<td><b>0.26</b></td>
+							</tr>
+							<tr>
+								<td>$J_{45}$</td>
+								<td><b>0.00</b></td>
+								<td>0.25</td>
+								<td>-0.05</td>
+								<td><b>0.15</b></td>
+								<td>-0.01</td>
+								<td>0.22</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title">
+						<b>Table</b>: CNN prediction error standard deviation wrt. ground truth (in D.) on synthetic and real data.
+					</div>
+					<ul id="cnn_models_list" style="margin-top: 5%;">
+						<li>Best results on $M$ and $J_0$</li>
+						<li>Competitive on $J_{45}$</li>
+					</ul>
+					<div style="margin-top: 4%;">
+						$[1]$ \cite{martin2020performance} <br />
+						$[2]$ \cite{kurent2022comparison}
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="slide-in fade-out" class="section_slide">
+					<h1>Performance: implementation performance</h1>
+					<hr />
+					<ul id="cnn_models_list" style="margin-top: 10%;">
+						<li>offline training
+							<ul>
+								<li>Python Tensorflow</li>
+								<li>Nvidia RTX A6000 GPU</li>
+								<li>~50 hours per model</li>
+							</ul>
+						</li>
+						<li>smartphone embedded software: ONNX model (ran in C++)</li>
+						<li>inference: 33 ms per eye per target (200 ms in total)</li>
+						<li>130 MB of storage</li>
+					</ul>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="fade-in slide-out" class="section_slide">
+					<h1>Part II - Deep learning for photorefraction</h1>
+					<hr />
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;">
+							<ol>
+								<span class="semi-fade">
+									<li>
+										Introduction
+										<ol>
+											<li>Context</li>
+											<li>Objectives</li>
+											<li>Eye refractive error</li>
+										</ol>
+									</li>
+									<li>
+										Proposed pipeline
+										<ol>
+											<li>Photorefraction principle</li>
+											<li>Essilor capture device</li>
+											<li>Objectives</li>
+											<li>Datasets, CNN architecture & training</li>
+											<li>End-to-end pipeline</li>
+										</ol>
+									</li>
+									<li>
+										Implementation & performance
+										<ol>
+											<li>Regression models benchmark</li>
+											<li>Real versus synthetic data</li>
+											<li>Performance comparison with other device</li>
+											<li>Implementation performance</li>
+											<li>Ensembling regression models</li>
+										</ol>
+									</li>
+								</span>
+								<li>
+									Robustness analysis
+									<ol>
+										<li>Introduction on Lipschitz constant</li>
+										<li>Improving robustness with a denoiser</li>
+										<li>Controlled Lipschitz constant training</li>
+									</ol>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<div class=" footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: introduction</h1>
+					<hr />
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/pipeline_archi_2.png" style="width: 80%;"/>
+					</div>
+					<table class="notations_table">
+						<tr>
+							<td></td>
+							<td>$f_{\theta_j}$:</td>
+							<td>trained neural network model</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>$x$:</td>
+							<td>input tensor of 12 images</td>
+						</tr>
+					</table>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: introduction</h1>
+					<hr />
+					<div>
+						Assuming a small enough input error, and differentiable $f_{\theta_j}$ at $x$,<br />
+						<div class="theorem">
+							<div class="theorem_title">First-order approximation</div>
+							\[
+								f_{\theta_j}(x+b) \simeq f_{\theta_j}(x) + \big({\color{teal}\nabla  f_{\theta_j}(x)}\big)^\top b
+							\]
+						</div>
+						Assuming zero-mean Gaussian noise $b$ with covariance matrix $\Lambda_b$, <b>approximation of the output error</b> $e= f_{\theta_j}(x+b)-f_{\theta_j}(x)$, by a zero-mean Gaussian with variance:
+						<div class="theorem">
+							<div class="theorem_title">Variance of the output error approximation</div>
+							\[
+							\sigma_e^2(x) = \big({\color{teal}\nabla f_{\theta_j}(x)}\big)^\top \Lambda_b {\color{teal}\nabla f_{\theta_j}(x)}
+							\]
+						</div>
+						<table class="notations_table" style="margin-top: 4%;">
+							<tr>
+								<td>where</td>
+								<td>${\color{teal}\nabla f_{\theta_j}(x)}$:</td>
+								<td>network gradient at $x$, easily computed by backpropagation</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>$\Lambda_b$:</td>
+								<td>noise covariance, e.g. diagonal matrix with entries $\sigma_b^2$ in the pupil area, and zero elsewhere</td>
+							</tr>
+						</table>
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: local Lipschitz constant</h1>
+					<hr />
+					<div class="theorem">
+						<div class="theorem_title">Weighted local Lispchitz constant at point $x$ \cite{combettes2019lipschitz}</div>
+						\[
+							\sigma_e(x)/\sigma_b
+						\]
+					</div>
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width: 80%;"/>
+						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the CNN</div>
+					</div>
+					<div style="margin-top: 3%;">Reasonably low values of the local weighted Lipschitz constant are a strong indicator of the <b>robustness of the network</b> gupta2022multi.</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: improving robustness with a denoiser</h1>
+					<hr />
+					The application of a denoiser (pretrained DRUnet \cite{drunet}) at test time could help with the robustness \cite{visapp17}.
+					<div class="centred_img" style="margin-top: 2%;">
+						<img src="res/res_deep_photorefraction/lipschitz/denoised.png" style="width: 80%;"/>
+						<div><b>Figure</b>: Example of a denoised pupil image</div>
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: improving robustness with a denoiser</h1>
+					<hr />
+					<table class="centred_table">
+						<tr>
+							<td></td>
+							<td colspan="2">$M$</td>
+							<td colspan="2">$J_0$</td>
+							<td colspan="2">$J_{45}$</td>
+						</tr>
+						<tbody>
+							<tr style="border-bottom: 1px solid #254456;">
+								<td></td>
+								<td>Raw</td>
+								<td>Denoised</td>
+								<td>Raw</td>
+								<td>Denoised</td>
+								<td>Raw</td>
+								<td>Denoised</td>
+							</tr>
+							<tr>
+								<td>mean</td>
+								<td><b>-0.04</b></td>
+								<td>0.29</td>
+								<td><b>-0.02</b></td>
+								<td>0.03</td>
+								<td><b>0.01</b></td>
+								<td>0.05</td>
+							</tr>
+							<tr>
+								<td>std</td>
+								<td><b>0.56</b></td>
+								<td>0.75</td>
+								<td><b>0.27</b></td>
+								<td>0.33</td>
+								<td><b>0.22</b></td>
+								<td>0.29</td>
+							</tr>
+							<tr>
+								<td>min</td>
+								<td>-2.17</td>
+								<td><b>-1.91</b></td>
+								<td><b>-0.89</b></td>
+								<td>-1.31</td>
+								<td><b>-0.81</b></td>
+								<td>-0.94</td>
+							</tr>
+							<tr>
+								<td>max</td>
+								<td><b>2.50</b></td>
+								<td>2.92</td>
+								<td><b>0.98</b></td>
+								<td>1.34</td>
+								<td><b>1.18</b></td>
+								<td>1.69</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title"><b>Table</b>: Performance comparison between original and denoised images</div>
+					<table class="centred_table fragment fade-up" style="margin-top: 5%;">
+						<tr>
+							<td></td>
+							<td colspan="2">$M$</td>
+							<td colspan="2">$J_0$</td>
+							<td colspan="2">$J_{45}$</td>
+						</tr>
+						<tbody>
+							<tr style="border-bottom: 1px solid #254456;">
+								<td></td>
+								<td>Original</td>
+								<td>Denoised</td>
+								<td>Original</td>
+								<td>Denoised</td>
+								<td>Original</td>
+								<td>Denoised</td>
+							</tr>
+							<tr>
+								<td>count</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+							</tr>
+							<tr>
+								<td>mean</td>
+								<td>0.61</td>
+								<td><b>0.54</b></td>
+								<td>1.47</td>
+								<td><b>1.28</b></td>
+								<td>2.04</td>
+								<td><b>1.46</b></td>
+							</tr>
+							<tr>
+								<td>std</td>
+								<td><b>0.36</b></td>
+								<td>0.41</td>
+								<td><b>1.07</b></td>
+								<td>1.13</td>
+								<td>1.66</td>
+								<td><b>1.10</b></td>
+							</tr>
+							<tr>
+								<td>min</td>
+								<td>0.05</td>
+								<td><b>0.03</b></td>
+								<td>0.08</td>
+								<td>0.08</td>
+								<td>0.05</td>
+								<td><b>0.04</b></td>
+							</tr>
+							<tr>
+								<td>25%</td>
+								<td>0.34</td>
+								<td><b>0.26</b></td>
+								<td>0.70</td>
+								<td><b>0.57</b></td>
+								<td>0.89</td>
+								<td><b>0.72</b></td>
+							</tr>
+							<tr>
+								<td>median</td>
+								<td>0.53</td>
+								<td><b>0.42</b></td>
+								<td>1.21</td>
+								<td><b>0.97</b></td>
+								<td>1.56</td>
+								<td><b>1.12</b></td>
+							</tr>
+							<tr>
+								<td>75%</td>
+								<td>0.79</td>
+								<td><b>0.69</b></td>
+								<td>1.95</td>
+								<td><b>1.61</b></td>
+								<td>2.63</td>
+								<td><b>1.87</b></td>
+							</tr>
+							<tr>
+								<td>max</td>
+								<td><b>2.45</b></td>
+								<td>3.22</td>
+								<td><b>7.98</b></td>
+								<td>9.11</td>
+								<td>11.34</td>
+								<td><b>6.81</b></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title fragment fade-up"><b>Table</b>: Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: controlled Lipschitz constant training</h1>
+					<hr />
+					Using the deel-lip library \cite{deel_lip},
+					<div class="centred_img" style="margin-top: 2%;">
+						<img src="res/res_deep_photorefraction/lipschitz/perf.png" style="width:95%" />
+						<div>Error standard deviation of a model trained with deel-lip in function of $K$</div>
+					</div>
+					<div style="margin-top: 5%;">
+						The lower the Lipschitz constant, the greater the constraints. <br />
+						➡️ balance robustness and performance
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section class="section_slide">
+					<h1>Robustness: controlled Lipschitz constant training</h1>
+					<hr />
+					<div style="margin-top: 2%;">Using a CNN trained with a Lipschitz constant below 4 (4-LCNN),</div>
+					<table class="centred_table" style="margin-top: 10%;">
+						<tr>
+							<th></th>
+							<th colspan="2">$M$</th>
+							<th colspan="2">$J_0$</th>
+							<th colspan="2">$J_{45}$</th>
+						</tr>
+						<tbody>
+							<tr style="border-bottom: 1px solid #254456;">
+								<td></td>
+								<td>CNN</td>
+								<td>4-LCNN</td>
+								<td>CNN</td>
+								<td>4-LCNN</td>
+								<td>CNN</td>
+								<td>4-LCNN</td>
+							</tr>
+							<tr>
+								<td>mean</td>
+								<td>-0.04</td>
+								<td>0.06</td>
+								<td>-0.02</td>
+								<td>0.05</td>
+								<td>0.01</td>
+								<td>0.01</td>
+							</tr>
+							<tr>
+								<td>std</td>
+								<td>0.56</td>
+								<td>0.70</td>
+								<td>0.27</td>
+								<td>0.37</td>
+								<td>0.22</td>
+								<td>0.24</td>
+							</tr>
+							<tr>
+								<td>min</td>
+								<td>-2.17</td>
+								<td>-2.63</td>
+								<td>-0.89</td>
+								<td>-1.13</td>
+								<td>-0.81</td>
+								<td>-0.83</td>
+							</tr>
+							<tr>
+								<td>max</td>
+								<td>2.50</td>
+								<td>4.23</td>
+								<td>0.98</td>
+								<td>1.36</td>
+								<td>1.18</td>
+								<td>0.97</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title"><b>Table</b>: Performance comparison between the 4-LCNN and the standard CNN, on the dataset of real images</div>		
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="slide-in fade-out" class="section_slide">
+					<h1>Robustness: controlled Lipschitz constant training</h1>
+					<hr />
+					<div class="centred_img" style="margin-top: 1%;">
+						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width:70%" />
+						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the standard CNN</div>
+					</div>
+					<div class="centred_img" style="margin-top: 1%;">
+						<img src="res/res_deep_photorefraction/lipschitz/deelcnn_norm1_mask.png" style="width:70%" />
+						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the 4-LCNN</div>
+					</div>	
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="fade" class="section_slide">
+					<h1>Part II - Conclusion</h1>
+					<hr />
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/pipeline_archi.png" style="width: 80%; margin-top: 2%;"/>
+					</div>
+					<table class="fragment fade-in" data-fragment-index="0" style="margin-top: 3%;">
+						<tr>
+							<td>Design a screening tool</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><li>accessible</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">smartphone application</td>
+						</tr>
+						<tr>
+							<td><li>affordable</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">low-priced device</td>
+						</tr>
+						<tr>
+							<td><li>with competitive performance</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">outperforms competition</td>
+						</tr>
+						<tr>
+							<td><li>reliable</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">controllable Lipschitz values</td>
+						</tr>
+					</table>
+					<div class=" footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="fade" class="section_slide">
+					<h1>Conclusion</h1>
+					<hr />
+
+					<ul>
+						<li style="margin-top: 13%;">General framework for describing averaging rules in ensemble learning</li>
+							<ul>
+								<li>Focus on output fusion</li>
+							</ul>
+						<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
+							<ul>
+								<li>$f$-average: neural network modelling an average</li>
+								<li>Aggregating multiple $f$-averages</li>
+								<li>Stacking multiple aggregated $f$-averages</li>
+							</ul>
+						</li>
+						<li style="padding-top: 2em;">Application to few-shot class incremental learning
+							<ul>
+								<li>Best performance among ensemble learning methods</li>
+								<li>Comparable performance with specialised state-of-the-art methods</li>
+							</ul>
+						</li>
+					</ul>
+					<table class="fragment fade-in" data-fragment-index="0" style="margin-top: 3%;">
+						<tr>
+							<td>Design a screening tool</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><li>accessible</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">smartphone application</td>
+						</tr>
+						<tr>
+							<td><li>affordable</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">low-priced device</td>
+						</tr>
+						<tr>
+							<td><li>with competitive performance</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">outperforms competition</td>
+						</tr>
+						<tr>
+							<td><li>reliable</li></td>
+							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
+							<td class="fragment fade-right" data-fragment-index="1">controllable Lipschitz values</td>
+						</tr>
+					</table>
+					<div class=" footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
+					<h1>Conclusion</h1>
+					<div class="header_hr" data-id="header_hr">
+						<hr />
+					</div>
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;" data-id="left_col">
+							<h1 class="fragment fade-down" data-fragment-index="1" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
+							<ul>
+								<li>General framework for describing averaging rules in ensemble learning
+									<ul>
+										<li>Focus on output fusion</li>
+									</ul>
+								</li>
+								<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
+									<ul>
+										<li>$f$-average: neural network modelling an average</li>
+										<li>Aggregating multiple $f$-averages</li>
+										<li>Stacking multiple aggregated $f$-averages</li>
+									</ul>
+								</li>
+								<li style="padding-top: 2em;">Application to few-shot class incremental learning
+									<ul>
+										<li>Best performance among ensemble learning methods</li>
+										<li>Comparable performance with specialised state-of-the-art methods</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div style=" float:right; width: 50%;">
+							<h2 class="fragment fade-down" data-fragment-index="5">Part II - Deep learning for photorefraction</h2>
+							<ul>
+								<li class="fragment fade-down" data-fragment-index="6">
+									A novel pipeline for photorefraction based on deep learning
+									<ul>
+										<li>A capture device</li>
+										<li>Regression through CNN models</li>
+										<li>Smartphone control </li>
+									</ul>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
+									Performance validation
+									<ul>
+										<li>Tested on real and synthetic data</li>
+										<li>Outperforms competing device</li>
+									</ul>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
+									Robustness analysis
+									<ul>
+										<li>Robustness evaluation using Lipschitz constant</li>
+										<li>Methods to control/improve robustness</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
+					<h1>Perspectives</h1>
+					<div class="header_hr" data-id="header_hr">
+						<hr />
+					</div>
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;" data-id="left_col">
+							<h1 class="fragment fade-down" data-fragment-index="1" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
+							<ul>
+								<li>General framework for describing averaging rules in ensemble learning
+									<ul>
+										<li>Focus on output fusion</li>
+									</ul>
+								</li>
+								<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
+									<ul>
+										<li>$f$-average: neural network modelling an average</li>
+										<li>Aggregating multiple $f$-averages</li>
+										<li>Stacking multiple aggregated $f$-averages</li>
+									</ul>
+								</li>
+								<li style="padding-top: 2em;">Application to few-shot class incremental learning
+									<ul>
+										<li>Best performance among ensemble learning methods</li>
+										<li>Comparable performance with specialised state-of-the-art methods</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div style=" float:right; width: 50%;">
+							<h2 class="fragment fade-down" data-fragment-index="5">Part II - Deep learning for photorefraction</h2>
+							<ul>
+								<li class="fragment fade-down" data-fragment-index="6">
+									A novel pipeline for photorefraction based on deep learning
+									<ul>
+										<li>A capture device</li>
+										<li>Regression through CNN models</li>
+										<li>Smartphone control </li>
+									</ul>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
+									Performance validation
+									<ul>
+										<li>Tested on real and synthetic data</li>
+										<li>Outperforms competing device</li>
+									</ul>
+								</li>
+								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
+									Robustness analysis
+									<ul>
+										<li>Robustness evaluation using Lipschitz constant</li>
+										<li>Methods to control/improve robustness</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>

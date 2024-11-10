@@ -411,7 +411,7 @@ div.header_hr {
   width: 100%;
 }
 
-ol {
+ol ol li {
   list-style-type: upper-alpha;
 }
 
@@ -467,6 +467,7 @@ table.centred_table td{
   min-width: 7em;
 }
 
+
 table.centred_table tbody tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
@@ -486,6 +487,97 @@ div.centred_table_title {
 table.notations_table {
   margin: 0 0 0 0;
 }
-table.notations_table td:not(:last-child) {
+
+table.notations_table td:nth-child(even) {
   text-align: right;
+}
+
+#table_datasets td {
+  padding: .5em 3em;
+}
+
+#table_datasets {
+  margin-top: 10%;
+}
+
+#target_table td {
+  text-align: center;
+}
+
+#cnn_models_list li {
+  padding-bottom: .3em;
+}
+
+#regression_table td,
+#regression_table th {
+  min-width: 4.5em;
+}
+
+#regression_table td:nth-child(1){
+  text-align: left;
+}
+
+#regression_table th{
+  border: 0;
+}
+
+#regression_table thead tr {
+  border-bottom: 0;
+}
+
+#regression_table thead th:nth-child(3n+2) {
+  border-left: 1px solid var(--r-main-color);
+}
+
+#regression_table tbody tr:nth-child(1) {
+  border-bottom: 1px solid var(--r-main-color);
+}
+
+table.centred_table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table.centred_table tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+#synth_real_data_table th:nth-last-child(-n + 3),
+#synth_real_data_table td:nth-last-child(-n + 3) {
+  text-align: center;
+}
+
+#synth_real_data_table th,
+#synth_real_data_table td {
+  min-width: 4em;
+}
+
+#synth_real_data_table th {
+  border-bottom: 1px solid var(--r-main-color);
+}
+
+#synth_real_data_table tr:nth-child(2) {
+  border-bottom: 1px solid var(--r-main-color);
+}
+
+#synth_real_data_table th:not(:last-child),
+#synth_real_data_table td:not(:last-child) {
+    border-right: 1px solid var(--r-main-color);
+}
+
+#device_comp_table th,
+#device_comp_table td {
+  text-align: center;
+}
+
+#device_comp_table th:nth-child(1),
+#device_comp_table th:nth-child(2),
+#device_comp_table th:nth-child(3),
+#device_comp_table td:nth-child(1),
+#device_comp_table td:nth-child(3),
+#device_comp_table td:nth-child(5) {
+  border-right: 1px solid var(--r-main-color);
+}
+
+#device_comp_table tbody tr:nth-child(1) {
+  border-bottom: 1px solid var(--r-main-color);
 }
