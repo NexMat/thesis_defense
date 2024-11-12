@@ -63,6 +63,9 @@
 							</table>
 						</div>
 					</div>
+					<aside class="notes">
+						Good morning everyone, I am pleased to welcome you at my Ph.D. defense. I'd like to thank the members of the jury for accepting to review my work as well as to be here. Thanks also to everyone else attending here at CentraleSupélec and to everyone watching us online. So, this thesis titled Novel Deep Learning Approaches for Images Analysis was done in the OPIS Inria team, at the Centre for Visual Computing, here at CentraleSupélec under the supervision of Émilie Chouzenoux. We also collaborated with Essilor Research and Development department, with Philippe Pinault who co-supervised this thesis. Let's start with the summary of this presentation.
+					</aside>
 				</section>
 				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
 					<h1>Summary</h1>
@@ -108,12 +111,12 @@
 										<li>Context</li>
 										<li>Objectives</li>
 										<li>Eye refractive error</li>
+										<li>Photorefraction principle</li>
 									</ol>
 								</li>
 								<li class="fragment fade-down" data-fragment-index="7">
 									Proposed pipeline
 									<ol>
-										<li>Photorefraction principle</li>
 										<li>Essilor capture device</li>
 										<li>Objectives</li>
 										<li>Datasets, CNN architecture & training</li>
@@ -144,6 +147,11 @@
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
+					<aside class="notes">
+						We will divide the content of this presentation into two main parts, the first being about ensemble learning where we will first have an introduction where I will present the basic principles of ensemble learning as well as some elementary concepts. Building on those concepts, we will introduce in the second section our first contribution which is the proposition of a neural network model that accomplishes the output fusion step of ensemble learning. Finally, we will end this first part with a section illustrating the application of the proposed model on a popular machine learning problem called few-shot class incremental learning.
+
+						In the second part, we will present our work regarding a deep learning based photorefraction system. Similarly as the previous part, we will begin with an introduction presenting some context as well as some preliminary concepts about eye refractive errors and the functioning of photorefraction which is the concept at the core of our proposed pipeline. This pipeline as well as the data will be presented in detail in a second part before moving onto its performance. Finally, given that this is a medical device, we will end this part with an analysis of the robustness of our deep learning model.
+					</aside>
 				</section>
 				<section data-auto-animate data-transition="none-in slide-out" data-auto-animate-unmatched="false" class="section_slide">
 					<h1>Part I - Ensemble learning</h1>
@@ -187,6 +195,9 @@
 						<hr class="footer_hr" data-id="footer_hr" />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
+					<aside class="notes">
+						Let's start with the first section of our first part: we will introduce the basic principles of ensemble learning as well as what a generalised mean is.
+					</aside>
 				</section>
 				<section class="section_slide">
 					<h1>Introduction: wisdom of the crowd</h1>
@@ -207,6 +218,9 @@
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
+					<aside class="notes">
+						In the beginning of the 20th century, a contest was held in a British market in the coastal town of Plymouth. Participants, which could be anybody, had to guess visually the weight of an ox that was presented before them. Then, they had to write down their guess on a piece of paper as well as their address in the hopes of winning some prize. Francis Galton did a statistical study of the answers and found out that the average guess was less than one percent more than the real weight. This is a classic example of how accurate the wisdom of the crowd, even of non-experts, can be. 
+					</aside>
 				</section>
 				<section class="section_slide">
 					<h1>Introduction: ensemble learning</h1>
@@ -225,6 +239,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 				</section>
+				<aside class="notes">
+					Since then, this principle has been applied in many fields, including in machine learning, under the name of ensemble learning. The goal is to leverage an ensemble of models, called weak learners instead of using a single model. These models predictions are then gathered in a step called output fusion in order to obtain a final unified prediction. It has been shown that such methods could decrease bias as well as increase accuracy and robustness. Some methods such as bagging or boosting focus on training an ensemble of diverse models, which is a key characteristic needed in ensemble learning. In our case, we will focus on the output fusion part. The usual way to perform output fusion is to average weak learners predictions.
+				</aside>
 				<section data-transition="slide-in fade-out" class="section_slide">
 					<h1>Introduction: generalised average</h1>
 					<hr />
@@ -265,6 +282,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024
 						</div>
 					</div>
+					<aside class="notes">
+						Depending on the data, on the task and on the use case, it is possible to choose among different types of averages. All of those averages can be written under this form, called a generalised average. This generalised average will be the concept upon which we will build our proposed model.
+					</aside>
 				</section>
 				<section data-transition="fade-in slide-out" class="section_slide">
 					<h1>Part I - Ensemble learning</h1>
@@ -310,6 +330,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024
 						</div>
 					</div>
+					<aside class="notes">
+						Let's get into it in the second section of this part.
+					</aside>
 				</section>
 				<section class="section_slide">
 					<h1>Proposed model: $f$-average</h1>
@@ -336,6 +359,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024
 						</div>
 					</div>
+					<aside class="notes">
+						So as mentioned previously, going from this generalised average, we propose to generalise it to the case where x is not a vector anymore but rather an ensemble of vector, for example representing all multi-dimensional outputs from an ensemble of models.
+					</aside>
 				</section>
 				<section class="section_slide">
 					<h1>Proposed model: NN modelling of an $f$-average</h1>

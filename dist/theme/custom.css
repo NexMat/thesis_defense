@@ -589,3 +589,7 @@ table.centred_table tbody tr:nth-child(odd) {
 #ref_table td {
   padding-bottom: .3em;
 }
+
+.speaker-controls-notes .value {
+  font-size: var(--r-heading2-size);
+}
