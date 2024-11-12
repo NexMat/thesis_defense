@@ -32,7 +32,7 @@
 								</tr>
 								<tr>
 									<td><b>Philippe Pinault</b></td>
-									<td>Engineer (Essilor R&D, France)</td>
+									<td>R&D Engineer (EssilorLuxottica, France)</td>
 								</tr>
 								<tr>
 									<td style="opacity: 0%;">-</td>
@@ -87,7 +87,6 @@
 										<li>$f$-average</li>
 										<li>Aggregated $f$-averages</li>
 										<li>Stacked aggregated $f$-averages</li>
-										<li>Application: MNIST patches classification</li>
 									</ol>
 								</li>
 								<li class="fragment fade-down" data-fragment-index="4">
@@ -170,7 +169,6 @@
 											<li>$f$-average</li>
 											<li>Aggregated $f$-averages</li>
 											<li>Stacked aggregated $f$-averages</li>
-											<li>Application: MNIST patches classification</li>
 										</ol>
 									</li>
 									<li>
@@ -291,7 +289,7 @@
 										<li>$f$-average</li>
 										<li>Aggregated $f$-averages</li>
 										<li>Stacked aggregated $f$-averages</li>
-										<li>Application: MNIST patches classification</li>
+										
 									</ol>
 								</li>
 								<span class="semi-fade">
@@ -509,7 +507,6 @@
 											<li>$f$-average</li>
 											<li>Aggregated $f$-averages</li>
 											<li>Stacked aggregated $f$-averages</li>
-											<li>Application: MNIST patches classification</li>
 										</ol>
 									</li>
 								</span>
@@ -650,7 +647,7 @@
 				<section class="section_slide">
 					<h1>FSCIL: proposed approach - weak learners training</h1>
 					<hr />
-					<h2>SimpleShot [3]: nearest-neighbor classifier </h2>
+					<h2>$H_{W_k}$: nearest-neighbor classifier [3]</h2>
 					<div class="theorem">
 						<div class="theorem_title">Mean centroid of each training class</div>
 						\[
@@ -661,7 +658,7 @@
 					\[
 						z = \frac{f_\theta(i)}{\|f_\theta(i)\|_2}
 					\]
-					<div class="theorem" style="margin-top: 3%; padding-bottom: 0.1em">
+					<div class="theorem" style="margin-top: 2%; padding-bottom: 0.1em">
 						<div class="theorem_title">Estimated class $\widehat{c}(i)$ of a test image $i$</div>
 						\[
 							\widehat{c}(i) = \argmin_{c \in C_k^\text{test}} \|z - \bar{z_c}\|^2
@@ -743,7 +740,7 @@
 					<h1>FSCIL: Comparatives results - state of the art</h1>
 					<hr data-id="header_hr"/>
 					<div class="centred_img">
-						<img data-id="perf_graph" src="res/fscil_ensemble_perf2.png" style="width: 47%" />
+						<img data-id="perf_graph" src="res/fscil_ensemble_perf_sota.png" style="width: 50%" />
 						<div style="width: 70%;"><b></b>
 						</div>
 					</div>
@@ -852,8 +849,8 @@
 					</div>
 					<div style="margin-top: 5%;">
 						<ul>
-							<li class="fragment fade-down">1 billion people with vision impairment unadressed</li>
-							<li class="fragment fade-down" style="padding-top: 1em;">uncorrected refractive errors: a leading cause of vision impairment</li>
+							<li class="fragment fade-down" style="padding-top: .5em;">1 billion people with vision impairment unadressed</li>
+							<li class="fragment fade-down" style="padding-top: .5em;">uncorrected refractive errors: a leading cause of vision impairment</li>
 						</ul>
 					</div>
 					<div class="footer" data-id="footer">
@@ -866,7 +863,7 @@
 					<hr />
 					<div class="centred_img">
 						<img src="res/res_deep_photorefraction/myopia_projection.png" style="width: 80%" />
-						<div><b>Source</b>: [Holden, 2019]</div>
+						<div><b>Source</b>: Global prevalence of myopia and high myopia and temporal trends from 2000 through 2050 [9]</div>
 					</div>
 					<div style="margin-top: 4%;">
 						<ul>
@@ -1368,8 +1365,8 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th colspan="2">2WIN [1]</th>
-								<th colspan="2">2WIN [2]</th>
+								<th colspan="2">2WIN [11]</th>
+								<th colspan="2">2WIN [12]</th>
 								<th colspan="2">Ours</th>
 							</tr>
 						</thead>
@@ -1419,16 +1416,12 @@
 						<li>Best results on $M$ and $J_0$</li>
 						<li>Competitive on $J_{45}$</li>
 					</ul>
-					<div style="margin-top: 4%;">
-						$[1]$ \cite{martin2020performance} <br />
-						$[2]$ \cite{kurent2022comparison}
-					</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 				</section>
-				<section data-transition="slide-in fade-out" class="section_slide">
+				<section class="section_slide">
 					<h1>Performance: implementation performance</h1>
 					<hr />
 					<ul id="cnn_models_list" style="margin-top: 10%;">
@@ -1443,6 +1436,52 @@
 						<li>inference: 33 ms per eye per target (200 ms in total)</li>
 						<li>130 MB of storage</li>
 					</ul>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="slide-in fade-out" class="section_slide">
+					<h1>Performance: improvement with ensemble learning</h1>
+					<hr />
+					<div class="centred_img">
+						<img src="res/res_deep_photorefraction/ensembling_regression.png" style="width: 75%;"/>
+					</div>
+					<table class="centred_table fragment fade-down" data-fragment-index="1" style="margin-top: 3%;">
+						<thead>
+							<tr>
+								<th></th>
+								<th><b>CNN (mixed)</b></th>
+								<th><b>CNN (real)</b></th>
+								<th><b>$k$-NN</b></th>
+								<th><b>AFA</b></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>$M$</td>
+								<td>0.54</td>
+								<td>0.56</td>
+								<td>0.57</td>
+								<td><b>0.49</b></td>
+							</tr>
+							<tr>
+								<td>$J_0$</td>
+								<td>0.28</td>
+								<td>0.28</td>
+								<td>0.33</td>
+								<td><b>0.26</b></td>
+							</tr>
+							<tr>
+								<td>$J_{45}$</td>
+								<td>0.21</td>
+								<td>0.25</td>
+								<td>0.24</td>
+								<td><b>0.19</b></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="centred_table_title fragment fade-down" data-fragment-index="1"><b>Table</b>: Error standard deviation comparison between weak learners and the ensemble learning method</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -1563,7 +1602,7 @@
 					<h1>Robustness: local Lipschitz constant</h1>
 					<hr />
 					<div class="theorem">
-						<div class="theorem_title">Weighted local Lispchitz constant at point $x$ \cite{combettes2019lipschitz}</div>
+						<div class="theorem_title">Weighted local Lispchitz constant at point $x$ [13]</div>
 						\[
 							\sigma_e(x)/\sigma_b
 						\]
@@ -1572,7 +1611,7 @@
 						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width: 80%;"/>
 						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the CNN</div>
 					</div>
-					<div style="margin-top: 3%;">Reasonably low values of the local weighted Lipschitz constant are a strong indicator of the <b>robustness of the network</b> gupta2022multi.</div>
+					<div style="margin-top: 3%;">Reasonably low values of the local weighted Lipschitz constant are a strong indicator of the <b>robustness of the network</b> [14].</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -1581,7 +1620,7 @@
 				<section class="section_slide">
 					<h1>Robustness: improving robustness with a denoiser</h1>
 					<hr />
-					The application of a denoiser (pretrained DRUnet \cite{drunet}) at test time could help with the robustness \cite{visapp17}.
+					The application of a denoiser (pretrained DRUnet [15]) at test time could help with the robustness [16].
 					<div class="centred_img" style="margin-top: 2%;">
 						<img src="res/res_deep_photorefraction/lipschitz/denoised.png" style="width: 80%;"/>
 						<div><b>Figure</b>: Example of a denoised pupil image</div>
@@ -1650,7 +1689,7 @@
 						</tbody>
 					</table>
 					<div class="centred_table_title"><b>Table</b>: Performance comparison between original and denoised images</div>
-					<table class="centred_table fragment fade-up" style="margin-top: 5%;">
+					<table class="centred_table fragment fade-up" data-fragment-index="1" style="margin-top: 5%;">
 						<tr>
 							<td></td>
 							<td colspan="2">$M$</td>
@@ -1741,7 +1780,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="centred_table_title fragment fade-up"><b>Table</b>: Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
+					<div class="centred_table_title fragment fade-up" data-fragment-index="1"><b>Table</b>: Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -1750,7 +1789,7 @@
 				<section class="section_slide">
 					<h1>Robustness: controlled Lipschitz constant training</h1>
 					<hr />
-					Using the deel-lip library \cite{deel_lip},
+					Using the deel-lip library [17],
 					<div class="centred_img" style="margin-top: 2%;">
 						<img src="res/res_deep_photorefraction/lipschitz/perf.png" style="width:95%" />
 						<div>Error standard deviation of a model trained with deel-lip in function of $K$</div>
@@ -1885,81 +1924,26 @@
 				</section>
 				<section data-transition="fade" class="section_slide">
 					<h1>Conclusion</h1>
-					<hr />
-
-					<ul>
-						<li style="margin-top: 13%;">General framework for describing averaging rules in ensemble learning</li>
-							<ul>
-								<li>Focus on output fusion</li>
-							</ul>
-						<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
-							<ul>
-								<li>$f$-average: neural network modelling an average</li>
-								<li>Aggregating multiple $f$-averages</li>
-								<li>Stacking multiple aggregated $f$-averages</li>
-							</ul>
-						</li>
-						<li style="padding-top: 2em;">Application to few-shot class incremental learning
-							<ul>
-								<li>Best performance among ensemble learning methods</li>
-								<li>Comparable performance with specialised state-of-the-art methods</li>
-							</ul>
-						</li>
-					</ul>
-					<table class="fragment fade-in" data-fragment-index="0" style="margin-top: 3%;">
-						<tr>
-							<td>Design a screening tool</td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><li>accessible</li></td>
-							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
-							<td class="fragment fade-right" data-fragment-index="1">smartphone application</td>
-						</tr>
-						<tr>
-							<td><li>affordable</li></td>
-							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
-							<td class="fragment fade-right" data-fragment-index="1">low-priced device</td>
-						</tr>
-						<tr>
-							<td><li>with competitive performance</li></td>
-							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
-							<td class="fragment fade-right" data-fragment-index="1">outperforms competition</td>
-						</tr>
-						<tr>
-							<td><li>reliable</li></td>
-							<td class="fragment fade-right" data-fragment-index="1">➡️</td>
-							<td class="fragment fade-right" data-fragment-index="1">controllable Lipschitz values</td>
-						</tr>
-					</table>
-					<div class=" footer">
-						<hr />
-						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
-					</div>
-				</section>
-				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
-					<h1>Conclusion</h1>
 					<div class="header_hr" data-id="header_hr">
 						<hr />
 					</div>
 					<div style="width: 100%;">
 						<div style="float:left; width: 50%;" data-id="left_col">
-							<h1 class="fragment fade-down" data-fragment-index="1" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
+							<h1 class="fragment fade-down" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
 							<ul>
-								<li>General framework for describing averaging rules in ensemble learning
+								<li class="fragment fade-down">General framework for describing averaging rules in ensemble learning
 									<ul>
 										<li>Focus on output fusion</li>
 									</ul>
 								</li>
-								<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
+								<li style="padding-top: 2em;" class="fragment fade-down">Optimal ensembling through training of an interpretable neural network architecture
 									<ul>
 										<li>$f$-average: neural network modelling an average</li>
 										<li>Aggregating multiple $f$-averages</li>
 										<li>Stacking multiple aggregated $f$-averages</li>
 									</ul>
 								</li>
-								<li style="padding-top: 2em;">Application to few-shot class incremental learning
+								<li style="padding-top: 2em;" class="fragment fade-down">Application to few-shot class incremental learning
 									<ul>
 										<li>Best performance among ensemble learning methods</li>
 										<li>Comparable performance with specialised state-of-the-art methods</li>
@@ -1968,9 +1952,9 @@
 							</ul>
 						</div>
 						<div style=" float:right; width: 50%;">
-							<h2 class="fragment fade-down" data-fragment-index="5">Part II - Deep learning for photorefraction</h2>
+							<h2 class="fragment fade-down">Part II - Deep learning for photorefraction</h2>
 							<ul>
-								<li class="fragment fade-down" data-fragment-index="6">
+								<li class="fragment fade-down">
 									A novel pipeline for photorefraction based on deep learning
 									<ul>
 										<li>A capture device</li>
@@ -1978,18 +1962,19 @@
 										<li>Smartphone control </li>
 									</ul>
 								</li>
-								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
+								<li class="fragment fade-down" style="padding-top: 2em;">
 									Performance validation
 									<ul>
 										<li>Tested on real and synthetic data</li>
 										<li>Outperforms competing device</li>
+										<li>Performance improvement with ensembling</li>
 									</ul>
 								</li>
-								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
+								<li class="fragment fade-down" style="padding-top: 2em;">
 									Robustness analysis
 									<ul>
 										<li>Robustness evaluation using Lipschitz constant</li>
-										<li>Methods to control/improve robustness</li>
+										<li>Methods to control & improve robustness</li>
 									</ul>
 								</li>
 							</ul>
@@ -2000,63 +1985,125 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 				</section>
-				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
+				<section data-transition="fade" class="section_slide">
 					<h1>Perspectives</h1>
 					<div class="header_hr" data-id="header_hr">
 						<hr />
 					</div>
 					<div style="width: 100%;">
 						<div style="float:left; width: 50%;" data-id="left_col">
-							<h1 class="fragment fade-down" data-fragment-index="1" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
+							<h1 class="fragment fade-down" style="font-size: 1.6em;">Part I - Ensemble learning</h1>
 							<ul>
-								<li>General framework for describing averaging rules in ensemble learning
-									<ul>
-										<li>Focus on output fusion</li>
-									</ul>
-								</li>
-								<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
-									<ul>
-										<li>$f$-average: neural network modelling an average</li>
-										<li>Aggregating multiple $f$-averages</li>
-										<li>Stacking multiple aggregated $f$-averages</li>
-									</ul>
-								</li>
-								<li style="padding-top: 2em;">Application to few-shot class incremental learning
-									<ul>
-										<li>Best performance among ensemble learning methods</li>
-										<li>Comparable performance with specialised state-of-the-art methods</li>
-									</ul>
-								</li>
-							</ul>
+								<li class="fragment fade-down">$f$-average: scenario illustrating its interpretable weights</li>
+								<li style="padding-top: 2em;" class="fragment fade-down">FSCIL: open-set recognition methods as weak classifiers</li>
 						</div>
 						<div style=" float:right; width: 50%;">
-							<h2 class="fragment fade-down" data-fragment-index="5">Part II - Deep learning for photorefraction</h2>
+							<h2 class="fragment fade-down">Part II - Deep learning for photorefraction</h2>
 							<ul>
-								<li class="fragment fade-down" data-fragment-index="6">
-									A novel pipeline for photorefraction based on deep learning
-									<ul>
-										<li>A capture device</li>
-										<li>Regression through CNN models</li>
-										<li>Smartphone control </li>
-									</ul>
-								</li>
-								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
-									Performance validation
-									<ul>
-										<li>Tested on real and synthetic data</li>
-										<li>Outperforms competing device</li>
-									</ul>
-								</li>
-								<li class="fragment fade-down" data-fragment-index="6" style="padding-top: 2em;">
-									Robustness analysis
-									<ul>
-										<li>Robustness evaluation using Lipschitz constant</li>
-										<li>Methods to control/improve robustness</li>
-									</ul>
-								</li>
+								<li class="fragment fade-down">Generative model for image to image translation: transform synthetic into real images</li>
+								<li class="fragment fade-down" style="padding-top: 2em;">Deep learning-based out-of-range detection tool & invalid capture detection</li>
+								<li class="fragment fade-down" style="padding-top: 2em;">New acquisition campaign & industrial deployment</li>
 							</ul>
 						</div>
 					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+				</section>
+				<section data-transition="fade" class="section_slide">
+					<h1>References</h1>
+					<div class="header_hr" data-id="header_hr">
+						<hr />
+					</div>
+					<table id="ref_table">
+						<tr>
+							<td></td>
+							<td>[1]</td>
+							<td>Galton, F. (1907). Vox populi (the wisdom of crowds). <em>Nature</em>, 75(7):450–451.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[2]</td>
+							<td>Kolmogorov, A. (1930). <em>Mathematics and Mechanics</em>. Kluwer.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[3]</td>
+							<td>Wang, Y., Chao, W., Weinberger, K. Q., and van der Maaten, L. (2019). Simpleshot: Revisiting nearest-neighbor classification for few-shot learning. DOI: 10.48550/arxiv.1911.04623.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[4]</td>
+							<td>Castro, F. M., Marín-Jiménez, M. J., Guil, N., Schmid, C., and Alahari, K. (8th September - 14th September 2018). End-to-end incremental learning. In <em>Proceedings of the European Conference on Computer Vision (ECCV)</em>, pages 233–248, Munich, Germany. DOI: 10.1007/978-3-030-01258-8_15.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[5]</td>
+							<td>Hou, S., Pan, X., Loy, C. C., Wang, Z., and Lin, D. (16th June - 20th June 2019). Learning a unified classifier incrementally via rebalancing. In <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, pages 831–839, Long Beach, California. DOI: 10.1109/cvpr.2019.00092.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[6]</td>
+							<td>Zhu, K., Cao, Y., Zhai, W., Cheng, J., and Zha, Z.-J. (19th June - 25th June 2021). Self-promoted prototype refinement for few-shot class-incremental learning. In <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, pages 6801–6810, (online). DOI: 10.1109/cvpr46437.2021.00673.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[7]</td>
+							<td>Zhang, C., Song, N., Lin, G., Zheng, Y., Pan, P., and Xu, Y. (19th June - 25th June 2021). Few-shot incremental learning with continually evolved classifiers. In <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, pages 12455–12464, (online). DOI: 10.1109/cvpr46437.2021.01227.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[8]</td>
+							<td>Zhou, D.-W., Wang, F.-Y., Ye, H.-J., Ma, L., Pu, S., and Zhan, D.-C. (19th June - 24th June 2022). Forward compatible few-shot class-incremental learning. In <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, pages 9046–9056, New Orleans, Louisiana. DOI: 10.1109/cvpr52688.2022.00884.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[9]</td>
+							<td>Holden, B. A., Fricke, T. R., Wilson, D. A., Jong, M., Naidoo, K. S., Sankaridurg, P., Wong, T. Y., Naduvilath, T. J., and Resnikoff, S. (2016). Global prevalence of myopia and high myopia and temporal trends from 2000 through 2050. <em>Ophthalmology</em>, 123(5):1036–1042, DOI: 10.1016/j.ophtha.2016.01.006.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[10]</td>
+							<td>Gekeler, F., Schaeffel, F., Howland, H. C., and Wattam-Bell, J. (1997). Measurement of astigmatism by automated infrared photoretinoscopy. <em>Optometry and Vision Science</em>, 74(7):472–482, DOI: 10.1097/00006324-199707000-00013.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[11]</td>
+							<td>Martin, S. J., Htoo, H. E., Hser, N., and Arnold, R. W. (2020). Performance of two photoscreeners enhanced by protective cases. <em>Clinical Ophthalmology</em>, page 1427–1435.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[12]</td>
+							<td>Kurent, A. (2022). Comparison of the cycloplegic refractive measurements with handheld, table-mounted refractometers and retinoscopy in children. <em>Ophthalmology Journal</em>, 7:200–207, DOI: 10.5603/oj.2022.0028.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[13]</td>
+							<td>Combettes, P. L. and Pesquet, J.-C. (2020). Lipschitz certificates for neural network structures driven by averaged activation operators. <em>SIAM Journal on Mathematics of Data Science</em>, 2:529–557.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[14]</td>
+							<td>Gupta, K., Kaakai, F., Pesquet-Popescu, B., Pesquet, J.-C., and Malliaros, F. D. (2022). Multivariate Lipschitz analysis of the stability of neural networks. <em>Frontiers in Signal Processing</em>, 2, ISSN: 2673-8198, DOI: 10.3389/frsip.2022.794469.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[15]</td>
+							<td>Zhang, K., Zuo, W., Gu, S., and Zhang, L. (21st July - 26th July 2017). Learning deep cnn denoiser prior for image restoration. In <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>, pages 2808–2817, Honolulu, Hawaii. DOI: 10.1109/CVPR.2017.300.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[16]</td>
+							<td>Aghdam, H. H., Heravi, E. J., and Puig, D. (27th February - 1st March 2017). Increasing the stability of cnns using a denoising layer regularized by local lipschitz constant in roadunderstanding problems. In <em>Proceedings of the International Joint Conference on Computer Vision, Imaging and ComputerGraphics Theory and Applications (VISIGRAPP)</em>, pages 218–225, Porto, Portugal. INSTICC, SciTePress, ISBN: 978-989-758-226-4, DOI: 10.5220/0006123602180225.</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>[17]</td>
+							<td>Serrurier, M., Mamalet, F., González-Sanz, A., Boissin, T., Loubes, J.M., and del Barrio, E. (2020). Achieving robustness in classification using optimal transport with hinge regularization. DOI: 10.48550/arxiv.2006.06520.</td>
+						</tr>
+						
+					</table>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -2073,12 +2120,15 @@
 			Reveal.initialize({
 				width: '90%',
 				height: '90%',
+				// width: '100%',
+				// height: '100%',
 				controls: false,
 				hash: true,
 				center: false,
 				mouseWheel: true,
 				slideNumber: 'true',
 				plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX],
+				pdfSeparateFragments: false,
 			});
 		</script>
 	</body>

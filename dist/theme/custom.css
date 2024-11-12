@@ -581,3 +581,11 @@ table.centred_table tbody tr:nth-child(odd) {
 #device_comp_table tbody tr:nth-child(1) {
   border-bottom: 1px solid var(--r-main-color);
 }
+
+#ref_table {
+  font-size: large;
+}
+
+#ref_table td {
+  padding-bottom: .3em;
+}
