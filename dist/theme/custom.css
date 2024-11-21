@@ -611,3 +611,7 @@ table.centred_table tbody tr:nth-child(odd) {
 #afa_toy tr td:nth-child(1) {
   text-align: left;
 }
+
+a.summary_link {
+  color: var(--r-main-color);
+}

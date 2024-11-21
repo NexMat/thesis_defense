@@ -64,7 +64,9 @@
 						</div>
 					</div>
 					<aside class="notes">
-						Good morning everyone, I am pleased to welcome you at my Ph.D. defense where I'll be presenting my thesis titled Novel Deep Learning Approaches for Images Analysis. This work was done in the OPIS Inria team, at the Centre for Visual Computing, here at CentraleSupélec under the supervision of Émilie Chouzenoux. We also collaborated with Essilor Research and Development department, with Philippe Pinault who co-supervised this thesis. Let's start with the summary of this presentation.
+						Good morning everyone, I am pleased to welcome you at my Ph.D. defense where I'll be presenting my thesis titled Novel Deep Learning Approaches for Images Analysis.<br /><br />
+						This work was done in the OPIS Inria team, at the Centre for Visual Computing, here at CentraleSupélec under the supervision of Émilie Chouzenoux.<br /><br />
+						We also collaborated with Essilor Research and Development department, with Philippe Pinault who co-supervised this thesis. Let's start with the summary of this presentation.
 					</aside>
 				</section>
 				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
@@ -90,6 +92,7 @@
 										<li>$f$-average</li>
 										<li>Aggregated $f$-averages</li>
 										<li>Stacked aggregated $f$-averages</li>
+										<li>Application example</li>
 									</ol>
 								</li>
 								<li class="fragment fade-down" data-fragment-index="4">
@@ -118,7 +121,6 @@
 									<ol>
 										<li>Photorefraction principle</li>
 										<li>Essilor capture device</li>
-										<li>Objectives</li>
 										<li>Datasets, CNN architecture & training</li>
 									</ol>
 								</li>
@@ -135,7 +137,7 @@
 								<li class="fragment fade-down" data-fragment-index="4">
 									Robustness analysis
 									<ol>
-										<li>Introduction on Lipschitz constant</li>
+										<li>Numerical evaluation of robustness</li>
 										<li>Improve robustness with a denoiser</li>
 										<li>Controlled Lipschitz constant training</li>
 									</ol>
@@ -148,7 +150,11 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We will divide the content of this presentation into two main parts ➡️ the first being about ensemble learning and the second about a deep learning approach for photorefraction. For both of those parts, we will first have an introduction section, then in a second section, we will present the details of our proposed approach, and finally in the last section, we will evaluate and compare their respective performance.
+						We will divide the content of this presentation into two main parts<br /><br />
+						➡️ the first being about ensemble learning and the second about a deep learning approach for photorefraction.<br /><br />
+						➡️For both of those parts, we will first have an introduction section,<br /><br />
+						➡️then in a second section, we will present the details of our proposed approach,<br /><br />
+						➡️and finally in the last section, we will evaluate and compare their respective performance.
 					</aside>
 				</section>
 				<section data-auto-animate data-transition="none-in slide-out" data-auto-animate-unmatched="false" class="section_slide">
@@ -175,6 +181,7 @@
 											<li>$f$-average</li>
 											<li>Aggregated $f$-averages</li>
 											<li>Stacked aggregated $f$-averages</li>
+											<li>Application example</li>
 										</ol>
 									</li>
 									<li>
@@ -217,7 +224,8 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						In the beginning of the 20th century, a contest was held in a British market in the coastal town of Plymouth. Participants, which could be anybody, had to guess visually the weight of an ox that was presented before them. Then, they had to write down their guess on a piece of paper in the hopes of winning some prize. Francis Galton did a statistical study of the answers and found out that the average guess was less than one percent more than the real weight. This is a classic example of how accurate the wisdom of the crowd, even of non-experts, can be.
+						In the beginning of the 20th century, a contest was held in a British market in the coastal town of Plymouth. Participants, which could be anybody, had to guess visually the weight of an ox that was presented before them. Then, they had to write down their guess on a piece of paper in the hopes of winning some prize.<br /><br />
+						Francis Galton did a statistical study of the answers and found out that the average guess was less than one percent more than the real weight. This is a classic example of how accurate the wisdom of the crowd, even of non-experts, can be.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -241,11 +249,13 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Since then, this principle has been applied in many fields, including in machine learning, under the name of ensemble learning. The goal is to leverage an ensemble of models, for example using K models here, called weak learners instead of using a single model. These models predictions x_k (for example predicted logits in the case of classification) are then gathered in a step called output fusion in order to obtain the final unified prediction. So te be clear, the K predictions x k are the output of the respective K weak learners but are also the input of the output fusion step. It has been shown that such methods could decrease bias as well as increase accuracy and robustness. 
+						Since then, this principle has been applied in many fields, including in machine learning, under the name of ensemble learning. The goal is to leverage an ensemble of models, for example using K models here, called weak learners instead of using a single model. These models predictions x_k (for example predicted logits in the case of classification) are then gathered in a step called output fusion in order to obtain the final unified prediction. So te be clear, the K predictions x k are the output of the respective K weak learners but are also the input of the output fusion step. It has been shown that such methods could decrease bias as well as increase accuracy and robustness. <br /><br />
 						
-						Some methods such as bagging or boosting focus on training an ensemble of diverse models, which is a key characteristic needed in ensemble learning.
+						Some methods such as bagging or boosting focus on training an ensemble of diverse models, which is a key characteristic needed in ensemble learning.<br /><br />
 						
-						In our case, we will assume that we already have such set of diverse weak learners and we will focus on the output fusion part. In the state of the art, the most commonly used method to perform the output fusion step is either to average the outputs x_k or to train a stacked model, which is an additional machine learning model that learns to output the final prediction given the outputs x_k from the K weak learners. The method that we propose and that we will present today gathers these two approaches in a single model.
+						In our case, we will assume that we already have such set of diverse weak learners and we will focus on the output fusion part.<br /><br />
+						
+						In the state of the art, the most commonly used method to perform the output fusion step is either to average the outputs x_k or to train a stacked model, which is an additional machine learning model that learns to output the final prediction given the outputs x_k from the K weak learners. The method that we propose and that we will present today gathers these two approaches in a single model.
 					</aside>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
@@ -289,8 +299,9 @@
 						</div>
 					</div>
 					<aside class="notes">
-						Let's consider here the use of averages to ensemble the predictions x k coming from the K weak learners. 
-						It is possible to choose among different types of averages. For example, using the arithmetic mean is adequate when facing a gaussian noise in the input data, however a geometric mean is better at indicating the central tendency of the averaged values while the harmonic mean is used to compute the average of ratios and rates. All of those averages can be written under this form, called a generalised average. This generalised average will be the concept upon which we will build our proposed model ➡️ that we will present in the next section.
+						Let's consider here the use of averages to ensemble the predictions x k coming from the K weak learners. <br /><br />
+						It is possible to choose among different types of averages. For example, using the arithmetic mean is adequate when facing a gaussian noise in the input data, however a geometric mean is better at indicating the central tendency of the averaged values while the harmonic mean is used to compute the average of ratios and rates.<br /><br />
+						All of those averages can be written under this form, called a generalised average. This generalised average will be the concept upon which we will build our proposed model ➡️ that we will present in the next section.
 					</aside>
 				</section>
 				<section data-transition="fade-in slide-out" class="section_slide">
@@ -316,7 +327,7 @@
 										<li>$f$-average</li>
 										<li>Aggregated $f$-averages</li>
 										<li>Stacked aggregated $f$-averages</li>
-										
+										<li>Application example</li>
 									</ol>
 								</li>
 								<span class="semi-fade">
@@ -376,7 +387,10 @@
 						</div>
 					</div>
 					<aside class="notes">
-						So as mentioned previously, going from this generalised average, we propose to extend it to the case where the input x is not a vector anymore but rather a concatenation of vectors. In the context of ensemble learning, it would be the concatenation of the K predictions vectors x k. This is made possible by concatenating vectors x k into a single vector of size K times N, where K is the number of models and N the prediction dimension, by generalising the activation function f by applying it componentwise to each component x k and by having a weight matrix W such that its line sum to 1. Finally, the inverse function remains the same.
+						So as mentioned previously, going from this generalised average, we propose to extend it to the case where the input x is not a vector anymore but rather a concatenation of vectors. In the context of ensemble learning, it would be the concatenation of the K predictions vectors x k.<br /><br />
+						This is made possible by concatenating vectors x k into a single vector of size K times N, where K is the number of models and N the prediction dimension,<br /><br />
+						by generalising the activation function f by applying it componentwise to each component x k<br /><br />
+						and by having a weight matrix W such that its line sum to 1. Finally, the inverse function remains the same.
 					</aside>
 				</section>
 				<section>
@@ -440,7 +454,9 @@
 							<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 						</div>
 						<aside class="notes">
-							We proposed to model the $f$-average function described previously with a single layer neural network. By choosing adequately f and its inverse function, and by having a matrix W with the constraint previously mentioned, it is possible to model a specific type of average. Then with a dataset and a standard training, using a task-relative loss, we learn the optimal weight W. We provide in this table activation functions that allow to retrieve standard means formulas. For example, the most straightforward would be the arithmetic mean where both f and its inverse are linear activations.
+							We proposed to model the $f$-average function described previously with a single layer neural network. By choosing adequately f and its inverse function, and by having a matrix W with the constraint previously mentioned, it is possible to model a specific type of average.<br /><br />
+							Then with a dataset and a standard training, using a task-relative loss, we learn the optimal weight W.<br /><br />
+							We provide in this table activation functions that allow to retrieve standard means formulas. For example, the most straightforward would be the arithmetic mean where both f and its inverse are linear activations.<br /><br />
 
 							So now, we can model a the type of average we want to with a neural network model. However, this does not eliminate us the task of choosing the appropriate average.
 						</aside>
@@ -507,7 +523,8 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						That is why we propose a larger model that we will call aggregated-f-averages which can model as many types of averages as we would need. For example, J branches implement J times the neural network structure previously presented in order to model J different types of averages. Then, those are aggregated with a final layer A which, once trained, will select and combine in an optimal the result from each different type of average. Finally, we set an activation function according to the task, for example by using a softmax for classification.
+						That is why we propose a larger model that we will call aggregated-f-averages which can model as many types of averages as we would need. For example, J branches implement J times the neural network structure previously presented in order to model J different types of averages. Then, those are aggregated with a final layer A which, once trained, will select and combine in an optimal the result from each different type of average.<br /><br />
+						Finally, we set an activation function according to the task, for example by using a softmax for classification.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -555,7 +572,8 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Since we are using neural networks, it is only natural to build a deeper model in the hopes of obtaining better performance. Here we do so by stacking multiple aggregated f averages models. Inbetween layers of aggregated f-averages model, a concatenation operation is done and similarly as before, we retrieve again the aggregation layer A at the end of the model.
+						Since we are using neural networks, it is only natural to build a deeper model in the hopes of obtaining better performance. Here we do so by stacking multiple aggregated f averages models.<br /><br />
+						Inbetween layers of aggregated f-averages model, a concatenation operation is done and similarly as before, we retrieve again the aggregation layer A at the end of the model.
 					</aside>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
@@ -649,9 +667,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						In this first example, we devise a simple scenario to test our proposed ensemble learning method. We simulate four classifiers by generating predictions on which different levels of noise is applied in order to randomise their predictions. <br />
+						In this first example, we devise a simple scenario to test our proposed ensemble learning method. We simulate four classifiers by generating predictions on which different levels of noise is applied in order to randomise their predictions.<br /><br />
 						
-						We'll compare our proposed approach with the most common way to perform output fusion which are using an average or a majority vote scheme or a stacked neural network model: a shallow model, which has approximately the same number as parameter as our method, a deeper one which has a similar number of layers but hence a much higher number of parameters and a simple weighted average implemented as a neural network.  <br />
+						We'll compare our proposed approach with the most common way to perform output fusion which are using an average or a majority vote scheme or a stacked neural network model: a shallow model, which has approximately the same number as parameter as our method, a deeper one which has a similar number of layers but hence a much higher number of parameters and a simple weighted average implemented as a neural network.<br /><br />
 
 						In this example, the method yielding the best performance is our f-average model with a depth of 3. We can see that the f-average with a depth of 4 performs slightly worse. This is probably due to the larger number of parameters. This is corroborated when looking at the other neural network model where we can see that the deep NN performance significantly drops in comparison with the shallow model which performance are close but still lower than our f-average with a depth of 1.
 					</aside>
@@ -678,6 +696,7 @@
 											<li>$f$-average</li>
 											<li>Aggregated $f$-averages</li>
 											<li>Stacked aggregated $f$-averages</li>
+											<li>Application example</li>
 										</ol>
 									</li>
 								</span>
@@ -810,9 +829,13 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						So, how is this problem set up ? The problem is divided into K successive sessions. In the first session, also called base session, a standard classification dataset with a substantial amount of data is available. Then, for subsequent sessions, some additional classes (a number of n_way classes actually) must be learnt to be recognised by our model in addition of the classes previously learnt. An additional complexity is that for those new classes, only a few number n_shots of training samples are given. And thus until a total number of n_class is reached. For example, let's take the mini-ImageNet dataset setting. We have in base session 60 classes to be learnt (with a standard amount of training data) and then, for the next session, we have training data for 5 new classes. At the end of session 1, those 5 new classes must be recognisable by the model along with the 60 previous classes. And so on, until last session (the session number 9) where again 5 new classes are given bringing the total to a 100 classes. Long story short, the goal is to learn to classify new classes, using only as few training samples and without forgetting previous classes.
+						So, how is this problem set up ? The problem is divided into K successive sessions. In the first session, also called base session, a standard classification dataset with a substantial amount of data is available. Then, for subsequent sessions, some additional classes (a number of n_way classes actually) must be learnt to be recognised by our model in addition of the classes previously learnt. An additional complexity is that for those new classes, only a few number n_shots of training samples are given. And thus until a total number of n_class is reached.<br /><br />
+						
+						For example, let's take the mini-ImageNet dataset setting. We have in base session 60 classes to be learnt (with a standard amount of training data) and then, for the next session, we have training data for 5 new classes. At the end of session 1, those 5 new classes must be recognisable by the model along with the 60 previous classes. And so on, until last session (the session number 9) where again 5 new classes are given bringing the total to a 100 classes.<br /><br />
 
-						Most of the state of the art methods use base session to train the feature extractor part of their model (thanks to the substantial amount of data). Then in subsequent sessions, the feature extractor weights are frozen and the classifier head of their model grows in size and is trained with new data. 
+						Long story short, the goal is to learn to classify new classes, using only as few training samples and without forgetting previous classes.<br /><br />
+
+						Most of the state of the art methods use base session to train the feature extractor part of their model (thanks to the substantial amount of data). Then in subsequent sessions, the feature extractor weights are frozen and the classifier head of their model grows in size and is trained with new data.<br /><br />
 
 						In our case, we propose to use ensemble learning and, to our knowledge, we are the first to do so.
 					</aside>
@@ -833,7 +856,14 @@
 						</div>
 					</div>
 					<aside class="notes">
-						So our proposed method is to consider few-shot class incremental learning as a succession of few-shot tasks. Similarly as other methods from the state of the art, we reuse the feature extractor trained during base session. Then at each session, we train a weak classifier with a few-shot method with the data from each of those session. The weak classifier will then be specialised on its own set of classes from its own session. However, it will not be able to output prediction for classes from other sessions. That's why we ensemble all weak classifiers prediction with our proposed f-average model. Once trained, it will be able, given the predictions from all weak classifiers, to output the most likely class prediction, which could be any class from any session. Let's get into more details and see how we train each weak classifier.
+						So our proposed method is to consider few-shot class incremental learning as a succession of few-shot tasks.<br /><br />
+						
+						Similarly as other methods from the state of the art, we reuse the feature extractor trained during base session.<br /><br />
+						Then at each session, we train a weak classifier with a few-shot method with the data from each of those session. The weak classifier will then be specialised on its own set of classes from its own session.<br /><br />
+						
+						However, it will not be able to output prediction for classes from other sessions. That's why we ensemble all weak classifiers prediction with our proposed f-average model. Once trained, it will be able, given the predictions from all weak classifiers, to output the most likely class prediction, which could be any class from any session.<br /><br />
+
+						Let's get into more details and see how we train each weak classifier.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -862,7 +892,8 @@
 						</div>
 					</div>
 					<aside class="notes">
-						We use a popular yet simple few-shot learning method: a nearest-neighbor classifier. For each new class, a mean centroid is computed using the training data available in the feature space. Then, for each new test image, its projection in the feature is compared against all centroids of all classes and its class is predicted to be the same as the closest centroid, in the feature space. 
+						We use a popular yet simple few-shot learning method: a nearest-neighbor classifier. For each new class, a mean centroid is computed using the training data available in the feature space.<br /><br />
+						Then, for each new test image, its projection in the feature is compared against all centroids of all classes and its class is predicted to be the same as the closest centroid, in the feature space. 
 					</aside>
 				</section>
 				<section>
@@ -956,9 +987,9 @@
 						</div>
 					</div>
 					<aside class="notes">
-						Cite datasets and colours
+						Cite datasets and colours<br /><br />
 
-						F1 score the higher the better
+						F1 score the higher the better<br /><br />
 
 						We can see that at the last session our model performs better than every other methods. Overall, we can observe that other methods are not consistent accross sessions and datasets, with some being better than others in specific cases but not always. In particular we can observe that depsite relatively good performance on the CUB-200 dataset, the deep NN is very inconstistent in learning the later sessions. That is certainly due to its higher number of parameters that are not trained correctly due to a low data regime imposed by the problem setting. Let us remark that the constraints that we impose on the architecture of our model do not hinder its performance but rather enhance it by improving its training stability.
 					</aside>
@@ -967,7 +998,7 @@
 					<h1>FSCIL: Comparatives results - state of the art</h1>
 					<hr data-id="header_hr"/>
 					<div class="centred_img">
-						<img data-id="perf_graph" src="res/fscil_ensemble_perf_sota.png" style="width: 50%" />
+						<img data-id="perf_graph" src="res/fscil_ensemble_perf_sota.png" style="width: 46%" />
 						<div style="width: 70%;"><b></b>
 						</div>
 					</div>
@@ -1012,7 +1043,11 @@
 						</div>
 					</div>
 					<aside class="notes">
-						In conclusion of this first part on ensemble learning, we presented a method inspired by averaging rules to perform the output fusion step of an ensembling method. ➡️ We proposed an architecture which can model and aggregate multiple types of averages by choosing adequates activation functions and by imposing some constraints on weight matrices. ➡️ Finally, we used the few shot class incremental learning setting as it is a problem well suited to illustrate the output fusion method that we propose. Indeed, the problem naturally sets up an ensemble of diverse weak classifiers, letting us showcase the strength of our output fusion models. In terms of performance, we show that our method outperforms standard ensembling methods such as averages and stacked models partly thanks to an increased training stability and we also show that altough not the best, our method performance are comparable with state of the art methods designed specifically for the problem of few shot class incremental learning.
+						In conclusion of this first part on ensemble learning, we presented a method inspired by averaging rules to perform the output fusion step of an ensembling method.<br /><br />
+						➡️ We proposed an architecture which can model and aggregate multiple types of averages by choosing adequates activation functions and by imposing some constraints on weight matrices.<br /><br />
+						➡️ Finally, we used the few shot class incremental learning setting as it is a problem well suited to illustrate the output fusion method that we propose. Indeed, the problem naturally sets up an ensemble of diverse weak classifiers, letting us showcase the strength of our output fusion models.<br /><br />
+						
+						In terms of performance, we show that our method outperforms standard ensembling methods such as averages and stacked models partly thanks to an increased training stability and we also show that altough not the best, our method performance are comparable with state of the art methods designed specifically for the problem of few shot class incremental learning.
 					</aside>
 				</section>
 				<section data-transition="fade-in slide-out" class="section_slide">
@@ -1035,7 +1070,6 @@
 										<ol>
 											<li>Photorefraction principle</li>
 											<li>Essilor capture device</li>
-											<li>Objectives</li>
 											<li>Datasets, CNN architecture & training</li>
 											<li>End-to-end pipeline</li>
 										</ol>
@@ -1053,7 +1087,7 @@
 									<li>
 										Robustness analysis
 										<ol>
-											<li>Introduction on Lipschitz constant</li>
+											<li>Numerical evaluation of robustness</li>
 											<li>Improve robustness with a denoiser</li>
 											<li>Controlled Lipschitz constant training</li>
 										</ol>
@@ -1101,7 +1135,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						In the world, an estimated number of 1 billion people suffer from vision impairment without being addressed. Actually, everyone will experience at least once in their lifetime some eye condition, for those who are fortunate to live long enough. Vision impairment can occur at any age and have serious implications in everyday life. It can be caused by many things but the leading causes are uncorrected refractive errors and cataracts. In this project, we will focus only on uncorrected refractive errors such as hyperopia or myopia and astigmatism.
+						➡️ In the world, an estimated number of 1 billion people suffer from vision impairment without being addressed. Actually, everyone will experience at least once in their lifetime some eye condition, for those who are fortunate to live long enough. Vision impairment can occur at any age and have serious implications in everyday life.<br /><br />
+						
+						➡️It can be caused by many things but the leading causes are uncorrected refractive errors and cataracts. In this project, we will focus only on uncorrected refractive errors such as hyperopia or myopia and astigmatism.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1122,7 +1158,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						For example, ➡️ myopia is believed to affect 50% of the population by 2050. As you can see on this graph, Asia will be the most impacted. In particular, ➡️ developing countries face a critical challenge. In one hand, the lack of prevention in those countries only worsens the situation and in the other hand a deficient healthcare system can prevent an efficient screening of the population. It has been shown that the education of young people can be hindered by vision impairment  and more generally it reduces quality of life which can already be difficult in developing countries. There exists cost-effective solutions to vision loss but they of course cannot be applied if the condition is not first correctly diagnosed. That is why, nowadays, accessible and affordable screening tools are crucial to abolish vision impairment around the world.
+						For example, ➡️ myopia is believed to affect 50% of the population by 2050. As you can see on this graph, Asia will be the most impacted. In particular, ➡️ developing countries face a critical challenge. In one hand, the lack of prevention in those countries only worsens the situation and in the other hand a deficient healthcare system can prevent an efficient screening of the population. It has been shown that the education of young people can be hindered by vision impairment  and more generally it reduces quality of life which can already be difficult in developing countries.<br /><br />
+						
+						There exists cost-effective solutions to vision loss but they of course cannot be applied if the condition is not first correctly diagnosed. That is why, nowadays, accessible and affordable screening tools are crucial to abolish vision impairment around the world.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1142,7 +1180,16 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						In the lights of this challenges, we, in collaboration with Essilor, aim at designing and developing a screening tool which needs to be widely accessible (which means easy and comfortable to use even for non-expert people) and affordable (keeping in mind the developing countries we mentioned earlier) but without sacrificing its screening performance. And finally, given that it is a medical device, we will also need to demonstrate its reliability and robustness. At the end of this part, we will come back to these requirements to see if and how we addressed them. In the next section, I will present you the pipeline that we propose in order to answer to the problematic that was raised previously. But first, we’ll have a quick introduction on eye refractive errors. 
+						In the lights of this challenges, we, in collaboration with Essilor, aim at designing and developing a screening tool which needs to be<br /><br />
+						
+						widely accessible (which means easy and comfortable to use even for non-expert people)<br /><br />
+						and affordable (keeping in mind the developing countries we mentioned earlier) but without sacrificing its screening performance.<br /><br />
+
+						And finally, given that it is a medical device, we will also need to demonstrate its reliability and robustness.<br /><br />
+						
+						At the end of this part, we will come back to these requirements to see if and how we addressed them. In the next section, I will present you the pipeline that we propose in order to answer to the problematic that was raised previously.<br /><br />
+						
+						But first, we’ll have a quick introduction on eye refractive errors. 
 					</aside>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
@@ -1168,7 +1215,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Here is the anatomy of an eye. When looking at an object, light rays come through the pupil and the cornea located here. They go through here and create an image on retina at the bottom of the eye. Finally, the optic nerve transmits the information to the brain. A refractive error happens when the shape of the eye is not perfect. For example, if the eye is too big or too small, the image will not be created on the retina but before or after it, creating a blurry image to the brain. This is what we call myopia and hyperopia. Another problem also happens when the cornea is not perfectly round but looks more like a rugby ball. This refracts ununiformly the light rays that are coming in and will in the end distort the image.
+						Here is the anatomy of an eye. When looking at an object, light rays come through the pupil and the cornea located here. They go through here and create an image on retina at the bottom of the eye. Finally, the optic nerve transmits the information to the brain. A refractive error happens when the shape of the eye is not perfect. For example, if the eye is too big or too small, the image will not be created on the retina but before or after it, creating a blurry image to the brain. This is what we call myopia and hyperopia. Another problem also happens when the cornea is not perfectly round but looks more like a rugby ball. This refracts ununiformly the light rays that are coming in and will in the end distort the image.<br /><br />
 						
 						Sphere, Cylinder and Axis are parameters describing those conditions and they are actually what will appear on your glasses prescriptions after you’ve visited an ophthalmologist or an optometrist. In theory their range are unlimited but the vast majority of the population are within these ranges.
 					</aside>
@@ -1194,7 +1241,6 @@
 									<ol>
 										<li>Photorefraction principle</li>
 										<li>Essilor capture device</li>
-										<li>Objectives</li>
 										<li>Datasets, CNN architecture & training</li>
 										<li>End-to-end pipeline</li>
 									</ol>
@@ -1213,7 +1259,7 @@
 									<li>
 										Robustness analysis
 										<ol>
-											<li>Introduction on Lipschitz constant</li>
+											<li>Numerical evaluation of robustness</li>
 											<li>Improve robustness with a denoiser</li>
 											<li>Controlled Lipschitz constant training</li>
 										</ol>
@@ -1298,7 +1344,7 @@
 						</div>
 					</div>
 					<aside class="notes">
-						If we know the light source position wrt. the camera, the measurement distance d, we can determine the subject’s ametropia by observing the light pattern. 
+						If we know the light source position wrt. the camera, the measurement distance d, we can determine the subject’s sphere cylinder axis parameters by observing the light pattern. <br /><br />
 						There already exists some methods to analyse this light pattern to determine the ametropia but we propose to use machine learning to do so.
 					</aside>
 				</section>
@@ -1317,7 +1363,13 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						So let’s first begin with the photorefraction device of our pipeline. It is composed of a camera in the centre, surrounded by 12 LEDs. One at the time, a LED will light up and a picture of the eyes will synchronously be captured by the camera at the same time. The LED emits infrared light in order not to blind the patient to prevent them to close their eyes by reflex. In those pictures, the light pattern we mentioned previously will appear like so. Twelve LEDs are necessary to ensure some redundancy of the information because of blind spots than can appear at some angles and eccentricities. The capture process lasts less than 400 ms minimising perturbations related to the patient movements. This device was developed by Essilor and the latest iteration was improved, in part thanks to some feedbacks we provided. The goal is now to retrieve the parameters Sphere, Cylinder and Axis from those images using deep learning. That is why they also provided with various kinds of datasets, which, as you know, are essential in machine learning problems.
+						So let’s first begin with the photorefraction device of our pipeline.<br /><br />
+						It is composed of a camera in the centre, surrounded by 12 LEDs. One at the time, a LED will light up and a picture of the eyes will synchronously be captured by the camera at the same time. The LED emits infrared light in order not to blind the patient to prevent them to close their eyes by reflex.<br /><br />
+						 In those pictures, the light pattern we mentioned previously will appear like so. Twelve LEDs are necessary to ensure some redundancy of the information because of blind spots than can appear at some angles and eccentricities.<br /><br />
+						 The capture process lasts less than 400 ms minimising perturbations related to the patient movements.<br /><br />
+						 This device was developed by Essilor and the latest iteration was improved, in part thanks to some feedbacks we provided.<br /><br />
+						 
+						 The goal is now to retrieve the parameters Sphere, Cylinder and Axis from those images using deep learning. That is why they also provided with various kinds of datasets, which, as you know, are essential in machine learning problems.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1354,7 +1406,11 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						First, they developed a simulator that provides us pairs of images and their corresponding sphere cylinder axis parameters. This dataset can be as big as we want (about 1 million samples) with the desired distribution of parameters. However, its big drawback is that it is artificial and thus does not exactly match real images. For example, it cannot simulate input perturbations such as motion blur. To alleviate this problem, they also collected a dataset of real images. They organised some acquisition campaign and recruited volunteers and captured images with the device and then evaluated their ametropia in a standard manner. However, obviously, this process is quite expensive and thus is very limited in size. And of course, since it is collected on volunteers we cannot control its parameter distribution. We will see in the next section how we leverage these two datasets.
+						First, they developed a simulator that provides us pairs of images and their corresponding sphere cylinder axis parameters. This dataset can be as big as we want (about 1 million samples) with the desired distribution of parameters. However, its big drawback is that it is artificial and thus does not exactly match real images. For example, it cannot simulate input perturbations such as motion blur.<br /><br />
+						
+						To alleviate this problem, they also collected a dataset of real images. They organised some acquisition campaign and recruited volunteers and captured images with the device and then evaluated their ametropia in a standard manner. However, obviously, this process is quite expensive and thus is very limited in size. And of course, since it is collected on volunteers we cannot control its parameter distribution.<br /><br />
+						
+						We will see in the next section how we leverage these two datasets.
 					</aside>
 				</section>
 				<section data-auto-animate class="section_slide">
@@ -1388,7 +1444,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Now that we have our data, we can train our model. It is a regression problem so we took convolutional neural network which takes as input a tensor of 12 images and predicts ONE parameter.
+						Now that we have our data, we can train our model. It is a regression problem so we took convolutional neural network which takes as input a tensor of 12 images and predicts ONE parameter.<br /><br />
 						I told you earlier about the sphere cylinder and axis parameters but we actually predict three other parameters called M J0 J45 which are their equivalent in a cartesian coordinate system. They are equivalent and can be translated one way or the other with a simple formula but we prefer using them because they are independent of each other. 
 					</aside>
 				</section>
@@ -1464,7 +1520,6 @@
 										<ol>
 											<li>Photorefraction principle</li>
 											<li>Essilor capture device</li>
-											<li>Objectives</li>
 											<li>Datasets, CNN architecture & training</li>
 											<li>End-to-end pipeline</li>
 										</ol>
@@ -1484,7 +1539,7 @@
 									<li>
 										Robustness analysis
 										<ol>
-											<li>Introduction on Lipschitz constant</li>
+											<li>Numerical evaluation of robustness</li>
 											<li>Improve robustness with a denoiser</li>
 											<li>Controlled Lipschitz constant training</li>
 										</ol>
@@ -1527,7 +1582,7 @@
 						</tr>
 					</table>
 					<div class="centred_table_title"><b>Table</b>: industrial performance requirements for the error standard deviation (in dioptre)</div>
-					<table class="centred_table" id="regression_table" style="margin-top: 5%;">
+					<table class="centred_table" id="regression_table" style="margin-top: 3%;">
 						<thead>
 							<tr>
 								<th></th>
@@ -1545,13 +1600,13 @@
 						<tbody>
 							<tr>
 								<td>Error</td>
-								<td>BSM</td>
+								<td>BSM<sup>1</sup></td>
 								<td>FC</td>
 								<td>CNN</td>
-								<td>BSM</td>
+								<td>BSM<sup>1</sup></td>
 								<td>FC</td>
 								<td>CNN</td>
-								<td>BSM</td>
+								<td>BSM<sup>1</sup></td>
 								<td>FC</td>
 								<td>CNN</td>
 							</tr>
@@ -1608,16 +1663,19 @@
 					<div class="centred_table_title">
 						<b>Table</b>: Regression models comparison on the dataset of real images (in dioptre)
 					</div>
-					<ul id="cnn_models_list" style="margin-top: 5%;">
+					<ul id="cnn_models_list" style="margin-top: 3%;">
 						<li>Since a biased model can easily be corrected by offsetting predictions, our main evaluation criterion is the error <b>standard deviation</b>.</li>
 						<li>To better assess these results, recall that glasses are prescribed with a precision of 0.25 D.</li>
 					</ul>
+					<div style="margin-top: 2%; font-size: x-large;">1. <span id="ref">[Gekeler, 1997]</span></div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						First, we evaluate the choice of our regression model. As you can see in this table (unit is dioptre), it works better than the bright slope method, an eccentric photorefraction method that does not use machine learning and also works better than a fully connected model. To evaluate the results, focus the results on the standard deviation which is our main criterion. So looking at this line, we clearly see that the CNN outperforms the other models. Also keep in mind that glasses are prescribed with a precision of 0.25D.
+						First, we evaluate the choice of our regression model. As you can see in this table (unit is dioptre), it works better than the bright slope method, an eccentric photorefraction method that does not use machine learning and also works better than a fully connected model.<br /><br />
+						To evaluate the results, focus the results on the standard deviation which is our main criterion. So looking at this line, we clearly see that the CNN outperforms the other models.<br /><br />
+						Also keep in mind that glasses are prescribed with a precision of 0.25D.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1689,9 +1747,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Now, let us see the performance of our model on the different datasets. When trained on synthetic images, the CNN performance has very high performance on synthetic images but is not as good on real images. When training on real images, we of course get better results. We get even better results when using a mix of both synthetic and real images. 
+						Now, let us see the performance of our model on the different datasets. When trained on synthetic images, the CNN performance has very high performance on synthetic images but is not as good on real images. When training on real images, we of course get better results. We get even better results when using a mix of both synthetic and real images. <br /><br />
 
-						Synthetic images are also useful to test on wider and more complete range of parameters. Indeed, the test set of real images being very limited in size, it is not uniformly distributed across the parameters range.
+						Synthetic images are also useful to test on wider and more complete range of parameters. Indeed, the test set of real images being very limited in size, it is not uniformly distributed across the parameters range.<br /><br />
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1715,8 +1773,8 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th colspan="2">2WIN [1]</th>
-								<th colspan="2">2WIN [2]</th>
+								<th colspan="2">2WIN<sup>1</sup></th>
+								<th colspan="2">2WIN<sup>2</sup></th>
 								<th colspan="2">Ours</th>
 							</tr>
 						</thead>
@@ -1766,6 +1824,10 @@
 						<li>Best results on $M$ and $J_0$</li>
 						<li>Competitive on $J_{45}$</li>
 					</ul>
+					<div style="margin-top: 7%; font-size: x-large;">
+						1. <span id="ref">[Martin, 2020]</span><br />
+						2. <span id="ref">[Kurent, 2022]</span><br />
+					</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -1785,8 +1847,8 @@
 								<li>~50 hours per model</li>
 							</ul>
 						</li>
-						<li>smartphone embedded software: ONNX model (ran in C++)</li>
 						<li>inference: 33 ms per eye per target (200 ms in total)</li>
+						<li>smartphone embedded software: ONNX model (ran in C++)</li>
 						<li>130 MB of storage in total</li>
 					</ul>
 					<div class="footer">
@@ -1843,7 +1905,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We also ran some additional experiments to apply the ensemble learning we previously presented. By ensembling a CNN trained with real data only, a CNN trained with a mix of both real and synthetic data, and a k-NN relying only on synthetic data, we can actually improve prediction performance by some margin. Let us precise that the k-NN was a method developed by Essilor.
+						We also ran some additional experiments to apply the ensemble learning we previously presented. By ensembling a CNN trained with real data only, a CNN trained with a mix of both real and synthetic data, and a k-NN relying only on synthetic data, ➡️ we can actually improve prediction performance by some margin. Let us precise that the k-NN was a method developed by Essilor.
 					</aside>
 				</section>
 				<section data-transition="fade-in slide-out" class="section_slide">
@@ -1866,7 +1928,6 @@
 										<ol>
 											<li>Photorefraction principle</li>
 											<li>Essilor capture device</li>
-											<li>Objectives</li>
 											<li>Datasets, CNN architecture & training</li>
 											<li>End-to-end pipeline</li>
 										</ol>
@@ -1885,7 +1946,7 @@
 								<li>
 									Robustness analysis
 									<ol>
-										<li>Introduction on Lipschitz constant</li>
+										<li>Numerical evaluation of robustness</li>
 										<li>Improving robustness with a denoiser</li>
 										<li>Controlled Lipschitz constant training</li>
 									</ol>
@@ -1969,7 +2030,7 @@
 					</aside>
 				</section>
 				<section class="section_slide">
-					<h1>Robustness: local Lipschitz constant</h1>
+					<h1>Robustness: weighted local Lipschitz constant</h1>
 					<hr />
 					<div class="theorem">
 						<div class="theorem_title">Weighted local Lispchitz constant at point $x$ <span id="ref">[Combettes, 2020]</span></div>
@@ -2163,9 +2224,10 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						As shows this table, a substantial improvement in the values of the weighted local Lipschitz constants is visible: in average, for M it goes from 0.61 to 0.54, from 1.47 to 1.28 for J0 and from 2.04 to 1.46 for J 45.
-						
-						However, the drawback is of course that, by smoothing images to remove input perturbations, some useful information can also be removed in the process. ➡️ This is observable in this second table where we see that a slight decrease in prediction performance occurs when applying such denoiser, with the biggest increase being for M which goes from 0.56 in standard deviation to 0.75. 
+						As shows this table, a substantial improvement in the values of the weighted local Lipschitz constants is visible: in average, for M it goes from 0.61 to 0.54, from 1.47 to 1.28 for J0 and from 2.04 to 1.46 for J 45.<br /><br />
+
+						However, the drawback is of course that, by smoothing images to remove input perturbations, some useful information can also be removed in the process.<br /><br />
+						➡️ This is observable in this second table where we see that a slight decrease in prediction performance occurs when applying such denoiser, with the biggest increase being for M which goes from 0.56 in standard deviation to 0.75. 
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -2174,7 +2236,7 @@
 					Using the deel-lip library <span id="ref">[Serrurier, 2020]</span>,
 					<div class="centred_img" style="margin-top: 2%;">
 						<img src="res/res_deep_photorefraction/lipschitz/perf.png" style="width:95%" />
-						<div>Error standard deviation of a model trained with deel-lip in function of $K$</div>
+						<div><b>Figure</b>: Error standard deviation of a model trained with deel-lip in function of $K$</div>
 					</div>
 					<div style="margin-top: 5%;">
 						The lower the Lipschitz constant, the greater the constraints. <br />
@@ -2185,7 +2247,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We present now a second method that we explored that should give us a finer control over the Lipschitz constant of the neural network. However, this method requires to retrain all models from scratch using a specific library called deel lip. This library allows us to set beforehand the targeted Lipschitz constant and will then constraint the model during training always to satisfy this requirement. Of course, the lower the Lipschitz constant, the greater the constraints and hence the lower the performance: this graph illustrates it as we can see the error standard deviation which increases as we decrease the Lipschitz constant. This method allows us to better balance robustness and pure prediction performance. 
+						We present now a second method that we explored that should give us a finer control over the Lipschitz constant of the neural network. However, this method requires to retrain all models from scratch using a specific library called deel lip. This library allows us to set beforehand the targeted Lipschitz constant and will then constraint the model during training always to satisfy this requirement.<br /><br />
+						
+						the lower the Lipschitz constant, the greater the constraints and hence the lower the performance: this graph illustrates it as we can see the error standard deviation which increases as we decrease the Lipschitz constant. This method allows us to better balance robustness and pure prediction performance. 
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -2261,18 +2325,18 @@
 					<hr />
 					<div class="centred_img" style="margin-top: 1%;">
 						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width:70%" />
-						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the standard CNN</div>
+						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the standard CNN</div>
 					</div>
 					<div class="centred_img" style="margin-top: 1%;">
 						<img src="res/res_deep_photorefraction/lipschitz/deelcnn_norm1_mask.png" style="width:70%" />
-						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the 4-LCNN</div>
+						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the 4-LCNN</div>
 					</div>	
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						In these histograms, we can see that the weighted local Lipschitz constants are well below for the 4-LCNN in comparison with the standard CNN (please be mindful of the different scale on the x-axis).
+						These histograms show that the weighted local Lipschitz constants have much lower value for the CNN with a Lipschitz constant below 4 than the standard CNN (please be mindful of the different scale on the x-axis).
 					</aside>
 				</section>
 				<section data-transition="fade" class="section_slide">
@@ -2316,7 +2380,9 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Let's now conclude this second part of the presentation. We proposed a novel photorefraction pipeline based on deep learning to perform the regression of parameters M J0 and J45 given an input of 12 images captured by the device designed by Essilor. ➡️ At the beginning of the presentation, we listed some requirements for our system. We needed it to be accessible, whe showed that it is thanks to a smartphone application ➡️ it is also affordable, at least more than the direct competition, without sacrificing its screening performance and finally, we measure its reliability using Lipschitz constants as well as methods to have control over it.
+						Let's now conclude this second part of the presentation. We proposed a novel photorefraction pipeline based on deep learning to perform the regression of parameters M J0 and J45 given an input of 12 images captured by the device designed by Essilor.<br /><br />
+						➡️ At the beginning of the presentation, we listed some requirements for our system. ➡️ We needed it to be accessible, we showed that it is thanks to a smartphone application, it is also more affordable than the direct competition and all of that without sacrificing its screening performance<br /><br />
+						and finally, we measure its reliability using Lipschitz constants as well as methods to have control over it.
 					</aside>
 				</section>
 				<section data-transition="fade" class="section_slide">
@@ -2361,11 +2427,15 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						I will now conclude the whole presentation.
-						
-						In the first part on ensemble learning, we presented a method inspired by averaging rules to perform the output fusion step of an ensembling method. We proposed an architecture which can model and aggregate multiple types of averages by choosing adequates activation functions and by imposing some constraints on weight matrices. Finally, we used the few shot class incremental learning setting as it is a problem well suited to illustrate the output fusion method that we propose. Indeed, the problem naturally sets up an ensemble of diverse weak classifiers, letting us showcase the strength of our output fusion models. In terms of performance, we show that our method outperforms standard ensembling methods such as averages and stacked models partly thanks to an increased training stability and we also show that altough not the best, our method performance are comparable with state of the art methods designed specifically for the problem of few shot class incremental learning.
+						<div>
+							I will now conclude the whole presentation.
+							
+							In the first part on ensemble learning, we presented a method inspired by averaging rules to perform the output fusion step of an ensembling method. We proposed an architecture which can model and aggregate multiple types of averages by choosing adequates activation functions and by imposing some constraints on weight matrices. Finally, we used the few shot class incremental learning setting as it is a problem well suited to illustrate the output fusion method that we propose. In terms of performance, we show that our method outperforms standard ensembling methods such as averages and stacked models partly thanks to an increased training stability and we also show that altough not the best, our method performance are comparable with state of the art methods designed specifically for the problem of few shot class incremental learning.<br /><br />
 
-						In the second part, as we just saw, we proposed a novel photorefraction pipeline based on deep learning to perform the regression of parameters M J0 and J45 given an input of 12 images captured by the device designed by Essilor. The whole system is controlled by a smartphone. We validate the performance on real as well as synthetic data and showed that the system outperforms a competing device. We also showed that a performance boost could be achieved using ensemble learning. Finally, since this is a medical diagnosis device, we focus on an important aspect which is its robustness. We evaluated it using the Lipschitz constant and also proposed methods to improve the robustness.
+							We also identified some work perspectives that could be carried out in order to either improve or deepen our work. First, identifying a use case or a scenario to showcase the interpretability properties of the f-average model. This would be useful for example in a medical context where a deep learning based tool would help a medical expert to identify the correct diagnosis.<br /><br />
+
+							For the few shot class incremental learning problem, we could improve weak learners by using open-set recognition models to replace the more simple nearest neighbor classifier. This would provide a finer inlierness prediction for the padding values.<br /><br />
+						</div>
 					</aside>
 				</section>
 				<section data-transition="fade" class="section_slide">
@@ -2416,13 +2486,11 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We also identified some work perspectives that could be carried out in order to either improve or deepen our work. First, identifying a use case or a scenario to showcase the interpretability properties of the f-average model. This would be useful for example in a medical context where a deep learning based tool would help a medical expert to identify the correct diagnosis. 
+						In the second part, as we just saw, we proposed a novel photorefraction pipeline based on deep learning to perform the regression of parameters M J0 and J45 given an input of 12 images captured by the device designed by Essilor. The whole system is controlled by a smartphone. We validate the performance on real as well as synthetic data and showed that the system outperforms a competing device. We also showed that a performance boost could be achieved using ensemble learning. Finally, since this is a medical diagnosis device, we focus on an important aspect which is its robustness. We evaluated it using the Lipschitz constant and also proposed methods to improve the robustness.<br /><br />
 
-						For the few shot class incremental learning problem, we could improve weak learners by using open-set recognition models to replace the more simple nearest neighbor classifier. This would provide a finer inlierness prediction for the padding values.
+						For our photorefraction work, we could further explore a work that was initiated with an intern who worked with us on this project: the use of generative models for image to image translation that would transform synthetic images into real or at least more realistic images.<br /><br />
 
-						For our photorefraction work, we could further explore a work that was initiated with an intern who worked with us on this project: the use of generative models for image to image translation that would transform synthetic images into real or at least more realistic images.
-
-						Around the core pipeline that we presented, the are other opportunities to use deep learning in order to improve the overall screening tool: for example, including a Deep learning-based out-of-range detection tool & invalid capture detection could benefit the end user.
+						Around the core pipeline that we presented, the are other opportunities to use deep learning in order to improve the overall screening tool: for example, including a Deep learning-based out-of-range detection tool & invalid capture detection could benefit the end user.<br /><br />
 
 						Finally, this project will still be developing, with a new acquisition campaign that will add data (which is as you know essential) to the training sets and with a future industrial deployment in perspective.
 					</aside>
@@ -2511,11 +2579,94 @@
 						Here are the references. Thank you for listening and now, if you have any, I will take your questions.
 					</aside>
 				</section>
-				<section>
+				<section data-transition="fade">
 					<div class="centred_img" style="margin-top:13%">
 						<!-- <img src="res/res_deep_photorefraction/device.png" /> -->
-						<div style="margin-top:5%"><h2>Thank you for listening !</h2></div>
+						<div style="margin-top:5%"><h1>Thank you for listening !</h1></div>
 					</div>
+				</section>
+				<section data-transition="fade" class="section_slide">
+					<h1>Summary</h1>
+					<div class="header_hr" data-id="header_hr">
+						<hr />
+					</div>
+					<div style="width: 100%;">
+						<div style="float:left; width: 50%;" data-id="left_col">
+							<h2>Part I - Ensemble learning</h2>
+							<ol>
+								<li>
+									<a class="summary_link" href="#/2">Introduction</a>
+									<ol>
+										<a class="summary_link" href="#/3"><li>Wisdom of the crowd</li></a>
+										<a class="summary_link" href="#/4"><li>Ensemble learning</li></a>
+										<a class="summary_link" href="#/5"><li>Generalised mean</li></a>
+									</ol>
+								</li>
+								<li>
+									<a class="summary_link" href="#/6">Proposed model</a>
+									<ol>
+										<a class="summary_link" href="#/7"><li>$f$-average</li></a>
+										<a class="summary_link" href="#/9"><li>Aggregated $f$-averages</li></a>
+										<a class="summary_link" href="#/10"><li>Stacked aggregated $f$-averages</li></a>
+										<a class="summary_link" href="#/11"><li>Application example</li></a>
+									</ol>
+								</li>
+								<li>
+									<a class="summary_link" href="#/12">Application to Few-Shot Class Incremental Learning</a>
+									<ol>
+										<a class="summary_link" href="#/14"><li>Problem setting</li></a>
+										<a class="summary_link" href="#/15"><li>Proposed approach</li></a>
+										<a class="summary_link" href="#/19"><li>Comparative results</li></a>
+									</ol>
+								</li>
+							</ol>
+						</div>
+						<div style=" float:right; width: 50%;">
+							<h2>Part II - Deep learning for photorefraction</h2>
+							<ol>
+								<li>
+									<a class="summary_link" href="#/21">Introduction</a>
+									<ol>
+										<a class="summary_link" href="#/23/0/1"><li>Context</li></a>
+										<a class="summary_link" href="#/25"><li>Objectives</li></a>
+										<a class="summary_link" href="#/26"><li>Eye refractive error</li></a>
+									</ol>
+								</li>
+								<li>
+									<a class="summary_link" href="#/27">Proposed pipeline</a>
+									<ol>
+										<a class="summary_link" href="#/28"><li>Photorefraction principle</li></a>
+										<a class="summary_link" href="#/30"><li>Essilor capture device</li></a>
+										<a class="summary_link" href="#/31"><li>Datasets, CNN architecture & training</li></a>
+									</ol>
+								</li>
+								<li>
+									<a class="summary_link" href="#/35">Implementation & performance</a>
+									<ol>
+										<a class="summary_link" href="#/36"><li>Regression models benchmark</li></a>
+										<a class="summary_link" href="#/37"><li>Real versus synthetic data</li></a>
+										<a class="summary_link" href="#/39"><li>Performance comparison with other device</li></a>
+										<a class="summary_link" href="#/40"><li>Implementation performance</li></a>
+										<a class="summary_link" href="#/41/0/0"><li>Ensembling regression models</li></a>
+									</ol>
+								</li>
+								<li>
+									<a class="summary_link" href="#/42">Robustness analysis</a>
+									<ol>
+										<a class="summary_link" href="#/44"><li>Numerical evaluation of robustness</li></a>
+										<a class="summary_link" href="#/46"><li>Improve robustness with a denoiser</li></a>
+										<a class="summary_link" href="#/48"><li>Controlled Lipschitz constant training</li></a>
+									</ol>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<div class="footer">
+						<hr />
+						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+					</div>
+					<aside class="notes">
+					</aside>
 				</section>
 			</div>
 		</div>
