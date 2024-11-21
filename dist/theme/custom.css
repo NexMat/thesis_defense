@@ -555,7 +555,8 @@ table.centred_table tbody tr:nth-child(odd) {
   border-bottom: 1px solid var(--r-main-color);
 }
 
-#synth_real_data_table tr:nth-child(2) {
+#synth_real_data_table tr:nth-child(2),
+#synth_real_data_table tr:nth-child(4) {
   border-bottom: 1px solid var(--r-main-color);
 }
 
@@ -586,10 +587,27 @@ table.centred_table tbody tr:nth-child(odd) {
   font-size: large;
 }
 
+#ref_table td:nth-child(1) {
+  min-width: 9em;
+  text-align: right;
+}
+
 #ref_table td {
   padding-bottom: .3em;
 }
 
 .speaker-controls-notes .value {
   font-size: var(--r-heading2-size);
+}
+
+#ref {
+  color: #B8C4BB;
+}
+
+#celadon {
+  color: #A3C9A8;
+}
+
+#afa_toy tr td:nth-child(1) {
+  text-align: left;
 }

@@ -1,0 +1,64 @@
+first slide enlever remerciements
+
+2: plus court mettre les deux part direct, resumer les contenus
+
+5: mieux décrire les figures, mieux préciser le sota et dire leur limitation lister bagging boosting, dire que les models sont entraines par eux et que nous on se focus sur output fusion en assumant des modeles pre entraines,
+dire, par exemple les logits de classifications de N classes
+
+8: mieux préciser que les x_k sont les outputs des K modèles et pas les entrées
+
+9: enlever it is possible et dire on l'a fait. préciser single layer. We provide in this table activation functions that allow to retrieve standard means formulas. Ajouter h. Dire qu'on apprend W a partir d'un dataset et d'une task relative loss. Mettre en couleur les W et les A.
+
+10: mettre (AFA) dans le titre. Repréciser qu'on apprend les W. Ajouter 1 slide pour toy example 1. garder accuracy et f1. ramener la présentation des comparaison et enlever après.
+
+14: ajouter une colonne quantité training set (mettre n_class à la fin). Les méthodes classiques adoptent telle ou telle approche et occasion de dire qu'on est les seuls à faire de l'ensemble Learning sur le fscil.
+
+15: feature extractor 
+
+17: enlever les équations, mieux expliquer le padding, ou simplifier le padding
+
+18: mieux présenter les figures, dire les 4 datasets, dire la couleur du deep nn, f1 score the higher the better
+
+19: présenter vite fait fact ? redire les couleurs, f1 score toujours higher better
+
+20: Submitted paper avec la réf dans le journal Signal Processing
+
+21: moins parler du plan
+
+25: mieux préciser la séparation entre Essilor et Inria (dire que leur appareil est basé sur la photorefraction et c'est leur idée)
+
+29: remplacer ametropia par sphere cylinder axis parameters
+
+30: a partir des 12 images remonter aux 3 paramètres, qu'on propose de faire via deep Learning redire (avec la slide d'avant)
+
+31: supervised Learning, dataset with annotated images
+
+32: insister sur la manière dont on a selectionné le modèle (c'était pas si facile) 
+
+33: ajouter la loss
+
+34: expliquer comme c'est écrit, ajouter SCA, run the image pre-processing,
+
+36: ajouter les objectifs requirements
+
+37: ajouter un bland altmann
+
+39: 130 MB for all three models
+
+40: k-NN developed by Essilor
+
+42: préciser qu'on fait x+b et voir comment il se propage (sensitivity)
+
+43: enlever introduction how to evaluate numerically the robustness
+
+44: préciser insister avoir la plus petite valeur possible sur les histo, low value en gras
+
+45: maintenant qu'on peut mesurer, on va proposer deux approches pour l'améliorer
+
+46: mettre lipschitz constant en haut à gauche dans la table 1 et error sur la deuxième
+
+49: insister qu'on diminue le range des constantes, enlever le caption de la figure
+
+50: ajouter publication ISBI, mieux préciser qui fait quoi, travail d'équipe, fulfills performance requirement
+
+52: faire conclu + perspective par partie
