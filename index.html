@@ -772,7 +772,7 @@
 					<h1>FSCIL: proposed approach - pipeline</h1>
 					<hr />
 					<div class="centred_img">
-						<img src="res/fscil_afa_pipeline.png" style="width: 45%" />
+						<img src="res/fscil_afa_pipeline.png" style="width: 48%;" />
 						<div style="width: 70%;">Scheme of our proposed approach. Each session is considered
 							as a few-shot task in order to build a set of models that are then ensembled using our AFA
 							method.
@@ -1976,7 +1976,7 @@
 						\]
 					</div>
 					<div class="centred_img">
-						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width: 80%;"/>
+						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm2_mask.png" style="width: 85%;"/>
 						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the CNN</div>
 					</div>
 					<div style="margin-top: 3%;">Reasonably low values of the local weighted Lipschitz constant are a strong indicator of the <b>robustness of the network</b> <span id="ref">[Gupta, 2022]</span>.</div>
@@ -2004,179 +2004,198 @@
 						A first method to improve the robustness of our model that we explored is the application of a denoiser at test time. As you can see in this example image, the denoiser will smooth the image and thus remove some possible input perturbations. 
 					</aside>
 				</section>
-				<section class="section_slide">
-					<h1>Robustness: improving robustness with a denoiser</h1>
-					<hr />
-					<table class="centred_table">
-						<tr>
-							<td></td>
-							<td colspan="2">$M$</td>
-							<td colspan="2">$J_0$</td>
-							<td colspan="2">$J_{45}$</td>
-						</tr>
-						<tbody>
-							<tr style="border-bottom: 1px solid #254456;">
-								<td>Lipschitz constant</td>
-								<td>Original</td>
-								<td>Denoised</td>
-								<td>Original</td>
-								<td>Denoised</td>
-								<td>Original</td>
-								<td>Denoised</td>
-							</tr>
-							<tr>
-								<td>count</td>
-								<td>906</td>
-								<td>906</td>
-								<td>906</td>
-								<td>906</td>
-								<td>906</td>
-								<td>906</td>
-							</tr>
-							<tr class="fragment highlight-green" data-fragment-index="1">
-								<td>mean</td>
-								<td>0.61</td>
-								<td><b>0.54</b></td>
-								<td>1.47</td>
-								<td><b>1.28</b></td>
-								<td>2.04</td>
-								<td><b>1.46</b></td>
-							</tr>
-							<tr>
-								<td>std</td>
-								<td><b>0.36</b></td>
-								<td>0.41</td>
-								<td><b>1.07</b></td>
-								<td>1.13</td>
-								<td>1.66</td>
-								<td><b>1.10</b></td>
-							</tr>
-							<tr>
-								<td>min</td>
-								<td>0.05</td>
-								<td><b>0.03</b></td>
-								<td>0.08</td>
-								<td>0.08</td>
-								<td>0.05</td>
-								<td><b>0.04</b></td>
-							</tr>
-							<tr>
-								<td>25%</td>
-								<td>0.34</td>
-								<td><b>0.26</b></td>
-								<td>0.70</td>
-								<td><b>0.57</b></td>
-								<td>0.89</td>
-								<td><b>0.72</b></td>
-							</tr>
-							<tr>
-								<td>median</td>
-								<td>0.53</td>
-								<td><b>0.42</b></td>
-								<td>1.21</td>
-								<td><b>0.97</b></td>
-								<td>1.56</td>
-								<td><b>1.12</b></td>
-							</tr>
-							<tr>
-								<td>75%</td>
-								<td>0.79</td>
-								<td><b>0.69</b></td>
-								<td>1.95</td>
-								<td><b>1.61</b></td>
-								<td>2.63</td>
-								<td><b>1.87</b></td>
-							</tr>
-							<tr>
-								<td>max</td>
-								<td><b>2.45</b></td>
-								<td>3.22</td>
-								<td><b>7.98</b></td>
-								<td>9.11</td>
-								<td>11.34</td>
-								<td><b>6.81</b></td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="centred_table_title">Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
-					
-					<table class="centred_table fragment fade-up" data-fragment-index="2" style="margin-top: 5%;">
-						<tr>
-							<td></td>
-							<td colspan="2">$M$</td>
-							<td colspan="2">$J_0$</td>
-							<td colspan="2">$J_{45}$</td>
-						</tr>
-						<tbody>
-							<tr style="border-bottom: 1px solid #254456;">
-								<td>Error</td>
-								<td>Raw</td>
-								<td>Denoised</td>
-								<td>Raw</td>
-								<td>Denoised</td>
-								<td>Raw</td>
-								<td>Denoised</td>
-							</tr>
-							<tr>
-								<td>mean</td>
-								<td><b>-0.04</b></td>
-								<td>0.29</td>
-								<td><b>-0.02</b></td>
-								<td>0.03</td>
-								<td><b>0.01</b></td>
-								<td>0.05</td>
-							</tr>
-							<tr class="fragment highlight-red" data-fragment-index="3">
-								<td>std</td>
-								<td><b>0.56</b></td>
-								<td>0.75</td>
-								<td><b>0.27</b></td>
-								<td>0.33</td>
-								<td><b>0.22</b></td>
-								<td>0.29</td>
-							</tr>
-							<tr>
-								<td>min</td>
-								<td>-2.17</td>
-								<td><b>-1.91</b></td>
-								<td><b>-0.89</b></td>
-								<td>-1.31</td>
-								<td><b>-0.81</b></td>
-								<td>-0.94</td>
-							</tr>
-							<tr>
-								<td>max</td>
-								<td><b>2.50</b></td>
-								<td>2.92</td>
-								<td><b>0.98</b></td>
-								<td>1.34</td>
-								<td><b>1.18</b></td>
-								<td>1.69</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="centred_table_title fragment fade-up" data-fragment-index="2">Performance comparison between original and denoised images</div>
-					<div class="footer">
+				<section>
+					<section class="section_slide">
+						<h1>Robustness: improving robustness with a denoiser</h1>
 						<hr />
-						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
-					</div>
-					<aside class="notes">
-						As shows this table, a substantial improvement in the values of the weighted local Lipschitz constants is visible: in average, for M it goes from 0.61 to 0.54, from 1.47 to 1.28 for J0 and from 2.04 to 1.46 for J 45.<br /><br />
+						<table class="centred_table">
+							<tr>
+								<td></td>
+								<td colspan="2">$M$</td>
+								<td colspan="2">$J_0$</td>
+								<td colspan="2">$J_{45}$</td>
+							</tr>
+							<tbody>
+								<tr style="border-bottom: 1px solid #254456;">
+									<td>Lipschitz constant</td>
+									<td>Original</td>
+									<td>Denoised</td>
+									<td>Original</td>
+									<td>Denoised</td>
+									<td>Original</td>
+									<td>Denoised</td>
+								</tr>
+								<tr>
+									<td>count</td>
+									<td>906</td>
+									<td>906</td>
+									<td>906</td>
+									<td>906</td>
+									<td>906</td>
+									<td>906</td>
+								</tr>
+								<tr class="fragment highlight-green" data-fragment-index="1">
+									<td>mean</td>
+									<td>0.61</td>
+									<td><b>0.54</b></td>
+									<td>1.47</td>
+									<td><b>1.28</b></td>
+									<td>2.04</td>
+									<td><b>1.46</b></td>
+								</tr>
+								<tr>
+									<td>std</td>
+									<td><b>0.36</b></td>
+									<td>0.41</td>
+									<td><b>1.07</b></td>
+									<td>1.13</td>
+									<td>1.66</td>
+									<td><b>1.10</b></td>
+								</tr>
+								<tr>
+									<td>min</td>
+									<td>0.05</td>
+									<td><b>0.03</b></td>
+									<td>0.08</td>
+									<td>0.08</td>
+									<td>0.05</td>
+									<td><b>0.04</b></td>
+								</tr>
+								<tr>
+									<td>25%</td>
+									<td>0.34</td>
+									<td><b>0.26</b></td>
+									<td>0.70</td>
+									<td><b>0.57</b></td>
+									<td>0.89</td>
+									<td><b>0.72</b></td>
+								</tr>
+								<tr>
+									<td>median</td>
+									<td>0.53</td>
+									<td><b>0.42</b></td>
+									<td>1.21</td>
+									<td><b>0.97</b></td>
+									<td>1.56</td>
+									<td><b>1.12</b></td>
+								</tr>
+								<tr>
+									<td>75%</td>
+									<td>0.79</td>
+									<td><b>0.69</b></td>
+									<td>1.95</td>
+									<td><b>1.61</b></td>
+									<td>2.63</td>
+									<td><b>1.87</b></td>
+								</tr>
+								<tr>
+									<td>max</td>
+									<td><b>2.45</b></td>
+									<td>3.22</td>
+									<td><b>7.98</b></td>
+									<td>9.11</td>
+									<td>11.34</td>
+									<td><b>6.81</b></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="centred_table_title">Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
+						
+						<table class="centred_table fragment fade-up" data-fragment-index="2" style="margin-top: 5%;">
+							<tr>
+								<td></td>
+								<td colspan="2">$M$</td>
+								<td colspan="2">$J_0$</td>
+								<td colspan="2">$J_{45}$</td>
+							</tr>
+							<tbody>
+								<tr style="border-bottom: 1px solid #254456;">
+									<td>Error</td>
+									<td>Raw</td>
+									<td>Denoised</td>
+									<td>Raw</td>
+									<td>Denoised</td>
+									<td>Raw</td>
+									<td>Denoised</td>
+								</tr>
+								<tr>
+									<td>mean</td>
+									<td><b>-0.04</b></td>
+									<td>0.29</td>
+									<td><b>-0.02</b></td>
+									<td>0.03</td>
+									<td><b>0.01</b></td>
+									<td>0.05</td>
+								</tr>
+								<tr class="fragment highlight-red" data-fragment-index="3">
+									<td>std</td>
+									<td><b>0.56</b></td>
+									<td>0.75</td>
+									<td><b>0.27</b></td>
+									<td>0.33</td>
+									<td><b>0.22</b></td>
+									<td>0.29</td>
+								</tr>
+								<tr>
+									<td>min</td>
+									<td>-2.17</td>
+									<td><b>-1.91</b></td>
+									<td><b>-0.89</b></td>
+									<td>-1.31</td>
+									<td><b>-0.81</b></td>
+									<td>-0.94</td>
+								</tr>
+								<tr>
+									<td>max</td>
+									<td><b>2.50</b></td>
+									<td>2.92</td>
+									<td><b>0.98</b></td>
+									<td>1.34</td>
+									<td><b>1.18</b></td>
+									<td>1.69</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="centred_table_title fragment fade-up" data-fragment-index="2">Performance comparison between original and denoised images</div>
+						<div class="footer">
+							<hr />
+							<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+						</div>
+						<aside class="notes">
+							As shows this table, a substantial improvement in the values of the weighted local Lipschitz constants is visible: in average, for M it goes from 0.61 to 0.54, from 1.47 to 1.28 for J0 and from 2.04 to 1.46 for J 45.<br /><br />
 
-						However, the drawback is of course that, by smoothing images to remove input perturbations, some useful information can also be removed in the process.<br /><br />
-						➡️ This is observable in this second table where we see that a slight decrease in prediction performance occurs when applying such denoiser, with the biggest increase being for M which goes from 0.56 in standard deviation to 0.75. 
-					</aside>
+							However, the drawback is of course that, by smoothing images to remove input perturbations, some useful information can also be removed in the process.<br /><br />
+							➡️ This is observable in this second table where we see that a slight decrease in prediction performance occurs when applying such denoiser, with the biggest increase being for M which goes from 0.56 in standard deviation to 0.75. 
+						</aside>
+					</section>
+					<section class="section_slide">
+						<h1>Robustness: improving robustness with a denoiser</h1>
+						<hr />
+						<div class="centred_img" style="margin-top: 8%;">
+							<img src="res/res_deep_photorefraction/denoiser_perf.png" style="width:100%" />
+							<div>CNN performance in function of the denoiser noise variance</div>
+						</div>
+						<div class="footer">
+							<hr />
+							<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
+						</div>
+						<aside class="notes">
+							page 110 of the manuscript
+						</aside>
+					</section>
 				</section>
 				<section class="section_slide">
 					<h1>Robustness: controlled Lipschitz constant training</h1>
 					<hr />
 					Using the deel-lip library <span id="ref">[Serrurier, 2020]</span>,
 					<div class="centred_img" style="margin-top: 2%;">
-						<img src="res/res_deep_photorefraction/lipschitz/perf.png" style="width:95%" />
+						<img src="res/res_deep_photorefraction/deel_lip_perf.png" style="width:100%" />
 						<div>Error standard deviation of a model trained with deel-lip in function of $K$</div>
 					</div>
 					<div style="margin-top: 5%;">
-						The lower the Lipschitz constant, the greater the constraints. <br />
+						The lower the Lipschitz constant, the greater the constraints.
+					</div>
+					<div style="margin-top: 1%;">
 						➡️ balance robustness and performance
 					</div>
 					<div class="footer">
@@ -2258,28 +2277,29 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We chose a CNN constrained to have a Lipschitz constant below 4 as it is the lowest value for which the models fit the performance requirements. 
+						We chose a CNN constrained to have a Lipschitz constant below 4 as it is the lowest value for which the models fit the performance requirements.<br /><br />
+						These histograms show that the weighted local Lipschitz constants have much lower value for the CNN with a Lipschitz constant below 4 than the standard CNN (please be mindful of the different scale on the x-axis).
 					</aside>
 				</section>
-				<section data-transition="slide-in fade-out" class="section_slide">
+				<!-- <section data-transition="slide-in fade-out" class="section_slide">
 					<h1>Robustness: controlled Lipschitz constant training</h1>
 					<hr />
 					<div class="centred_img" style="margin-top: 10%;">
 						<img src="res/res_deep_photorefraction/lipschitz_comparison.png" style="width:140%" />
 						<div>Histograms comparing the weighted local Lipschitz constants computed with $L_2$ norm with the standard CNN and the 4-LCNN</div>
 					</div>
-					<!-- <div class="centred_img" style="margin-top: 1%;">
+					<div class="centred_img" style="margin-top: 1%;">
 						<img src="res/res_deep_photorefraction/lipschitz/deelcnn_norm1_mask.png" style="width:70%" />
 						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the 4-LCNN</div>
-					</div>	 -->
+					</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						These histograms show that the weighted local Lipschitz constants have much lower value for the CNN with a Lipschitz constant below 4 than the standard CNN (please be mindful of the different scale on the x-axis).
+
 					</aside>
-				</section>
+				</section> -->
 				<section data-transition="fade" class="section_slide">
 					<h1>Part II - Conclusion</h1>
 					<hr />
