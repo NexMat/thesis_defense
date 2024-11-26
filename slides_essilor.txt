@@ -1,0 +1,103 @@
+- Enlever l'image de l'add-on
+- Mieux articuler et plus fluide 
+- Insister plus sur le lien des deux sujets, en particulier sur la slide 42
+- Dans les perspectives, mentionner ongoing campaigns dans le monde, ajouter qu'on peut éventuellement détecter d'autres conditions cataracte, more realistic images, d'ici 2 ans le produit sortira
+
+Vérifier Ph.D. defense
+
+12: préciser ce qu'est f1 score et même accuracy, pourquoi m4 marche moins bien que m3 ok mais si on continue lol ?
+15: nway nshots pas clair du tout
+27: plutôt parler de déformations locales de l'œil pour gagner du temps, mieux dire que la vaste majorité de la pop est dans les intervalles. SCA décrivent la puissance correctrice pas les défauts de l'œil
+30: mieux faire ressortir qu'on connait 2 sur 3 (distance et position des leds) mieux justifier qu'on utilise le ml car les méthodes de base ne sont pas performantes
+31: Préciser que c'est relié à un smartphone, infrared pour prevent pupil constriction plutôt que fermage des yeux
+32: expensive, limited, very long (jours pour image synthétiques vs. mois pour images réelles)
+33: M: -16, J45 -3, + 3. Sur le passage, de sca, dire que c'est la même unité et que c'est uniforme. commencer par ca et pas le modèle
+37: ajouter le nombre de patients, 0.70 pour M
+39: préciser que c'est une représentation classique pour faire de l'agreement. mieux expliquer, 1.96 std (95%)
+46: préciser les axes des histogrammes
+
+Pourquoi y a-t-il plusieurs LEDS: plusieurs orientations pour l'astigmatisme, plusieurs distances selon la distance, plus t'es loin plus on mesure les amétropies fortes. réviser les dioptres (inverse de la distance)
+
+<table class="centred_table" id="afa_toy" style="margin-top: 3%;">
+								<tr style="border-bottom: 1px solid #254456;">
+									<td></td>
+									<td>Accuracy</td>
+									<td>$F_1$</td>
+								</tr>
+								<tr>
+									<td>Classifier 1 ($\sigma$ = 0.3)</td>
+									<td>58.08</td>
+									<td>57.92</td>
+								</tr>
+								<tr>
+									<td>Classifier 2 ($\sigma$ = 0.4)</td>
+									<td>49.17</td>
+									<td>48.68</td>
+								</tr>
+								<tr>
+									<td>Classifier 3 ($\sigma$ = 0.5)</td>
+									<td>44.75</td>
+									<td>44.67</td>
+								</tr>
+								<tr style="border-bottom: 1px solid #254456;">
+									<td>Classifier 4 ($\sigma$ = 0.6)</td>
+									<td>44.42</td>
+									<td>43.94</td>
+								</tr>
+								<tr>
+									<td>Arithmetic mean</td>
+									<td>70.42</td>
+									<td>70.35</td>
+								</tr>
+								<tr>
+									<td>Geometric mean</td>
+									<td>70.08</td>
+									<td>70.04</td>
+								</tr>
+								<tr>
+									<td>Harmonic mean</td>
+									<td>68.08</td>
+									<td>68.04</td>
+								</tr>
+								<tr style="border-bottom: 1px solid #254456;">
+									<td>Majority vote</td>
+									<td>62.33</td>
+									<td>61.58</td>
+								</tr>
+								<tr>
+									<td>Shallow NN</td>
+									<td>70.75</td>
+									<td>70.71</td>
+								</tr>
+								<tr>
+									<td>Deep NN</td>
+									<td>65.42</td>
+									<td>65.41</td>
+								</tr>
+								<tr style="border-bottom: 1px solid #254456;">
+									<td>Weighted avg. NN</td>
+									<td>70.42</td>
+									<td>70.35</td>
+								</tr>
+								<tr>
+									<td>AFA ($M$ = 1)</td>
+									<td>70.83</td>
+									<td>70.78</td>
+								</tr>
+								<tr>
+									<td>AFA ($M$ = 2)</td>
+									<td>71.08</td>
+									<td>70.99</td>
+								</tr>
+								<tr>
+									<td>AFA ($M$ = 3)</td>
+									<td><b>72.67</b></td>
+									<td><b>72.62</b></td>
+								</tr>
+								<tr>
+									<td>AFA ($M$ = 4)</td>
+									<td>71.08</td>
+									<td>70.83</td>
+								</tr>
+							</table>
+							<div class="centred_table_title"><b>Table</b>: Performance comparison between standard ensemble learning methods</div>

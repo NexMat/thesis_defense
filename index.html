@@ -14,12 +14,12 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-transition="fade-out" class="center" style="color: #254456;">
-					<div style="width: 100%;">
-						<div style="float:left; width: 35%; margin-top: 10%;">
-							<img src="res/za/logo_opis.png" alt="Logos OPIS">
+					<div style="width: 100%; margin-top: 5%;">
+						<div style="float:left; width: 20%;">
+							<img src="res/za/logo_opis_vertical.png" alt="Logos OPIS" style="width:100%;">
 						</div>
-						<div style="float:right; width: 64%;">
-							<h1>Novel Deep Learning Approaches For Image Analysis</h1>
+						<div style="float:right; width: 75%;">
+							<h1 style="font-size: 3em;">Novel Deep Learning Approaches For Image Analysis</h1>
 							<h2>Mathieu Vu</h2>
 							<em>Ph.D. defense - 28th November 2024</em>
 							<table class="left_aligned" style="margin-top:5%;">
@@ -112,7 +112,6 @@
 									Introduction
 									<ol>
 										<li>Context</li>
-										<li>Objectives</li>
 										<li>Eye refractive error</li>
 									</ol>
 								</li>
@@ -150,8 +149,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We will divide the content of this presentation into two main parts<br /><br />
-						➡️ the first being about ensemble learning and the second about a deep learning approach for photorefraction.<br /><br />
+						We will divide the content of this presentation into two main parts ➡️ the first being about ensemble learning and the second about a deep learning approach for photorefraction.<br /><br />
 						➡️For both of those parts, we will first have an introduction section,<br /><br />
 						➡️then in a second section, we will present the details of our proposed approach,<br /><br />
 						➡️and finally in the last section, we will evaluate and compare their respective performance.
@@ -201,7 +199,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Let's start with the first section of our first part: we will introduce the basic principles of ensemble learning as well as what a generalised mean is.
+						Let's start with the first section of our first part: an introduction on ensemble learning.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -232,16 +230,22 @@
 					<h1>Introduction: ensemble learning</h1>
 					<hr />
 					<div class="centred_img">
-						<img src="res/ensemble_learning.jpg" style="width:55%" />
-						<div>where $(\forall k \in \{1,\ldots, K\}), x_k \in \mathbb{R}^N$ and $\widetilde{x} \in
+						<img src="res/ensemble_learning.jpg" style="width:50%" />
+						<div>where $(\forall k \in \{1,\ldots, K\}) x_k \in \mathbb{R}^N$ and $\widetilde{x} \in
 							\mathbb{R}^N$
 						</div>
 					</div>
-					<div style="margin-top: 4%;">
+					<div style="margin-top: 3.5%;">
 						<b>Goal 🎯</b>: leverage multiple models to enhance performance on a specific task <br />
 						<ul>
-							<li><b>Weak learners training</b>: get an ensemble of diverse models (eg. bagging, boosting etc.)</li>
-							<li><b>Output fusion</b>: gather weak learners prediction to obtain the final unified prediction (eg. averaging, stacking etc.)</li>
+							<li><b>Weak learners training</b>: get an ensemble of diverse models (e.g. bagging, boosting etc.)</li>
+							<li><b>Output fusion</b>: gather weak learners prediction to obtain the final unified prediction
+								<ul style="list-style: none;">
+									<li>→ averaging</li>
+									<li>→ stacking</li>
+								</ul>
+								<!-- (eg. averaging, stacking etc.) -->
+							</li>
 						</ul>
 					</div>
 					<div class="footer">
@@ -262,7 +266,7 @@
 					<h1>Introduction: generalised average</h1>
 					<hr />
 					<div>
-						Consider $K$ estimates $(x_k)_{1 \le k \le K}$ and let $\widetilde{x}$ in $[0, +\infty[$ be the predicted output after ensembling. <br />
+						Consider $K$ estimates $(x_k)_{1 \le k \le K}$ and let $\widetilde{x} \in [0, +\infty[$ be the predicted output after ensembling. <br />
 					</div>
 					<div style="margin-top: 1%;">
 						<b>Standard average rules:</b> <br />
@@ -284,15 +288,15 @@
 								<td>$\widetilde{x} = \left( \sum_{k=1}^K \omega_{k} x_{k}^q \right)^{1/q}$</td>
 							</tr>
 						</table>
-						where $(\omega_k)_{1 \le k \le K}$ are some weights such that $\sum_{k=1}^K \omega_k = 1$.
+						where $(\omega_k)_{1 \le k \le K}$ are some nonnegative weights such that $\sum_{k=1}^K \omega_k = 1$.
 					</div>
 					<div class="theorem">
 						<div class="theorem_title">Generalised average <span id="ref">[Kolmogorov, 1930]</span></div>
 						$\widetilde{x} = f^{-1}\Big(\sum_{k=1}^K \omega_{k} f(x_{k})\Big)$
 					</div>
-					with $(\forall k \in \{1,\ldots, K\}), x_k \in [0, +\infty[^N$, $\widetilde{x} \in [0, +\infty[^N$, and
+					with $(\forall k \in \{1,\ldots, K\})\; x_k \in [0, +\infty[^N$, $\widetilde{x} \in [0, +\infty[^N$, and
 					$f:[0, +\infty[^N \mapsto \mathbb{R}^{N}$ bijective, with inverse $f^{-1}$. <br /><br />
-					🤔 How to learn the optimal averaging rule/weights?
+					<h3>🤔 How to learn the optimal averaging rule/weights?</h3>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024
@@ -357,7 +361,7 @@
 						$\widetilde{x} = f^{-1}\Big(\sum_{k=1}^K \omega_{k} f(x_{k})\Big)$
 					</div>
 					<div>
-						with $(\forall k \in \{1,\ldots, K\}), x_k \in [0, +\infty[^N$, $\widetilde{x} \in [0, +\infty[^N$, and
+						with $(\forall k \in \{1,\ldots, K\})\; x_k \in [0, +\infty[^N$, $\widetilde{x} \in [0, +\infty[^N$, and
 						$f:[0, +\infty[^N \mapsto \mathbb{R}^{N}$ bijective, with inverse $f^{-1}$.
 					</div>
 					<div style="margin-top: 5%;" class="theorem">
@@ -368,7 +372,7 @@
 						<tr>
 							<td>where</td>
 							<td>$\boldsymbol{x}$:</td>
-							<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
+							<td>vector in $\mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 						</tr>
 						<tr>
 							<td></td>
@@ -378,7 +382,7 @@
 						<tr>
 							<td></td>
 							<td>$W$:</td>
-							<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
+							<td>matrix in $[0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
 						</tr>
 					</table>
 					<div class="footer">
@@ -399,7 +403,7 @@
 						<hr />
 						<div class="centred_img">
 							<img src="res/f-average.png" style="width:55%" />
-							<div><b>Figure</b>: Structure of a neural network modelling an $f$-average</div>
+							<div>Structure of a neural network modelling an $f$-average</div>
 						</div>
 						<div style="margin-top: 2%;">An optimal ensembling rule based on the average encoded in $(f,f^{-1})$ can
 							be obtained through supervised learning of matrix <span id="celadon">$W$</span>.
@@ -417,9 +421,9 @@
 							<tbody>
 								<tr>
 									<td>Arithmetic</td>
-									<td>$Id$</td>
+									<td>$\text{Id}$</td>
 									<td>$[0,+\infty[^N$</td>
-									<td>$Id$</td>
+									<td>$\text{Id}$</td>
 									<td>$[0,+\infty[^N$</td>
 								</tr>
 								<tr>
@@ -446,7 +450,7 @@
 							</tbody>
 						</table>
 						<div class="centred_table_title">
-							<b>Table</b>: Examples for $f$ and $f^{-1}$, and definition domains.
+							Examples for $f$ and $f^{-1}$, and definition domains.
 							For geometric and harmonic means, classical mean formulas are retrieved when $\epsilon \to 0$.
 						</div>
 						<div class="footer">
@@ -454,7 +458,7 @@
 							<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 						</div>
 						<aside class="notes">
-							We proposed to model the $f$-average function described previously with a single layer neural network. By choosing adequately f and its inverse function, and by having a matrix W with the constraint previously mentioned, it is possible to model a specific type of average.<br /><br />
+							We proposed to model the f-average function described previously with a single layer neural network. By choosing adequately f and its inverse function, and by having a matrix W with the constraint previously mentioned, it is possible to model a specific type of average.<br /><br />
 							Then with a dataset and a standard training, using a task-relative loss, we learn the optimal weight W.<br /><br />
 							We provide in this table activation functions that allow to retrieve standard means formulas. For example, the most straightforward would be the arithmetic mean where both f and its inverse are linear activations.<br /><br />
 
@@ -485,13 +489,13 @@
 					<hr />
 					<div class="centred_img">
 						<img src="res/aggregated-f-average.png" style="width:40%" />
-						<div><b>Figure</b>: Structure of a neural network aggregating $J$ $f$-averages</div>
+						<div>Structure of a neural network aggregating $J$ $f$-averages</div>
 					</div>
 					<table class="notations_table" style="margin-top: 3%;">
 						<tr>
 							<td>$\forall j \in \{1,\cdots,J\}$,</td>
 							<td>$\boldsymbol{x_j}$:</td>
-							<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
+							<td>vector in $\mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 						</tr>
 						<tr>
 							<td></td>
@@ -501,7 +505,7 @@
 						<tr>
 							<td></td>
 							<td><span id="celadon">$W_j$</span>:</td>
-							<td>$\in [0, + \infty[^{N\times KN}$ such that $W_j 1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
+							<td>matrix in $[0, + \infty[^{N\times KN}$ such that $W_j 1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
 						</tr>
 						<tr>
 							<td></td>
@@ -511,7 +515,7 @@
 						<tr>
 							<td></td>
 							<td><span id="celadon">$A$</span>:</td>
-							<td>$\in \mathbb{R}^{N \times NJ}$</td>
+							<td>matrix in $\mathbb{R}^{N \times NJ}$</td>
 						</tr>
 					</table>
 					<!-- <div style="margin-top: 2%;">
@@ -523,7 +527,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						That is why we propose a larger model that we will call aggregated-f-averages which can model as many types of averages as we would need. For example, J branches implement J times the neural network structure previously presented in order to model J different types of averages. Then, those are aggregated with a final layer A which, once trained, will select and combine in an optimal the result from each different type of average.<br /><br />
+						That is why we propose a larger model that we will call aggregated-f-averages which can model as many types of averages as we would need. For example, J branches implement J times the neural network structure previously presented in order to model J different types of averages. Then, those are aggregated with a final layer A. Once matrices W and A are trained, the model will be able to select and combine in an optimal manner the result from each different type of average.<br /><br />
 						Finally, we set an activation function according to the task, for example by using a softmax for classification.
 					</aside>
 				</section>
@@ -532,7 +536,7 @@
 					<hr />
 					<div class="centred_img">
 						<img src="res/stacked-aggregated-f-average.png" style="width:85%" />
-						<div><b>Figure</b>: Composition of $M$ levels of aggregated $f$-averages. The operation depicted
+						<div>Composition of $M$ levels of aggregated $f$-averages. The operation depicted
 							with the sign $\|$ represents a concatenation.
 						</div>
 					</div>
@@ -540,7 +544,7 @@
 						<tr>
 							<td>$\forall j \in \{1,\cdots,J\}$ and</td>
 							<td>$\boldsymbol{x_{m,j}}$:</td>
-							<td>$\in \mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
+							<td>vector in $\mathbb{R}^{KN}$, vertical concatenation of the inputs $(x_k)_{1 \le k \le K}$</td>
 						</tr>
 						<tr>
 							<td>$\forall m \in \{1,\cdots,M\}$,</td>
@@ -550,21 +554,18 @@
 						<tr>
 							<td></td>
 							<td><span id="celadon">$W_{m,j}$</span>:</td>
-							<td>$\in [0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} =
-								1\kern-0.25em\text{l}_{N}$
-							</td>
+							<td>matrix in $[0, + \infty[^{N\times KN}$ such that $W1\kern-0.25em\text{l}_{KN} = 1\kern-0.25em\text{l}_{N}$</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>$f^{-1}_{m,j}$:</td>
-							<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0,
-								+\infty[^{N}$
+							<td>inverse activation function operating componentwise from $\mathbb{R}^{N}$ to $[0, +\infty[^{N}$
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td><span id="celadon">$A$</span>:</td>
-							<td>$\in \mathbb{R}^{N \times NJ}$</td>
+							<td>matrix in $\mathbb{R}^{N \times NJ}$</td>
 						</tr>
 					</table>
 					<div class="footer">
@@ -573,95 +574,21 @@
 					</div>
 					<aside class="notes">
 						Since we are using neural networks, it is only natural to build a deeper model in the hopes of obtaining better performance. Here we do so by stacking multiple aggregated f averages models.<br /><br />
-						Inbetween layers of aggregated f-averages model, a concatenation operation is done and similarly as before, we retrieve again the aggregation layer A at the end of the model.
+						Inbetween layers of aggregated f-averages model, a concatenation operation is done and similarly as before, we retrieve again the aggregation layer A at the end of the model.<br /><br />
+						Once again, tanks to the training of matrices W in each layer and of matrice A, the model should be able to output the optimal ensembled prediction in the end.
 					</aside>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
 					<h1>Application example: simulated noisy classifiers</h1>
 					<hr />
-					<table class="centred_table" id="afa_toy" style="margin-top: 3%;">
-						<tr style="border-bottom: 1px solid #254456;">
-							<td></td>
-							<td>Accuracy</td>
-							<td>$F_1$</td>
-						</tr>
-						<tr>
-							<td>Classifier 1 ($\sigma$ = 0.3)</td>
-							<td>58.08</td>
-							<td>57.92</td>
-						</tr>
-						<tr>
-							<td>Classifier 2 ($\sigma$ = 0.4)</td>
-							<td>49.17</td>
-							<td>48.68</td>
-						</tr>
-						<tr>
-							<td>Classifier 3 ($\sigma$ = 0.5)</td>
-							<td>44.75</td>
-							<td>44.67</td>
-						</tr>
-						<tr style="border-bottom: 1px solid #254456;">
-							<td>Classifier 4 ($\sigma$ = 0.6)</td>
-							<td>44.42</td>
-							<td>43.94</td>
-						</tr>
-						<tr>
-							<td>Arithmetic mean</td>
-							<td>70.42</td>
-							<td>70.35</td>
-						</tr>
-						<tr>
-							<td>Geometric mean</td>
-							<td>70.08</td>
-							<td>70.04</td>
-						</tr>
-						<tr>
-							<td>Harmonic mean</td>
-							<td>68.08</td>
-							<td>68.04</td>
-						</tr>
-						<tr style="border-bottom: 1px solid #254456;">
-							<td>Majority vote</td>
-							<td>62.33</td>
-							<td>61.58</td>
-						</tr>
-						<tr>
-							<td>Shallow NN</td>
-							<td>70.75</td>
-							<td>70.71</td>
-						</tr>
-						<tr>
-							<td>Deep NN</td>
-							<td>65.42</td>
-							<td>65.41</td>
-						</tr>
-						<tr style="border-bottom: 1px solid #254456;">
-							<td>Weighted avg. NN</td>
-							<td>70.42</td>
-							<td>70.35</td>
-						</tr>
-						<tr>
-							<td>AFA ($M$ = 1)</td>
-							<td>70.83</td>
-							<td>70.78</td>
-						</tr>
-						<tr>
-							<td>AFA ($M$ = 2)</td>
-							<td>71.08</td>
-							<td>70.99</td>
-						</tr>
-						<tr>
-							<td>AFA ($M$ = 3)</td>
-							<td><b>72.67</b></td>
-							<td><b>72.62</b></td>
-						</tr>
-						<tr>
-							<td>AFA ($M$ = 4)</td>
-							<td>71.08</td>
-							<td>70.83</td>
-						</tr>
-					</table>
-					<div class="centred_table_title"><b>Table</b>: Performance comparison between standard ensemble learning methods</div>
+					<div class="centred_img">
+						<div>Performance comparison between standard ensembling methods and AFA.</div>
+						<img src="res/favg_noisy_perf.png" style="width: 110%" />
+						<div style="margin-top: 3%; font-size: xx-large;">$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} \quad \quad F_1 = \frac{TP}{TP + \frac{1}{2}(FN + FP)}$ </div>
+					</div>
+					<div style="margin-top: 3%">
+						
+					</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -669,9 +596,13 @@
 					<aside class="notes">
 						In this first example, we devise a simple scenario to test our proposed ensemble learning method. We simulate four classifiers by generating predictions on which different levels of noise is applied in order to randomise their predictions.<br /><br />
 						
-						We'll compare our proposed approach with the most common way to perform output fusion which are using an average or a majority vote scheme or a stacked neural network model: a shallow model, which has approximately the same number as parameter as our method, a deeper one which has a similar number of layers but hence a much higher number of parameters and a simple weighted average implemented as a neural network.<br /><br />
+						We'll compare our proposed approach with the most common way to perform output fusion which is either to use an average or a majority vote scheme or a stacked neural network model: a shallow model, which has approximately the same number as parameter as our method, a deeper one which has a similar number of layers but hence a much higher number of parameters and a simple weighted average implemented as a neural network.<br /><br />
 
-						In this example, the method yielding the best performance is our f-average model with a depth of 3. We can see that the f-average with a depth of 4 performs slightly worse. This is probably due to the larger number of parameters. This is corroborated when looking at the other neural network model where we can see that the deep NN performance significantly drops in comparison with the shallow model which performance are close but still lower than our f-average with a depth of 1.
+						To assess and compare performance from all of those different models, we use two metrics commonly used in classification: the accuracy and the f1 score. The first indicates the ratio of correctly classified samples over the total number of classification while the f1 score is better at indicating both false positives and false negatives, which is particularly useful in unbalanced data settings. For both of those metrics, the higher the better.<br /><br />
+
+						In this example, the method yielding the best performance is our f-average model with a depth of 3. We can see that the f-average with a depth of 4 performs slightly worse. This is probably due to the larger number of parameters. This is corroborated when looking at the other neural network model where we can see that the deep NN performance significantly drops in comparison with the shallow model.<br /><br />
+
+						Finally, we can also observe that despite a similar number of parameters the shallow neural network is weaker that our f-average of depth 1. This shows that the specific architecture of our model with specific activation functions and with the weight constraints do not hinder the model performance but rather improve it by providing some training stability.
 					</aside>
 				</section>
 				<section data-transition="fade-in slide-out" class="section_slide">
@@ -737,7 +668,39 @@
 				<section class="section_slide">
 					<h1>FSCIL: problem setting</h1>
 					<hr />
-					<table class="centred_table">
+					<table class="fscil_emoji">
+						<thead>
+							<tr>
+								<td>Session</td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Train</td>
+								<td>🐕🚗🌹</td>
+								<td>⚽🐈</td>
+								<td>🐟👓</td>
+								<td>🥐🐢</td>
+								<td>🛹🎹</td>
+							</tr>
+							<tr>
+								<td>Test</td>
+								<td>🐕🚗🌹</td>
+								<td>🐕🚗🌹⚽🐈</td>
+								<td>🐕🚗🌹⚽🐈<br />🐟👓</td>
+								<td>🐕🚗🌹⚽🐈<br />🐟👓🥐🐢</td>
+								<td>🐕🚗🌹⚽🐈<br />🐟👓🥐🐢🛹🎹</td>
+							</tr>
+						</tbody>
+					</table>
+					<div style="margin-top: 3%; padding-left: 3%;"><b>Goal</b>: learn new classes, using only a few training samples and without forgetting previous classes.</div>
+
+					<table class="centred_table" style="margin-top: 7%;">
 						<thead>
 							<tr>
 								<th>Dataset</th>
@@ -788,42 +751,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="centred_table_title"><b>Table</b>: FSCIL setting values for each dataset</div>
-					<table class="centred_table" style="margin-top: 7%;">
-						<thead>
-							<tr>
-								<td><b>Session</b></td>
-								<td><b>Training classes</b></td>
-								<td><b>Test classes</b></td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>0</td>
-								<td>{0, … , 59}</td>
-								<td>{0, … , 59}</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>{60, … , 64}</td>
-								<td>{0, … , 64}</td>
-							</tr>
-							<tr>
-								<td>$\vdots$</td>
-								<td>$\vdots$</td>
-								<td>$\vdots$</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>{95, … , 99}</td>
-								<td>{0, … , 99}</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="centred_table_title"><b>Table</b>: Example of a setting configuration (mini-ImageNet)</div>
-					<div style="margin-top: 7%;"><b>Goal 🎯</b>: learn new classes, using only a few training samples and
-						without forgetting previous classes.
-					</div>
+					<div class="centred_table_title">FSCIL setting values for each dataset</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -831,7 +759,7 @@
 					<aside class="notes">
 						So, how is this problem set up ? The problem is divided into K successive sessions. In the first session, also called base session, a standard classification dataset with a substantial amount of data is available. Then, for subsequent sessions, some additional classes (a number of n_way classes actually) must be learnt to be recognised by our model in addition of the classes previously learnt. An additional complexity is that for those new classes, only a few number n_shots of training samples are given. And thus until a total number of n_class is reached.<br /><br />
 						
-						For example, let's take the mini-ImageNet dataset setting. We have in base session 60 classes to be learnt (with a standard amount of training data) and then, for the next session, we have training data for 5 new classes. At the end of session 1, those 5 new classes must be recognisable by the model along with the 60 previous classes. And so on, until last session (the session number 9) where again 5 new classes are given bringing the total to a 100 classes.<br /><br />
+						For example, let's take the mini-ImageNet dataset setting. We have in base session 60 classes to be learnt (with a standard amount of training data) and then, for the next session, we have n_way equal to 5 so we have training data for 5 new classes. At the end of session 1, those 5 new classes must be recognisable by the model along with the 60 previous classes. And so on, until last session (the session number 9) where again 5 new classes are given bringing the total to a 100 classes.<br /><br />
 
 						Long story short, the goal is to learn to classify new classes, using only as few training samples and without forgetting previous classes.<br /><br />
 
@@ -845,7 +773,7 @@
 					<hr />
 					<div class="centred_img">
 						<img src="res/fscil_afa_pipeline.png" style="width: 45%" />
-						<div style="width: 70%;"><b>Figure</b>: scheme of our proposed approach. Each session is considered
+						<div style="width: 70%;">Scheme of our proposed approach. Each session is considered
 							as a few-shot task in order to build a set of models that are then ensembled using our AFA
 							method.
 						</div>
@@ -995,7 +923,7 @@
 					</aside>
 				</section>
 				<section data-auto-animate class="section_slide">
-					<h1>FSCIL: Comparatives results - state of the art</h1>
+					<h1>FSCIL: Comparatives results - dedicated methods</h1>
 					<hr data-id="header_hr"/>
 					<div class="centred_img">
 						<img data-id="perf_graph" src="res/fscil_ensemble_perf_sota.png" style="width: 46%" />
@@ -1015,26 +943,26 @@
 					<h1>Part I: Conclusion</h1>
 					<hr />
 					<ul>
-						<li style="margin-top: 5%;">General framework for describing averaging rules in ensemble learning</li>
-							<ul>
+						<li style="margin-top: 20%;">General framework for describing averaging rules in ensemble learning</li>
+							<!-- <ul>
 								<li>Focus on output fusion</li>
-							</ul>
-						<li style="padding-top: 2em;">Optimal ensembling through training of an interpretable neural network architecture
-							<ul>
+							</ul> -->
+						<li style="padding-top: 2em;">Proposition of an interpretable neural network to perform ensembling
+							<!-- <ul>
 								<li>$f$-average: neural network modelling an average</li>
 								<li>Aggregating multiple $f$-averages</li>
 								<li>Stacking multiple aggregated $f$-averages</li>
-							</ul>
+							</ul> -->
 						</li>
 						<li style="padding-top: 2em;">Application to few-shot class incremental learning
-							<ul>
+							<!-- <ul>
 								<li>An illustrative scenario to showcase our ensemble learning model</li>
 								<li>Best performance among ensemble learning methods</li>
 								<li>Comparable performance with specialised state-of-the-art methods</li>
-							</ul>
+							</ul> -->
 						</li>
 					</ul>
-					<div style="margin-top: 5%; border-left: 5px solid #254456; padding-left: 1em;">
+					<div style="margin-top: 10%; border-left: 5px solid #254456; padding-left: 1em;">
 						M. Vu, É. Chouzenoux, I. Ben Ayed, J.-C. Pesquet, Aggregated $f$-average Neural Network applied to Few-Shot Class Incremental Learning, <em>submitted to Signal Processing</em>, 2024.
 					</div>
 					<div class="footer">
@@ -1060,7 +988,6 @@
 									Introduction
 									<ol>
 										<li>Context</li>
-										<li>Objectives</li>
 										<li>Eye refractive error</li>
 									</ol>
 								</li>
@@ -1163,7 +1090,7 @@
 						There exists cost-effective solutions to vision loss but they of course cannot be applied if the condition is not first correctly diagnosed. That is why, nowadays, accessible and affordable screening tools are crucial to abolish vision impairment around the world.
 					</aside>
 				</section>
-				<section class="section_slide">
+				<!-- <section class="section_slide">
 					<h1>Introduction: project objectives</h1>
 					<hr data-id="header_hr"/>
 					<div style="margin-top: 13%;">
@@ -1191,7 +1118,7 @@
 						
 						But first, we’ll have a quick introduction on eye refractive errors. 
 					</aside>
-				</section>
+				</section> -->
 				<section data-transition="slide-in fade-out" class="section_slide">
 					<h1>Introduction: eye refractive error</h1>
 					<hr />
@@ -1231,7 +1158,6 @@
 										Introduction
 										<ol>
 											<li>Context</li>
-											<li>Objectives</li>
 											<li>Eye refractive error</li>
 										</ol>
 									</li>
@@ -1345,7 +1271,7 @@
 					</div>
 					<aside class="notes">
 						If we know the light source position wrt. the camera, the measurement distance d, we can determine the subject’s sphere cylinder axis parameters by observing the light pattern. <br /><br />
-						There already exists some methods to analyse this light pattern to determine the ametropia but we propose to use machine learning to do so.
+						There already exists some methods to analyse this light pattern to determine the ametropia but we propose to use machine learning to do so since existing methods use simple optical models and thus are limited in accuracy.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1364,12 +1290,12 @@
 					</div>
 					<aside class="notes">
 						So let’s first begin with the photorefraction device of our pipeline.<br /><br />
-						It is composed of a camera in the centre, surrounded by 12 LEDs. One at the time, a LED will light up and a picture of the eyes will synchronously be captured by the camera at the same time. The LED emits infrared light in order not to blind the patient to prevent them to close their eyes by reflex.<br /><br />
-						 In those pictures, the light pattern we mentioned previously will appear like so. Twelve LEDs are necessary to ensure some redundancy of the information because of blind spots than can appear at some angles and eccentricities.<br /><br />
+						It is composed of a camera in the centre, surrounded by 12 LEDs. One at the time, a LED will light up and a picture of the eyes will synchronously be captured by the camera at the same time. The LED emits infrared light in order not to constrict the patient's pupil.<br /><br />
+						In those pictures, the light pattern we mentioned previously will appear like so. Twelve LEDs are necessary to ensure some redundancy of the information because of blind spots than can appear at some angles and eccentricities.<br /><br />
 						 The capture process lasts less than 400 ms minimising perturbations related to the patient movements.<br /><br />
-						 This device was developed by Essilor and the latest iteration was improved, in part thanks to some feedbacks we provided.<br /><br />
+						This device was developed by Essilor and the latest iteration was improved, in part thanks to some feedbacks we provided.<br /><br />
 						 
-						 The goal is now to retrieve the parameters Sphere, Cylinder and Axis from those images using deep learning. That is why they also provided with various kinds of datasets, which, as you know, are essential in machine learning problems.
+						The goal is now to retrieve the parameters Sphere, Cylinder and Axis from those images using deep learning. That is why they also provided with various kinds of datasets, which, as you know, are essential in machine learning problems.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1408,7 +1334,7 @@
 					<aside class="notes">
 						First, they developed a simulator that provides us pairs of images and their corresponding sphere cylinder axis parameters. This dataset can be as big as we want (about 1 million samples) with the desired distribution of parameters. However, its big drawback is that it is artificial and thus does not exactly match real images. For example, it cannot simulate input perturbations such as motion blur.<br /><br />
 						
-						To alleviate this problem, they also collected a dataset of real images. They organised some acquisition campaign and recruited volunteers and captured images with the device and then evaluated their ametropia in a standard manner. However, obviously, this process is quite expensive and thus is very limited in size. And of course, since it is collected on volunteers we cannot control its parameter distribution.<br /><br />
+						To alleviate this problem, they also collected a dataset of real images. They organised some acquisition campaign, recruited volunteers, captured images with the device and then evaluated their sphere cylinder and axis with a standard procedure. However, obviously, this process is quite expensive and very long to perform and thus this dataset is very limited in size. And of course, since it is collected on volunteers we cannot control its parameter distribution.<br /><br />
 						
 						We will see in the next section how we leverage these two datasets.
 					</aside>
@@ -1431,9 +1357,9 @@
 							<td>$[-6, 0]$ (dioptre)</td>
 							<td>$[0, 180]$ (degree)</td>
 							<td></td>
-							<td>$[-14, 10]$ (dioptre)</td>
+							<td>$[-16, 10]$ (dioptre)</td>
 							<td>$[-3, 3]$ (dioptre)</td>
-							<td style="text-align: center;">$[-2, 3]$ (dioptre)</td>
+							<td style="text-align: center;">$[-3, 3]$ (dioptre)</td>
 						</tr>
 					</table>
 					<div class="centred_img">
@@ -1473,7 +1399,7 @@
 					<h1>Proposed pipeline: complete pipeline</h1>
 					<hr />
 					<div class="centred_img">
-						<img src="res/res_deep_photorefraction/pipeline_archi.png" style="width: 80%; margin-top: 2%;"/>
+						<img src="res/res_deep_photorefraction/pipeline_archi_3.png" style="width: 95%; margin-top: 2%;"/>
 					</div>
 					<div style="width: 100%; margin-top: 3%;">
 						<div style="float:left; width: 50%;">
@@ -1481,7 +1407,7 @@
 							<ul id="cnn_models_list">
 								<li>is the user interface through an app</li>
 								<li>triggers and operates the capture device</li>
-								<li>runs the image processing algorithm</li>
+								<li>runs the image pre-processing algorithm</li>
 								<li>runs the neural network inference</li>
 								<li>determines and displays Sphere, Cylinder and Axis</li>
 							</ul>
@@ -1511,7 +1437,6 @@
 										Introduction
 										<ol>
 											<li>Context</li>
-											<li>Objectives</li>
 											<li>Eye refractive error</li>
 										</ol>
 									</li>
@@ -1559,16 +1484,16 @@
 				<section class="section_slide">
 					<h1>Performance: regression models benchmark</h1>
 					<hr />
-					<table class="centred_table" id="regression_table" style="margin-top: 2%;">
-						<tr>
-							<td>Target</td>
-							<td>Mandatory</td>
-							<td>Good to have</td>
+					<table class="centred_table" style="margin-top: 2%;">
+						<tr style="border-bottom: 1px solid #254456;">
+							<td><b>Target</b></td>
+							<td><b>Mandatory</b></td>
+							<td><b>Preferred</b></td>
 						</tr>
 						<tr>
 							<td>$M$</td>
 							<td>1.00</td>
-							<td>0.75</td>
+							<td>0.70</td>
 						</tr>
 						<tr>
 							<td>$J_0$</td>
@@ -1581,7 +1506,7 @@
 							<td>0.30</td>
 						</tr>
 					</table>
-					<div class="centred_table_title"><b>Table</b>: industrial performance requirements for the error standard deviation (in dioptre)</div>
+					<div class="centred_table_title">Industrial performance requirements for the error standard deviation (in dioptre)</div>
 					<table class="centred_table" id="regression_table" style="margin-top: 3%;">
 						<thead>
 							<tr>
@@ -1611,6 +1536,18 @@
 								<td>CNN</td>
 							</tr>
 							<tr>
+								<td>count</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+								<td>906</td>
+							</tr>
+							<tr>
 								<td>min</td>
 								<td>-4.66</td>
 								<td>-2.31</td>
@@ -1634,7 +1571,7 @@
 								<td>0.01</td>
 								<td>-0.01</td>
 							</tr>
-							<tr>
+							<tr class="fragment highlight-green">
 								<td>std</td>
 								<td>0.75</td>
 								<td>0.60</td>
@@ -1661,13 +1598,13 @@
 						</tbody>
 					</table>
 					<div class="centred_table_title">
-						<b>Table</b>: Regression models comparison on the dataset of real images (in dioptre)
+						Regression models comparison on the dataset of real images (in dioptre)
 					</div>
 					<ul id="cnn_models_list" style="margin-top: 3%;">
 						<li>Since a biased model can easily be corrected by offsetting predictions, our main evaluation criterion is the error <b>standard deviation</b>.</li>
 						<li>To better assess these results, recall that glasses are prescribed with a precision of 0.25 D.</li>
 					</ul>
-					<div style="margin-top: 2%; font-size: x-large;">1. <span id="ref">[Gekeler, 1997]</span></div>
+					<div style="margin-top: .5%; font-size: x-large;">1. <span id="ref">[Gekeler, 1997]</span></div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -1734,7 +1671,7 @@
 						</tbody>
 					</table>
 					<div class="centred_table_title">
-						<b>Table</b>: CNN prediction error standard deviation wrt. ground truth (in D.) on synthetic and real data.
+						CNN prediction error standard deviation wrt. ground truth (in D.) on synthetic and real data.
 					</div>
 					<ul id="cnn_models_list" style="margin-top: 5%;">
 						<li>Synthetic images are not sufficient by themselves</li>
@@ -1759,7 +1696,7 @@
 						<img src="res/zf/ba/mixte_M_M_10150SI-M.png" style="width: 33%; display: inline;"/>
 						<img src="res/zf/ba/mixte_J0_J0_10150SI-M.png" style="width: 33%; display: inline;"/>
 						<img src="res/zf/ba/mixte_J45_J45_10150SI-M.png" style="width: 33%; display: inline;"/>
-						<div><b>Figure</b>: Bland-Altman plots for the CNN with mix training</div>
+						<div>Bland-Altman plots for the CNN with mix training</div>
 					</div>
 					<div class="footer">
 						<hr />
@@ -1795,7 +1732,7 @@
 								<td>1.25</td>
 								<td>1.15</td>
 								<td><b>-0.03</b></td>
-								<td><b>0.56</b></td>
+								<td><b>0.54</b></td>
 							</tr>
 							<tr>
 								<td>$J_0$</td>
@@ -1804,7 +1741,7 @@
 								<td>0.19</td>
 								<td>0.45</td>
 								<td><b>0.02</b></td>
-								<td><b>0.26</b></td>
+								<td><b>0.28</b></td>
 							</tr>
 							<tr>
 								<td>$J_{45}$</td>
@@ -1813,12 +1750,12 @@
 								<td>-0.05</td>
 								<td><b>0.15</b></td>
 								<td>-0.01</td>
-								<td>0.22</td>
+								<td>0.21</td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="centred_table_title">
-						<b>Table</b>: CNN prediction error standard deviation wrt. ground truth (in D.) on synthetic and real data.
+						CNN prediction error standard deviation wrt. ground truth (in D.) on synthetic and real data.
 					</div>
 					<ul id="cnn_models_list" style="margin-top: 5%;">
 						<li>Best results on $M$ and $J_0$</li>
@@ -1886,7 +1823,7 @@
 							<tr>
 								<td>$J_0$</td>
 								<td>0.28</td>
-								<td>0.28</td>
+								<td>0.26</td>
 								<td>0.33</td>
 								<td><b>0.26</b></td>
 							</tr>
@@ -1899,7 +1836,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="centred_table_title fragment fade-down" data-fragment-index="1"><b>Table</b>: Error standard deviation comparison between weak learners and the ensemble learning method</div>
+					<div class="centred_table_title fragment fade-down" data-fragment-index="1">Error standard deviation comparison between weak learners and the ensemble learning method</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -2040,7 +1977,7 @@
 					</div>
 					<div class="centred_img">
 						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width: 80%;"/>
-						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the CNN</div>
+						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the CNN</div>
 					</div>
 					<div style="margin-top: 3%;">Reasonably low values of the local weighted Lipschitz constant are a strong indicator of the <b>robustness of the network</b> <span id="ref">[Gupta, 2022]</span>.</div>
 					<div class="footer">
@@ -2057,7 +1994,7 @@
 					The application of a denoiser (pretrained DRUnet <span id="ref">[Zhang, 2017]</span>) at test time could help with the robustness <span id="ref">[Aghdam, 2017]</span>.
 					<div class="centred_img" style="margin-top: 2%;">
 						<img src="res/res_deep_photorefraction/lipschitz/denoised.png" style="width: 80%;"/>
-						<div><b>Figure</b>: Example of a denoised pupil image</div>
+						<div>Example of a denoised pupil image</div>
 					</div>
 					<div class="footer">
 						<hr />
@@ -2096,7 +2033,7 @@
 								<td>906</td>
 								<td>906</td>
 							</tr>
-							<tr>
+							<tr class="fragment highlight-green" data-fragment-index="1">
 								<td>mean</td>
 								<td>0.61</td>
 								<td><b>0.54</b></td>
@@ -2161,9 +2098,9 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="centred_table_title"><b>Table</b>: Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
+					<div class="centred_table_title">Weighted local Lipschitz constants comparison between original and denoised images ($L_2$ norm)</div>
 					
-					<table class="centred_table fragment fade-up" data-fragment-index="1" style="margin-top: 5%;">
+					<table class="centred_table fragment fade-up" data-fragment-index="2" style="margin-top: 5%;">
 						<tr>
 							<td></td>
 							<td colspan="2">$M$</td>
@@ -2189,7 +2126,7 @@
 								<td><b>0.01</b></td>
 								<td>0.05</td>
 							</tr>
-							<tr>
+							<tr class="fragment highlight-red" data-fragment-index="3">
 								<td>std</td>
 								<td><b>0.56</b></td>
 								<td>0.75</td>
@@ -2218,7 +2155,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="centred_table_title fragment fade-up" data-fragment-index="1"><b>Table</b>: Performance comparison between original and denoised images</div>
+					<div class="centred_table_title fragment fade-up" data-fragment-index="2">Performance comparison between original and denoised images</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -2236,7 +2173,7 @@
 					Using the deel-lip library <span id="ref">[Serrurier, 2020]</span>,
 					<div class="centred_img" style="margin-top: 2%;">
 						<img src="res/res_deep_photorefraction/lipschitz/perf.png" style="width:95%" />
-						<div><b>Figure</b>: Error standard deviation of a model trained with deel-lip in function of $K$</div>
+						<div>Error standard deviation of a model trained with deel-lip in function of $K$</div>
 					</div>
 					<div style="margin-top: 5%;">
 						The lower the Lipschitz constant, the greater the constraints. <br />
@@ -2255,8 +2192,8 @@
 				<section class="section_slide">
 					<h1>Robustness: controlled Lipschitz constant training</h1>
 					<hr />
-					<div style="margin-top: 2%;">Using a CNN trained with a Lipschitz constant below 4 (4-LCNN),</div>
-					<table class="centred_table" style="margin-top: 10%;">
+					<!-- <div style="margin-top: 2%;">Using a CNN trained with a Lipschitz constant below 4 (4-LCNN),</div> -->
+					<table class="centred_table" style="margin-top: 0%;">
 						<tr>
 							<th></th>
 							<th colspan="2">$M$</th>
@@ -2266,12 +2203,12 @@
 						<tbody>
 							<tr style="border-bottom: 1px solid #254456;">
 								<td></td>
-								<td>CNN</td>
-								<td>4-LCNN</td>
-								<td>CNN</td>
-								<td>4-LCNN</td>
-								<td>CNN</td>
-								<td>4-LCNN</td>
+								<td style="color: #1F77B4;">CNN</td>
+								<td style="color: orange;">4-LCNN</td>
+								<td style="color: #1F77B4;">CNN</td>
+								<td style="color: orange;">4-LCNN</td>
+								<td style="color: #1F77B4;">CNN</td>
+								<td style="color: orange;">4-LCNN</td>
 							</tr>
 							<tr>
 								<td>mean</td>
@@ -2282,11 +2219,11 @@
 								<td>0.01</td>
 								<td>0.01</td>
 							</tr>
-							<tr>
+							<tr class="fragment highlight-green">
 								<td>std</td>
 								<td>0.56</td>
 								<td>0.70</td>
-								<td>0.27</td>
+								<td>0.28</td>
 								<td>0.37</td>
 								<td>0.22</td>
 								<td>0.24</td>
@@ -2311,7 +2248,11 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="centred_table_title"><b>Table</b>: Performance comparison between the 4-LCNN and the standard CNN, on the dataset of real images</div>		
+					<div class="centred_table_title">Performance comparison between the 4-LCNN and the standard CNN, on the dataset of real images</div>		
+					<div class="centred_img" style="margin-top: 0%;">
+						<img src="res/res_deep_photorefraction/lipschitz_comparison.png" style="width:90%" />
+						<div>Histograms comparing the weighted local Lipschitz constants computed with $L_2$ norm with the standard CNN and the 4-LCNN</div>
+					</div>
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -2323,14 +2264,14 @@
 				<section data-transition="slide-in fade-out" class="section_slide">
 					<h1>Robustness: controlled Lipschitz constant training</h1>
 					<hr />
-					<div class="centred_img" style="margin-top: 1%;">
-						<img src="res/res_deep_photorefraction/lipschitz/cnn_norm1_mask.png" style="width:70%" />
-						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the standard CNN</div>
+					<div class="centred_img" style="margin-top: 10%;">
+						<img src="res/res_deep_photorefraction/lipschitz_comparison.png" style="width:140%" />
+						<div>Histograms comparing the weighted local Lipschitz constants computed with $L_2$ norm with the standard CNN and the 4-LCNN</div>
 					</div>
-					<div class="centred_img" style="margin-top: 1%;">
+					<!-- <div class="centred_img" style="margin-top: 1%;">
 						<img src="res/res_deep_photorefraction/lipschitz/deelcnn_norm1_mask.png" style="width:70%" />
-						<div><b>Figure</b>: Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the 4-LCNN</div>
-					</div>	
+						<div>Histograms of weighted local Lipschitz constants computed with $L_2$ norm on the 4-LCNN</div>
+					</div>	 -->
 					<div class="footer">
 						<hr />
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
@@ -2343,9 +2284,9 @@
 					<h1>Part II - Conclusion</h1>
 					<hr />
 					<div class="centred_img">
-						<img src="res/res_deep_photorefraction/pipeline_archi.png" style="width: 80%; margin-top: 1%;"/>
+						<img src="res/res_deep_photorefraction/pipeline_archi_3.png" style="width: 95%; margin-top: 1%;"/>
 					</div>
-					<table class="fragment fade-in" data-fragment-index="0" style="margin-top: 1%;">
+					<table class="fragment fade-in" data-fragment-index="0" style="margin-top: 3%;">
 						<tr>
 							<td>Design a screening tool</td>
 							<td></td>
@@ -2372,7 +2313,7 @@
 							<td class="fragment fade-right" data-fragment-index="1">controllable Lipschitz values</td>
 						</tr>
 					</table>
-					<div class="fragment fade-in" data-fragment-index="2" style="margin-top: 2.5%; border-left: 5px solid #254456; padding-left: 1em;">
+					<div class="fragment fade-in" data-fragment-index="2" style="margin-top: 4%; border-left: 5px solid #254456; padding-left: 1em;">
 						M. Vu, É. Chouzenoux, J.-C. Pesquet, S. Boutinon, M. Peloux, P. Pinault, Deep Learning Method For Accessible Eccentric Photorefraction, <em>Proceedings of the IEEE International Symposium on Biomedical Imaging (ISBI)</em>, Athens, Greece, 27-30 May 2024, pp. 1-5.
 					</div>
 					<div class=" footer">
@@ -2419,6 +2360,8 @@
 							<ul>
 								<li class="fragment fade-down">$f$-average: scenario illustrating its interpretable weights</li>
 								<li style="padding-top: 2em;" class="fragment fade-down">FSCIL: open-set recognition methods as weak classifiers</li>
+								<li style="padding-top: 2em;" class="fragment fade-down">Further exploration on regression tasks</li>
+								<li style="padding-top: 2em;" class="fragment fade-down">Provide a publicly available toolbox</li>
 							</ul>
 						</div>
 					</div>
@@ -2475,9 +2418,11 @@
 						<div style=" float:right; width: 50%;">
 							<h2 class="fragment fade-down">Perspectives</h2>
 							<ul>
-								<li class="fragment fade-down">Generative model for image to image translation: transform synthetic into real images</li>
-								<li class="fragment fade-down" style="padding-top: 2em;">Deep learning-based out-of-range detection tool & invalid capture detection</li>
-								<li class="fragment fade-down" style="padding-top: 2em;">New acquisition campaign & industrial deployment</li>
+								<li class="fragment fade-down">Generative model for image to image translation: transform synthetic into more realistic images</li>
+								<li class="fragment fade-down" style="padding-top: 2em;">Out-of-range & invalid capture detection</li>
+								<li class="fragment fade-down" style="padding-top: 2em;">New acquisition campaign ongoing worldwide</li>
+								<li class="fragment fade-down" style="padding-top: 2em;">Industrial deployment</li>
+								<li class="fragment fade-down" style="padding-top: 2em;">Detection of other vision impairment condition</li>
 							</ul>
 						</div>
 					</div>
@@ -2490,9 +2435,11 @@
 
 						For our photorefraction work, we could further explore a work that was initiated with an intern who worked with us on this project: the use of generative models for image to image translation that would transform synthetic images into real or at least more realistic images.<br /><br />
 
-						Around the core pipeline that we presented, the are other opportunities to use deep learning in order to improve the overall screening tool: for example, including a Deep learning-based out-of-range detection tool & invalid capture detection could benefit the end user.<br /><br />
+						The device abilities can also be extended without modifying its hardware, with the possibility of detecting other condition for example (cataract)<br /><br />
 
-						Finally, this project will still be developing, with a new acquisition campaign that will add data (which is as you know essential) to the training sets and with a future industrial deployment in perspective.
+						Similarly, additional deep learning tools could improve the overall screening tool: for example, including a deep learning-based out-of-range detection tool or an invalid capture detection could benefit the end user.<br /><br />
+
+						Finally, this project will still be developing, with a new acquisition campaign that will add data (which is as you know essential) to the training sets and with a future industrial deployment in perspective. (~ 2 years)
 					</aside>
 				</section>
 				<section data-transition="fade" class="section_slide">
@@ -2616,7 +2563,7 @@
 									<ol>
 										<a class="summary_link" href="#/14"><li>Problem setting</li></a>
 										<a class="summary_link" href="#/15"><li>Proposed approach</li></a>
-										<a class="summary_link" href="#/19"><li>Comparative results</li></a>
+										<a class="summary_link" href="#/18"><li>Comparative results</li></a>
 									</ol>
 								</li>
 							</ol>
@@ -2628,34 +2575,33 @@
 									<a class="summary_link" href="#/21">Introduction</a>
 									<ol>
 										<a class="summary_link" href="#/23/0/1"><li>Context</li></a>
-										<a class="summary_link" href="#/25"><li>Objectives</li></a>
-										<a class="summary_link" href="#/26"><li>Eye refractive error</li></a>
+										<a class="summary_link" href="#/25"><li>Eye refractive error</li></a>
 									</ol>
 								</li>
 								<li>
-									<a class="summary_link" href="#/27">Proposed pipeline</a>
+									<a class="summary_link" href="#/26">Proposed pipeline</a>
 									<ol>
-										<a class="summary_link" href="#/28"><li>Photorefraction principle</li></a>
-										<a class="summary_link" href="#/30"><li>Essilor capture device</li></a>
-										<a class="summary_link" href="#/31"><li>Datasets, CNN architecture & training</li></a>
+										<a class="summary_link" href="#/27"><li>Photorefraction principle</li></a>
+										<a class="summary_link" href="#/29"><li>Essilor capture device</li></a>
+										<a class="summary_link" href="#/30"><li>Datasets, CNN architecture & training</li></a>
 									</ol>
 								</li>
 								<li>
-									<a class="summary_link" href="#/35">Implementation & performance</a>
+									<a class="summary_link" href="#/34">Implementation & performance</a>
 									<ol>
-										<a class="summary_link" href="#/36"><li>Regression models benchmark</li></a>
-										<a class="summary_link" href="#/37"><li>Real versus synthetic data</li></a>
-										<a class="summary_link" href="#/39"><li>Performance comparison with other device</li></a>
-										<a class="summary_link" href="#/40"><li>Implementation performance</li></a>
-										<a class="summary_link" href="#/41/0/0"><li>Ensembling regression models</li></a>
+										<a class="summary_link" href="#/35"><li>Regression models benchmark</li></a>
+										<a class="summary_link" href="#/36"><li>Real versus synthetic data</li></a>
+										<a class="summary_link" href="#/38"><li>Performance comparison with other device</li></a>
+										<a class="summary_link" href="#/39"><li>Implementation performance</li></a>
+										<a class="summary_link" href="#/40/0/0"><li>Ensembling regression models</li></a>
 									</ol>
 								</li>
 								<li>
-									<a class="summary_link" href="#/42">Robustness analysis</a>
+									<a class="summary_link" href="#/41">Robustness analysis</a>
 									<ol>
-										<a class="summary_link" href="#/44"><li>Numerical evaluation of robustness</li></a>
-										<a class="summary_link" href="#/46"><li>Improve robustness with a denoiser</li></a>
-										<a class="summary_link" href="#/48"><li>Controlled Lipschitz constant training</li></a>
+										<a class="summary_link" href="#/43"><li>Numerical evaluation of robustness</li></a>
+										<a class="summary_link" href="#/45"><li>Improve robustness with a denoiser</li></a>
+										<a class="summary_link" href="#/47"><li>Controlled Lipschitz constant training</li></a>
 									</ol>
 								</li>
 							</ol>

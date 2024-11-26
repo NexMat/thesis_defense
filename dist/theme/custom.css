@@ -364,7 +364,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 .reveal .slide-number {
   background-color: var(--r-background-color);
   color: var(--r-main-color);
-  font-size: large;
+  font-size: x-large;
 }
 
 .reveal .slides {
@@ -614,4 +614,39 @@ table.centred_table tbody tr:nth-child(odd) {
 
 a.summary_link {
   color: var(--r-main-color);
+}
+
+table.fscil_emoji thead td{
+  font-weight: bold;
+}
+
+table.fscil_emoji thead td:not(:first-child){
+  text-align: center;
+}
+
+table.fscil_emoji tr,
+table.fscil_emoji thead td {
+  height: 3em;
+}
+
+table.fscil_emoji tr:not(:last-child),
+table.fscil_emoji thead td {
+  border-bottom: 1px solid var(--r-heading-color);
+}
+
+table.fscil_emoji td:not(:last-child){
+  border-right: 1px solid var(--r-heading-color);
+}
+
+table.fscil_emoji td:not(:first-child){
+  min-width: 9em;
+}
+
+table.fscil_emoji td {
+  vertical-align: middle;
+}
+
+table.fscil_emoji td:nth-child(1) {
+  font-weight: bold;
+  min-width: 4em;
 }
