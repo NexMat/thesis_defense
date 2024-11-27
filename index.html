@@ -65,8 +65,8 @@
 					</div>
 					<aside class="notes">
 						Good morning everyone, I am pleased to welcome you at my Ph.D. defense where I'll be presenting my thesis titled Novel Deep Learning Approaches for Images Analysis.<br /><br />
-						This work was done under the supervision of Émilie Chouzenoux and Philippe Pinault in the OPIS Inria team, at the Centre for Visual Computing, here at CentraleSupélec. In this lab I've had the opportunity to collaborate with professor Jean-Christophe Pesquet who contributed throughout this thesis and with Ismail Ben Ayed who later invited me in his own lab at ÉTS Montréal. <br /><br />
-						We also collaborated with Essilor Research and Development, with Philippe Pinault who co-supervised this thesis. Let's start with the summary of this presentation.
+						This work was done under the supervision of Émilie Chouzenoux and Philippe Pinault in the OPIS Inria team, at the Centre for Visual Computing, here at CentraleSupélec. In this lab I've had the opportunity to collaborate with professor Jean-Christophe Pesquet who contributed throughout this thesis and with professor Ismail Ben Ayed who later invited me in his own lab at ÉTS Montréal. <br /><br />
+						We also collaborated with Essilor Research and Development, with Philippe Pinault who, as I said, co-supervised this thesis but also with Stéphane Boutinon and Marius Peloux. Let's start with the summary of this presentation.
 					</aside>
 				</section>
 				<section data-auto-animate data-transition="fade-in none-out" class="section_slide">
@@ -922,7 +922,7 @@
 
 						Cite datasets and colours<br /><br />
 
-						We can see that overall our method provides the best performance especially at the last session which is obviously the most complicated. We can also observe that other methods are not consistent accross sessions and datasets, with some being better than others in specific cases but not always.Fore example we can observe that depsite relatively good performance on the CUB-200 dataset, the deep NN is very inconstistent in learning the later sessions. That is certainly due to its higher number of parameters that are not trained correctly due to a low data regime imposed by the problem setting. Let us remark that the constraints that we impose on the architecture of our model do not hinder its performance but rather enhance it by improving its training stability.
+						We can see that overall our method provides the best performance especially at the last session which is obviously the most complicated. We can also observe that other methods are not consistent accross sessions and datasets, with some being better than others in specific cases but not always.Fore example we can observe that depsite relatively good performance on the CUB-200 dataset, the deep NN is very inconstistent in learning the later sessions. That is certainly due to its higher number of parameters that are not trained correctly due to a low data regime imposed by the problem setting.
 					</aside>
 				</section>
 				<section data-auto-animate class="section_slide">
@@ -939,7 +939,7 @@
 						</div>
 					</div>
 					<aside class="notes">
-						Now, if we compare our method against state of the art methods designed specifically for few shot class incremental learning, we can observe that the performance are actually comparable. The best method called FACT does outperform us in most datasets us but our method comes first on mini-ImageNet and second or third on the other datasets. Let me emphasise that these other methods are tailored specifically for the problem of few shot class incremental learning and use for example meta-learning algorithms that require a larger number of parameters than our approach.
+						Now, if we compare our approach against state of the art methods designed specifically for few shot class incremental learning, we can observe that the performance are actually comparable. The best method called FACT does outperform us in most datasets us but our method comes first on mini-ImageNet and second or third on the other datasets. Let me emphasise that these other methods are tailored specifically for the problem of few shot class incremental learning and use for example meta-learning algorithms that require a larger number of parameters than our approach.
 					</aside>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
@@ -1275,9 +1275,9 @@
 					<aside class="notes">
 						This light pattern size shape and orientation depend on... <br /><br /> 
 
-						Since we know the position of the light source wrt. the camera and the measurment distance d, we can infer the subject’s sphere cylinder axis parameters by observing the light pattern.
+						Since we know the position of the light source wrt. the camera and the measurment distance d, we can infer the subject’s sphere cylinder axis parameters by observing the light pattern. <br /><br /> 
 
-						There already exists some methods to analyse this light pattern to determine the ametropia but we propose to use machine learning to do so since existing methods use simple optical models and thus are limited in accuracy.
+						There already exists some methods to analyse this light pattern to determine the parameters but we propose to use machine learning to do so since existing methods use simple optical models and thus are limited in accuracy.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1300,7 +1300,7 @@
 						This will produce 12 pictures (one for each LED) and the light pattern that we described previously will appear like so.<br /><br />
 						The capture process lasts less than 400 ms minimising perturbations related to the patient movements.<br /><br />
 						This device was developed by Essilor and the latest iteration was improved, in part thanks to some feedbacks we provided.<br /><br />
-						The goal is now to retrieve the parameters Sphere, Cylinder and Axis from those images using deep learning. That is why they also provided with various kinds of datasets, which, as you know, are essential in machine learning problems.
+						The goal is now to retrieve the parameters Sphere, Cylinder and Axis from those 12 images using a deep learning approach. That is why they also provided with various kinds of datasets, which, as you know, are essential in machine learning problems.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -1337,11 +1337,11 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						First, they developed a simulator that provides us pairs of images and their corresponding sphere cylinder axis parameters. This dataset can be as big as we want (about 1 million samples) with the desired distribution of parameters. However, its big drawback is that it is artificial and thus does not exactly match real images. For example, it cannot simulate input perturbations such as motion blur.<br /><br />
+						First, they developed a simulator that provides us pairs of images and their corresponding sphere cylinder axis parameters. This dataset can be as big as we want (about 1 million samples) with the desired distribution of parameters. However, its big drawback is that it is artificial and thus does not exactly match real images.<br /><br />
 						
-						To alleviate this problem, they also collected a dataset of real images. They organised some acquisition campaign, recruited volunteers, captured images with the device and then evaluated their sphere cylinder and axis with a standard procedure. However, obviously, this process is quite expensive and very long to perform and thus this dataset is very limited in size. And of course, since it is collected on volunteers we cannot control its parameter distribution.<br /><br />
+						To alleviate this problem, they also collected a dataset of real images. They organised some acquisition campaign, recruited volunteers, captured images with the device and then evaluated their sphere cylinder and axis with a standard procedure. However, obviously, this process is quite expensive and thus this dataset is very limited in size. And of course, since it is collected on volunteers we cannot control its parameter distribution.<br /><br />
 
-						Let us emphasise that the amount of time required are not the same for those datasets. It is a matter of only a couple of days in order to obtain 1 million simulated images while we had to wait several months in order to obtain the three thousands real images.<br /><br />
+						Let us also emphasise that the amount of time required are not the same for those datasets. It is a matter of only a couple of days in order to obtain 1 million simulated images while we had to wait several months in order to obtain the three thousands real images.<br /><br />
 						
 						We will see in the next section how we leverage these two datasets.
 					</aside>
@@ -1398,7 +1398,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						Since this is a regression problem, we design a custom neural network architecture which takes as input a tensor of 12 images and predicts one of the three target parameters M J0 J45. We train a different set of weights for each of the target. We optimised the number of convolutional layers, the number of fully connected layers, more generally its number of parameters and its training process in order to obtain the best performance possible but keeping in mind that model need to be lightweight as it runs in a embedded software and to have a fast inference time.
+						Since this is a regression problem, we design a custom neural network architecture which takes as input a tensor of 12 images and predicts one of the three target parameters M J0 J45. We train a different set of weights for each of the target. For the architecture, we optimised the number of convolutional layers, the number of fully connected layers, more generally its number of parameters as well as its training process in order to obtain the best performance possible but keeping in mind that the model needs to be lightweight as it runs in a embedded software and needs to have a fast inference time.
 					</aside>
 				</section>
 				<section data-transition="slide-in fade-out" class="section_slide">
