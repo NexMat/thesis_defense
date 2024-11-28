@@ -259,7 +259,7 @@
 						
 						In our case, we will assume that we already have such set of diverse weak learners and we will focus on the output fusion part.<br /><br />
 						
-						In the state of the art, the most commonly used method to perform the output fusion step is either to average the outputs x_k or to train a stacked model, which is an additional machine learning model that learns to output the final prediction given the outputs x_k from the K weak learners.<br /><br />
+						In the state of the art, the most commonly used method to perform the output fusion step is either to average the outputs x_k or to train a stacked model, which is an additional machine learning model that learns to output the final prediction given the predictions x_k from the K weak learners.<br /><br />
 						The method that we propose and that we will present today gathers these two approaches in a single model.
 					</aside>
 				</section>
@@ -305,7 +305,7 @@
 					</div>
 					<aside class="notes">
 						Let's consider here the use of averages to ensemble the predictions x k coming from the K weak learners. <br /><br />
-						It is possible to choose among different types of averages. For example, using the arithmetic mean is adequate when facing a gaussian noise in the input data, however a geometric mean is better at indicating the central tendency of the averaged values while the harmonic mean is used to compute the average of ratios and rates.<br /><br />
+						It is possible to choose among different types of averages and their performance depend on the use case. For example, using the arithmetic mean is adequate when facing a gaussian noise in the input data, however a geometric mean is better at indicating the central tendency of the averaged values while the harmonic mean is used to compute the average of ratios and rates.<br /><br />
 						All of those averages can be written under this form, called a generalised average. Now that we have a general formula to describe those different types of averages, the question is how to learn the optimal averaging rule and weights? ➡️ This is what we will present in the next section.
 					</aside>
 				</section>
@@ -528,7 +528,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						That is why we propose a larger model that we will call aggregated-f-averages which can model as many types of averages as we would need. For example, J branches implement J times the neural network structure previously presented in order to model J different types of averages. Then, those are aggregated with a final layer A. Once matrices W and A are trained, the model will be able to select and combine in an optimal manner the result from each different type of average.<br /><br />
+						That is why we propose a larger model that we will call aggregated-f-averages OR IN SHORT AFA which can model as many types of averages as we would need. For example, J branches implement J times the neural network structure previously presented in order to model J different types of averages. Then, those are aggregated with a final layer A. Once matrices W and A are trained, the model will be able to select and combine in an optimal manner the result from each different type of average.<br /><br />
 						Finally, we set an activation function according to the task, for example by using a softmax for classification.
 					</aside>
 				</section>
@@ -575,7 +575,7 @@
 					</div>
 					<aside class="notes">
 						Since we are using neural networks, it is only natural to build a deeper model in the hopes of obtaining better performance. Here we do so by stacking multiple aggregated f averages models.<br /><br />
-						Inbetween layers of aggregated f-averages model, a concatenation operation is done and similarly as before, we retrieve again the aggregation layer A at the end of the model.<br /><br />
+						Inbetween layers of AFA model, a concatenation operation is done and similarly as before, we retrieve again the aggregation layer A at the end of the model.<br /><br />
 						Once again, thanks to the training of matrices W in each layer and of matrix A, the model should be able to output the optimal ensembled prediction in the end.
 					</aside>
 				</section>
@@ -597,13 +597,13 @@
 					<aside class="notes">
 						To test our proposed ensemble learning method, we devise a first simple application example. We simulate four classifiers by generating predictions on which different levels of noise are applied in order to randomise their predictions.<br /><br />
 						
-						We'll compare our proposed approach with the most common way to perform output fusion which is either to use an average or a majority vote scheme or a stacked model: a shallow neural network, which has approximately the same number as parameter as our method, a deeper one which has a higher number of layers and a higher number of parameters and a simple weighted average implemented as a neural network. We also compare different depths for our proposed f-average model, from 1 to 4. <br /><br />
+						We'll compare our proposed approach with the most common way to perform output fusion which is either to use an average or a majority vote scheme or a stacked model: a shallow neural network, which has approximately the same number as parameter as our method, a deeper one which has a higher number of layers and a higher number of parameters and a simple weighted average implemented as a neural network. We also compare different depths for our proposed AFAmodel, from 1 to 4. <br /><br />
 
 						To assess and compare performance from all of those different models, we use two metrics commonly used in classification: the accuracy and the f1 score. The first indicates the ratio of correctly classified samples over the total number of classification while the f1 score is better at indicating both false positives and false negatives, which is particularly useful in imbalanced data settings. For both of those metrics, the higher the better.<br /><br />
 
-						In this example, the method yielding the best performance is our f-average model with a depth of 3. We can see that the f-average with a depth of 4 performs slightly worse. This is probably due to the larger number of parameters. This is corroborated when looking at the other neural network model where we can see that the deep NN performance significantly drops in comparison with the shallow model.<br /><br />
+						In this example, the method yielding the best performance is our AFA model with a depth of 3. We can see that the AFA with a depth of 4 performs slightly worse. This is probably due to the larger number of parameters. This is corroborated when looking at the other neural network model where we can see that the deep NN performance significantly drops in comparison with the shallow model.<br /><br />
 
-						Finally, we can also observe that the shallow neural network is weaker that our f-average of depth 1 despite a similar number of parameters . This shows that the specific architecture of our model with specific activation functions and with the weight constraints do not hinder the model performance but rather improve it by providing some training stability.
+						Finally, we can also observe that the shallow neural network is weaker that our AFA of depth 1 despite a similar number of parameters . This shows that the specific architecture of our model with specific activation functions and with the weight constraints do not hinder the model performance but rather improve it by providing some training stability.
 					</aside>
 				</section>
 				<section data-transition="fade-in slide-out" class="section_slide">
@@ -687,7 +687,7 @@
 								<td>⚽🐈</td>
 								<td>🐟👓</td>
 								<td>🥐🐢</td>
-								<td>🛹🎹</td>
+								<td>🚴🎹</td>
 							</tr>
 							<tr>
 								<td>Test</td>
@@ -695,7 +695,7 @@
 								<td>🐕🚗🌹⚽🐈</td>
 								<td>🐕🚗🌹⚽🐈<br />🐟👓</td>
 								<td>🐕🚗🌹⚽🐈<br />🐟👓🥐🐢</td>
-								<td>🐕🚗🌹⚽🐈<br />🐟👓🥐🐢🛹🎹</td>
+								<td>🐕🚗🌹⚽🐈<br />🐟👓🥐🐢🚴🎹</td>
 							</tr>
 						</tbody>
 					</table>
@@ -762,7 +762,7 @@
 						
 						Long story short, the goal is to learn to classify new classes, using only as few training samples and without forgetting previous classes.<br /><br />
 
-						Obviously for the actual datasets, other setting values are used with for example 5 or 10 new classes at each session and only 5 training samples for each of them.
+						Obviously for the actual datasets, other setting values are used with for example 5 or 10 new classes at each session and only 5 training samples for each of them.<br /><br />
 
 						Most of the state of the art methods use base session to train the feature extractor part of their model thanks to the substantial amount of data. Then in subsequent sessions, the feature extractor weights are frozen and the classifier head of their model grows in size and is trained with new data.<br /><br />
 
@@ -790,7 +790,7 @@
 						Similarly as other methods from the state of the art, we reuse the feature extractor trained during base session.<br /><br />
 						Then at each session, we train a weak classifier with a few-shot method with the data from each of those session. The weak classifier will then be specialised on its own set of classes from its own session.<br /><br />
 						
-						However, it will not be able to output prediction for classes from other sessions. That's why we ensemble all weak classifiers prediction with our proposed f-average model. Once trained, it will be able, given the predictions from all weak classifiers, to output the most likely class prediction, which could be any class from any session.<br /><br />
+						However, it will not be able to output prediction for classes from other sessions. That's why we ensemble all weak classifiers prediction with our proposed AFA model. Once trained, it will be able, given the predictions from all weak classifiers, to output the most likely class prediction, which could be any class from any session.<br /><br />
 
 						Let's get into more details and see how we train each weak classifier.
 					</aside>
@@ -1948,7 +1948,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We also ran some additional experiments to apply the ensemble learning we presented in the first part. This allows us to test our method on a practical real setting as well as test it on a regression task. <br /> <br />
+						We also ran some additional experiments to apply the AFA model we presented in the first part. This allows us to test our method on a practical real setting as well as test it on a regression task, showing its versatility. <br /> <br />
 						
 						Here we ensemble a CNN trained with real data only, a CNN trained with a mix of both real and synthetic data, and a k-NN relying only on synthetic data, ➡️ we can actually improve prediction performance by some margin when compared to the best performing model. Let us precise that the k-NN was a method developed by Essilor.
 					</aside>
@@ -2032,7 +2032,7 @@
 						<div>Novel Deep Learning Approaches For Image Analysis | Mathieu Vu | Ph.D. defense - 28th November 2024</div>
 					</div>
 					<aside class="notes">
-						We will denote them f theta j where j stands for either M J0 or J45. We also denote x the input tensor of 12 images. First, we need to establish a way to evaluate numerically the robustness of our model. So we need to measure the model sensitivity when adding an input perturbation b to the input x.
+						We will denote f theta j the trained neural network where j stands for either M J0 or J45. We also denote x the input tensor of 12 images. First, we need to establish a way to evaluate numerically the robustness of our model. So we need to measure the model sensitivity when adding an input perturbation b to the input x.
 					</aside>
 				</section>
 				<section class="section_slide">
@@ -2110,7 +2110,7 @@
 					</div>
 					<aside class="notes">
 						Now that we can evaluate the robustness, let's see two methods to improve it.
-						Recent papers have claimed that using a denoiser at test time could improve the model robustness. To be clear, a model training in standard manner is used and the denoiser is only applied on the input images at test time. As you can see in this example image, the denoiser will smooth the image and thus remove some possible input perturbations. 
+						Recent papers have claimed that using a denoiser at test time could improve the model robustness. To be clear, a model trained in a standard manner is used and the denoiser is only applied on the input images at test time. As you can see in this example image, the denoiser will smooth the image and thus remove some possible input perturbations. 
 					</aside>
 				</section>
 				<section>
@@ -2507,7 +2507,7 @@
 							
 							In the first part on ensemble learning, we presented a method inspired by averaging rules to perform the output fusion step of an ensembling method. We proposed an architecture which can model and aggregate multiple types of averages by choosing adequates activation functions and by imposing some constraints on weight matrices. Finally, we used the few shot class incremental learning setting as it is a problem well suited to illustrate the output fusion method that we propose. In terms of performance, we show that our method outperforms standard ensembling methods such as averages and stacked models partly thanks to an increased training stability and we also show that altough not the best, our method performance are comparable with state of the art methods designed specifically for the problem of few shot class incremental learning.<br /><br />
 
-							We also identified some work perspectives. First, identifying a use case or a scenario to showcase the interpretability properties of the f-average model.<br /><br />
+							We also identified some work perspectives. First, identifying a use case or a scenario to showcase the interpretability properties of the AFA model.<br /><br />
 
 							For the few shot class incremental learning problem, we could improve weak learners by using open-set recognition models to replace the more simple nearest neighbor classifier. This would provide a finer inlierness prediction for the padding values.<br /><br />
 
